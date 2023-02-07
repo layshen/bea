@@ -123,7 +123,7 @@ android {
         variant.outputs.all { output ->
             outputFileName =  'BEA_v' + variant.versionName + '_' + variant.buildType.name
             if (variant.buildType.name == buildTypes.release.getName()) {
-                outputFileName += '_' + new Date().format('MMdd')
+                outputFileName += '_' + new Date().format('YYYYMMdd')
             }
             outputFileName += '.apk'
         }
