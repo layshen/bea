@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 默认分割线大小 -->
+    <dimen name="line_size">1px</dimen>
+
+    <!-- 默认按钮的圆角大小 -->
+    <dimen name="button_circle_size">999dp</dimen>
+
+    <!-- 通用对话框圆角大小 -->
+    <dimen name="dialog_ui_round_size">15dp</dimen>
+
+    <dimen name="public_main_text">16dp</dimen> <!-- 正文-->
+
+    <dimen name="public_main_inferior_text">14dp</dimen>  <!-- 正文（弱）/辅助文案-->
+
+    <dimen name="public_sub_text">12dp</dimen> <!-- 辅助说明（强）-->
+
+    <dimen name="public_sub_inferior_text">10dp</dimen>
+    <dimen name="public_padding1">12dp</dimen>
+    <dimen name="node_padding_left">5dp</dimen>
+    <dimen name="node_padding_top">3dp</dimen>
+    <dimen name="node_padding_btn_left">20dp</dimen>
+    <dimen name="node_padding_btn_top">4dp</dimen> <!-- 辅助说明（弱） -->
+</resources>

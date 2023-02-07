@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    tools:context="com.epiboly.bea.ui.activity.ImagePreviewActivity">
+
+    <com.epiboly.bea.widget.PhotoViewPager
+        android:id="@+id/vp_image_preview_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+    <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundFrameLayout
+        android:id="@+id/fl_update_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        app:qmui_radius="20dp"
+        app:qmui_backgroundColor="@color/card_color"
+        android:layout_marginBottom="@dimen/dp_20" >
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/main_sub_text_color"
+            android:textSize="@dimen/public_main_inferior_text"
+            android:text="更换头像" />
+
+    </com.qmuiteam.qmui.widget.roundwidget.QMUIRoundFrameLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:visibility="gone"
+        android:layout_marginBottom="@dimen/dp_20" >
+
+        <me.relex.circleindicator.CircleIndicator
+            android:id="@+id/ci_image_preview_indicator"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:visibility="invisible"
+            app:ci_drawable="@drawable/image_preview_indicator"
+            app:ci_height="@dimen/dp_5"
+            app:ci_margin="@dimen/dp_5"
+            app:ci_width="@dimen/dp_5"
+            tools:visibility="visible" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_image_preview_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/panda"
+            android:textSize="@dimen/sp_16"
+            android:visibility="invisible"
+            tools:text="1/10"
+            tools:visibility="visible" />
+
+    </FrameLayout>
+
+</FrameLayout>

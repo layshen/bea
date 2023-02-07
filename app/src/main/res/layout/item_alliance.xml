@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/bg_color">
+    <View
+        android:id="@+id/view_line"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@color/common_line_color"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/iv_portrait"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/tv_nick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/main_text_color"
+            android:textSize="@dimen/public_main_text"
+            android:layout_marginLeft="8dp"
+            android:text="--"
+            app:layout_constraintLeft_toRightOf="@+id/iv_portrait"/>
+
+        <TextView
+            android:id="@+id/tv_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/main_text_color"
+            android:textSize="@dimen/public_main_text"
+            android:text="1885***5243"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_nick"/>
+
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundFrameLayout
+            android:id="@+id/fl_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="@id/tv_nick"
+            app:layout_constraintTop_toTopOf="@id/tv_nick"
+            app:layout_constraintBottom_toBottomOf="@id/tv_nick"
+            app:qmui_radius="10dp"
+            app:qmui_borderColor="@color/alliance_red"
+            app:qmui_borderWidth="1dp"
+            android:paddingLeft="6dp"
+            android:paddingRight="6dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:layout_marginLeft="8dp">
+            <TextView
+                android:id="@+id/tv_level"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="普通用户"
+                android:textColor="@color/alliance_red"
+                android:textSize="@dimen/public_sub_inferior_text"
+                />
+        </com.qmuiteam.qmui.widget.roundwidget.QMUIRoundFrameLayout>
+
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundFrameLayout
+            android:id="@+id/fl_authentication"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="@id/fl_level"
+            app:layout_constraintTop_toTopOf="@id/tv_nick"
+            app:layout_constraintBottom_toBottomOf="@id/tv_nick"
+            app:qmui_radius="10dp"
+            app:qmui_backgroundColor="@color/alliance_red"
+            android:paddingLeft="6dp"
+            android:paddingRight="6dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:layout_marginLeft="8dp">
+            <TextView
+                android:id="@+id/tv_authentication"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="未认证"
+                android:textColor="@color/white"
+                android:textSize="@dimen/public_sub_inferior_text"
+                />
+        </com.qmuiteam.qmui.widget.roundwidget.QMUIRoundFrameLayout>
+
+        <TextView
+            android:id="@+id/tv_active"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/alliance_red"
+            android:textSize="@dimen/public_sub_text"
+            android:text="活跃:--"
+            app:layout_constraintTop_toTopOf="@id/tv_nick"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_alliance_active"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/alliance_red"
+            android:textSize="@dimen/public_sub_text"
+            android:visibility="gone"
+            android:text="联盟活跃度:--"
+            app:layout_constraintTop_toBottomOf="@id/tv_active"
+            android:layout_marginTop="8dp"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/main_sub_text_color"
+            android:textSize="@dimen/public_sub_text"
+            android:text="--"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="8dp"
+            app:layout_constraintRight_toRightOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

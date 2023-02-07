@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    android:orientation="vertical">
+
+    <com.hjq.bar.TitleBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/card_color"
+        app:leftIcon="@null"
+        app:lineVisible="false"
+        app:titleColor="@color/main_text_color"
+        app:title="我的任务" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/task_bg">
+
+            <Space
+                android:id="@+id/center"
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <ImageView
+                android:id="@+id/iv_top_task_line"
+                android:layout_width="50dp"
+                android:layout_height="200dp"
+                android:src="@drawable/task_top"
+                app:layout_constraintCircle="@+id/center"
+                app:layout_constraintCircleAngle="0"
+                app:layout_constraintCircleRadius="100dp"/>
+
+            <ImageView
+                android:id="@+id/iv_top_right_task_line"
+                android:layout_width="100dp"
+                android:layout_height="250dp"
+                android:src="@drawable/task_topright"
+                app:layout_constraintCircle="@+id/center"
+                app:layout_constraintCircleAngle="45"
+                app:layout_constraintCircleRadius="80dp" />
+
+            <ImageView
+                android:id="@+id/iv_bottom_right_task_line"
+                android:layout_width="100dp"
+                android:layout_height="250dp"
+                android:src="@drawable/task_downright"
+                app:layout_constraintCircle="@+id/center"
+                app:layout_constraintCircleAngle="135"
+                app:layout_constraintCircleRadius="80dp" />
+
+            <ImageView
+                android:id="@+id/iv_bottom_left_task_line"
+                android:layout_width="100dp"
+                android:layout_height="250dp"
+                android:src="@drawable/task_downleft"
+                app:layout_constraintCircle="@+id/center"
+                app:layout_constraintCircleAngle="225"
+                app:layout_constraintCircleRadius="80dp" />
+
+            <ImageView
+                android:id="@+id/iv_bottom_task_line"
+                android:layout_width="50dp"
+                android:layout_height="200dp"
+                android:src="@drawable/task_down"
+                app:layout_constraintCircle="@+id/center"
+                app:layout_constraintCircleAngle="180"
+                app:layout_constraintCircleRadius="100dp"/>
+
+            <ImageView
+                android:id="@+id/iv_top_left_task_line"
+                android:layout_width="100dp"
+                android:layout_height="250dp"
+                android:src="@drawable/task_topleft"
+                app:layout_constraintCircle="@+id/center"
+                app:layout_constraintCircleAngle="315"
+                app:layout_constraintCircleRadius="80dp" />
+
+            <ImageView
+                android:id="@+id/iv_task_center"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:src="@drawable/task_main"
+                app:layout_constraintBottom_toBottomOf="@id/center"
+                app:layout_constraintEnd_toEndOf="@id/center"
+                app:layout_constraintStart_toStartOf="@id/center"
+                app:layout_constraintTop_toTopOf="@id/center" />
+
+            <ImageView
+                android:id="@+id/iv_top_task"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/task_sub"
+                app:layout_constraintCircle="@+id/center"
+                app:layout_constraintCircleAngle="0"
+                app:layout_constraintCircleRadius="200dp"/>
+
+            <ImageView
+                android:id="@+id/iv_top_right_task"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/task_sub"
+                app:layout_constraintCircle="@+id/center"
+                app:layout_constraintCircleAngle="45"
+                app:layout_constraintCircleRadius="150dp"/>
+
+            <ImageView
+                android:id="@+id/iv_bottom_right_task"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/task_sub"
+                app:layout_constraintCircle="@+id/center"
+                app:layout_constraintCircleAngle="135"
+                app:layout_constraintCircleRadius="150dp"/>
+
+            <ImageView
+                android:id="@+id/iv_bottom_task"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/task_sub"
+                app:layout_constraintCircle="@+id/center"
+                app:layout_constraintCircleAngle="180"
+                app:layout_constraintCircleRadius="200dp"/>
+
+            <ImageView
+                android:id="@+id/iv_bottom_left_task"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/task_sub"
+                app:layout_constraintCircle="@+id/center"
+                app:layout_constraintCircleAngle="225"
+                app:layout_constraintCircleRadius="150dp"/>
+
+            <ImageView
+                android:id="@+id/iv_top_left_task"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/task_sub"
+                app:layout_constraintCircle="@+id/center"
+                app:layout_constraintCircleAngle="315"
+                app:layout_constraintCircleRadius="150dp"/>
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/group_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/group_top_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/group_bottom_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/group_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/group_bottom_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/group_top_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.epiboly.bea.widget.StatusLayout
+            android:id="@+id/status_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </FrameLayout>
+
+</LinearLayout>

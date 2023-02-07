@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    android:orientation="vertical">
+
+    <com.hjq.bar.TitleBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftBackground="@color/bg_color"
+        app:rightBackground="@color/bg_color"
+        app:leftTitle="返回"
+        app:leftTitleColor="@color/white"
+        app:leftIconTint="@color/white"
+        app:titleColor="@color/white"
+        app:lineVisible="false"
+        android:background="@color/bg_color"
+        app:title="我的联盟" />
+
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout
+        android:id="@+id/smart_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.scwang.smart.refresh.header.ClassicsHeader
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/tv_lliance_active"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="---"
+                    android:textSize="30dp"
+                    android:textColor="@color/alliance_red"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="10dp"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_lliance_active_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="联盟算力"
+                    android:textSize="20dp"
+                    android:textColor="@color/main_text_color"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_lliance_active"/>
+
+                <LinearLayout
+                    android:id="@+id/ll_fans"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_lliance_active_name">
+                    <TextView
+                        android:id="@+id/tv_my_fans_desc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="我的粉丝："
+                        android:textColor="@color/main_text_color"
+                        android:textSize="@dimen/public_main_text"/>
+
+                    <TextView
+                        android:id="@+id/tv_my_fans"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="--"
+                        android:layout_marginLeft="8dp"
+                        android:textColor="@color/alliance_red"
+                        android:textSize="@dimen/public_main_text"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="28dp"
+                        android:text="有效粉丝："
+                        android:textColor="@color/main_text_color"
+                        android:textSize="@dimen/public_main_text"/>
+
+                    <TextView
+                        android:id="@+id/tv_valid_fans"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="--"
+                        android:layout_marginLeft="8dp"
+                        android:textColor="@color/alliance_red"
+                        android:textSize="@dimen/public_main_text"/>
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_marginTop="12dp"
+                android:background="@color/common_line_color"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+                <com.epiboly.bea.widget.StatusLayout
+                    android:id="@+id/status_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <com.scwang.smart.refresh.footer.ClassicsFooter
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
+</LinearLayout>
