@@ -14,7 +14,7 @@ import com.epiboly.bea.app.AppActivity;
 import com.epiboly.bea.cache.UserHelper;
 import com.epiboly.bea.http.api.SystemNoticeListApi;
 import com.epiboly.bea.http.model.HttpList2Data;
-import com.epiboly.bea.http.model.NodeServer;
+import com.epiboly.bea.http.model.IntegralServer;
 import com.epiboly.bea.ui.adapter.SystemNoticeListAdapter;
 import com.epiboly.bea.widget.StatusLayout;
 import com.hjq.base.BaseAdapter;
@@ -88,7 +88,7 @@ public class SystemNoticeActivity extends AppActivity implements StatusAction {
     private void refresh() {
         mPage = 1;
         EasyHttp.post(this)
-                .server(new NodeServer())
+                .server(new IntegralServer())
                 .api(new SystemNoticeListApi()
                         .setPage(mPage)
                         .setToken(UserHelper.getInstance().getUser().getToken())
@@ -126,7 +126,7 @@ public class SystemNoticeActivity extends AppActivity implements StatusAction {
     private void getMoreData(long id) {
         mPage++;
         EasyHttp.post(this)
-                .server(new NodeServer())
+                .server(new IntegralServer())
                 .api(new SystemNoticeListApi()
                         .setPage(mPage)
                         .setToken(UserHelper.getInstance().getUser().getToken())

@@ -10,7 +10,7 @@ import com.epiboly.bea.app.AppActivity
 import com.epiboly.bea.cache.UserHelper
 import com.epiboly.bea.http.api.FinishAdvertiseWatchApi
 import com.epiboly.bea.http.model.HttpData
-import com.epiboly.bea.http.model.NodeServer
+import com.epiboly.bea.http.model.IntegralServer
 import com.epiboly.bea.widget.StatusLayout
 import com.hjq.http.EasyHttp
 import com.hjq.http.listener.HttpCallback
@@ -147,7 +147,7 @@ class RewardProActivity : AppActivity() ,StatusAction {
 
     private fun adVideoComplete() {
         EasyHttp.post(RewardProActivity@this)
-            .server(NodeServer())
+            .server(IntegralServer())
             .api(FinishAdvertiseWatchApi()
                 .setToken(UserHelper.getInstance().token)
                 .setSort(getString(TYPE_SORT)))

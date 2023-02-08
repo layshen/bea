@@ -17,7 +17,7 @@ import com.epiboly.bea.cache.UserHelper;
 import com.epiboly.bea.home.HomeMainActivity;
 import com.epiboly.bea.http.api.QueryUserFinishStatusApi;
 import com.epiboly.bea.http.model.HttpData;
-import com.epiboly.bea.http.model.NodeServer;
+import com.epiboly.bea.http.model.IntegralServer;
 import com.epiboly.bea.widget.StatusLayout;
 import com.hjq.http.EasyHttp;
 import com.hjq.http.listener.HttpCallback;
@@ -117,7 +117,7 @@ public class DailyTaskFragment extends TitleBarFragment<HomeMainActivity> implem
 
     private void queryUserFinishStatusApi() {
         EasyHttp.post(this)
-                .server(new NodeServer())
+                .server(new IntegralServer())
                 .api(new QueryUserFinishStatusApi().setToken(UserHelper.getInstance().getToken()))
                 .request(new HttpCallback<HttpData<QueryUserFinishStatusApi.Bean>>(this) {
                     @Override

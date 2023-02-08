@@ -13,7 +13,7 @@
         app:titleColor="@color/main_text_color"
         app:leftIconTint="@color/white"
         app:lineVisible="false"
-        app:title="记录"/>
+        app:title="流水"/>
 
     <LinearLayout
         android:layout_width="match_parent"

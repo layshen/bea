@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_color"
+    tools:context="com.epiboly.bea.ui.activity.SettingActivity">
+
+    <com.hjq.bar.TitleBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftBackground="@color/bg_color"
+        app:rightBackground="@color/bg_color"
+        app:titleColor="@color/white"
+        app:leftIconTint="@color/white"
+        app:lineVisible="false"
+        android:background="@color/bg_color"
+        app:title="兑换" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <com.hjq.widget.view.RegexEditText
+                android:id="@+id/input_az"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/EditTextStyle"
+                android:hint="输入要兑换的算力"
+                android:background="@color/card_color"
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="@dimen/dp_16"
+                app:regexType="positive_decimal"/>
+
+            <com.hjq.widget.view.SubmitButton
+                android:id="@+id/btn_commit"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp_40"
+                android:layout_marginTop="@dimen/dp_30"
+                android:text="兑换" />
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

@@ -11,20 +11,26 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
-import com.epiboly.bea.rich.R;
 import com.epiboly.bea.action.StatusAction;
 import com.epiboly.bea.app.AppAdapter;
 import com.epiboly.bea.cache.UserHelper;
 import com.epiboly.bea.http.api.UserBuyNodeInfoApi;
 import com.epiboly.bea.http.glide.GlideApp;
 import com.epiboly.bea.http.model.HttpData;
+import com.epiboly.bea.http.model.IntegralServer;
 import com.epiboly.bea.http.model.MyNodeBean;
-import com.epiboly.bea.http.model.NodeServer;
+import com.epiboly.bea.rich.R;
 import com.epiboly.bea.ui.activity.MineNodeActivity;
+import com.epiboly.bea.util.NodeHelper;
+import com.epiboly.bea.util.TimeUtil;
 import com.epiboly.bea.widget.StatusLayout;
+import com.hjq.base.BaseAdapter;
 import com.hjq.base.BaseFragment;
 import com.hjq.http.EasyHttp;
 import com.hjq.http.listener.HttpCallback;
+import com.scwang.smart.refresh.layout.SmartRefreshLayout;
+import com.scwang.smart.refresh.layout.api.RefreshLayout;
+import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 
 import java.util.ArrayList;
 
@@ -35,18 +41,14 @@ import java.util.ArrayList;
  */
 public class MyNodeFragment extends BaseFragment<MineNodeActivity> implements StatusAction {
 
-    public static final int VALID_NODE_TYPE = 0;
-    public static final int INVALID_NODE_TYPE = 1;
-
     private RecyclerView mRecyclerView;
-    private int mType;
     private MyNodeAdapter mMyNodeAdapter;
     private StatusLayout mStatusLayout;
+    private SmartRefreshLayout mSmartRefresh;
 
-    public static MyNodeFragment newInstance(int type) {
+    public static MyNodeFragment newInstance() {
         MyNodeFragment fragment = new MyNodeFragment();
         Bundle bundle = new Bundle();
-        bundle.putInt("type", type);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -61,95 +63,56 @@ public class MyNodeFragment extends BaseFragment<MineNodeActivity> implements St
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mMyNodeAdapter = new MyNodeAdapter(getContext());
         mRecyclerView.setAdapter(mMyNodeAdapter);
-        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, LinearLayout.VERTICAL));
         mStatusLayout = (StatusLayout) findViewById(R.id.status_layout);
+        mSmartRefresh = (SmartRefreshLayout) findViewById(R.id.smart_refresh);
+        mSmartRefresh.setEnableLoadMore(false);
+        mSmartRefresh.setEnableAutoLoadMore(false);
+        mSmartRefresh.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                refresh();
+            }
+        });
     }
 
     @Override
     protected void initData() {
-        mType = getInt("type");
         showLoading();
+        refresh();
+    }
+
+    private void refresh() {
         EasyHttp.post(this)
-                .server(new NodeServer())
+                .server(new IntegralServer())
                 .api(new UserBuyNodeInfoApi()
                         .setToken(UserHelper.getInstance().getToken())
                         .setUid(UserHelper.getInstance().getUser().getUid()))
-                .request(new HttpCallback<HttpData<UserBuyNodeInfoApi.Bean>>(null) {
+                .request(new HttpCallback<HttpData<UserBuyNodeInfoApi.Wrapper>>(null) {
 
                     @Override
-                    public void onSucceed(HttpData<UserBuyNodeInfoApi.Bean> result) {
+                    public void onSucceed(HttpData<UserBuyNodeInfoApi.Wrapper> result) {
                         if (result != null && result.isRequestSucceed()) {
-                            UserBuyNodeInfoApi.Bean data = result.getData();
-                            if (data == null){
+                            mSmartRefresh.finishRefresh(true);
+                            if (result.getData() == null) {
                                 showError(null);
                                 return;
                             }
-                            if (mType == VALID_NODE_TYPE) {
-                                ArrayList<MyNodeBean> list = new ArrayList();
-                                if (data.getValidTNum() > 0){
-                                    list.add(new MyNodeBean(R.drawable.node_png_01, "T级节点", data.getValidTNum()));
-                                }
-                                if (data.getValidANum() > 0){
-                                    list.add(new MyNodeBean(R.drawable.node_png_02, "A级节点", data.getValidANum()));
-                                }
-                                if (data.getValidBNum() > 0){
-                                    list.add(new MyNodeBean(R.drawable.node_png_03, "B级节点", data.getValidBNum()));
-                                }
-                                if (data.getValidCNum() > 0){
-                                    list.add(new MyNodeBean(R.drawable.node_png_04, "C级节点", data.getValidCNum()));
-                                }
-                                if (data.getValidDNum() > 0){
-                                    list.add(new MyNodeBean(R.drawable.node_png_05, "D级节点", data.getValidDNum()));
-                                }
-                                if (data.getValidENum() > 0){
-                                    list.add(new MyNodeBean(R.drawable.node_png_06, "E级节点", data.getValidENum()));
-                                }
-                                if (data.getValidFNum() > 0){
-                                    list.add(new MyNodeBean(R.drawable.node_png_01, "F级节点", data.getValidFNum()));
-                                }
-                                if (list.size() == 0){
-                                    showEmpty();
-                                }else {
-                                    mMyNodeAdapter.setData(list);
-                                    showComplete();
-                                }
+                            ArrayList<MyNodeBean> userNodeRefDTOList = result.getData().getUserNodeRefDTOList();
+                            if (userNodeRefDTOList == null || userNodeRefDTOList.isEmpty()) {
+                                showEmpty();
                             } else {
-                                ArrayList<MyNodeBean> list = new ArrayList();
-                                if (data.getInvalidTNum() > 0){
-                                    list.add(new MyNodeBean(R.drawable.node_png_01, "T级节点", data.getInvalidTNum()));
-                                }
-                                if (data.getInvalidANum() > 0){
-                                    list.add(new MyNodeBean(R.drawable.node_png_02, "A级节点", data.getInvalidANum()));
-                                }
-                                if (data.getInvalidBNum() > 0){
-                                    list.add(new MyNodeBean(R.drawable.node_png_03, "B级节点", data.getInvalidBNum()));
-                                }
-                                if (data.getInvalidCNum() > 0){
-                                    list.add(new MyNodeBean(R.drawable.node_png_04, "C级节点", data.getInvalidCNum()));
-                                }
-                                if (data.getInvalidDNum() > 0){
-                                    list.add(new MyNodeBean(R.drawable.node_png_05, "D级节点", data.getInvalidDNum()));
-                                }
-                                if (data.getInvalidENum() > 0){
-                                    list.add(new MyNodeBean(R.drawable.node_png_06, "E级节点", data.getInvalidENum()));
-                                }
-                                if (data.getInvalidFNum() > 0){
-                                    list.add(new MyNodeBean(R.drawable.node_png_01, "F级节点", data.getInvalidFNum()));
-                                }
-                                if (list.size() == 0){
-                                    showEmpty();
-                                }else {
-                                    mMyNodeAdapter.setData(list);
-                                    showComplete();
-                                }
+                                mMyNodeAdapter.setData(userNodeRefDTOList);
+                                showComplete();
                             }
                         } else {
+                            mSmartRefresh.finishRefresh(false);
                             showError(null);
                         }
                     }
 
                     @Override
                     public void onFail(Exception e) {
+                        mSmartRefresh.finishRefresh(false);
                         showError(null);
                     }
                 });
@@ -177,6 +140,12 @@ public class MyNodeFragment extends BaseFragment<MineNodeActivity> implements St
             private ImageView mIvImgTree;
             private TextView mTvName;
             private TextView mTvNum;
+            private TextView mTvDate;
+            private TextView mTvProducedValue;
+            private TextView mTvDaysRemainingValue;
+            private TextView mTvTotalOutputValue;
+            private TextView mTvCycle;
+            private TextView mTvCycleValue;
 
             private ViewHolder() {
                 super(R.layout.node_my_item);
@@ -188,18 +157,31 @@ public class MyNodeFragment extends BaseFragment<MineNodeActivity> implements St
                 MyNodeBean info = getItem(position);
                 GlideApp.with(getContext())
                         .asBitmap()
-                        .load(info.getDrawable())
+                        .load(NodeHelper.getDrawableByNodeType(info.getNid()))
                         .into(mIvImgTree);
+                mTvName.setText(NodeHelper.getNameByType(info.getNid()));
+                mTvNum.setText("日产出:" + info.getDayOut());
+                try {
+                    mTvDate.setText(TimeUtil.longToYMDHMS(Long.parseLong(info.getCreateTime())));
+                }catch (Exception e){
 
-                mTvName.setText(info.getName() + "");
-                mTvNum.setText("数量:"+info.getNum() + "");
-
+                }
+                mTvProducedValue.setText(info.getProduced());
+                mTvDaysRemainingValue.setText(info.getDaysRemaining());
+                mTvTotalOutputValue.setText(info.getTotalOutput());
+                mTvCycleValue.setText(info.getCycle());
             }
 
             private void initView() {
                 mIvImgTree = (ImageView) findViewById(R.id.iv_img_tree);
                 mTvName = (TextView) findViewById(R.id.tv_name);
                 mTvNum = (TextView) findViewById(R.id.tv_num);
+                mTvDate = (TextView) findViewById(R.id.tv_date);
+                mTvProducedValue = (TextView) findViewById(R.id.tv_produced_value);
+                mTvDaysRemainingValue = (TextView) findViewById(R.id.tv_daysRemaining_value);
+                mTvTotalOutputValue = (TextView) findViewById(R.id.tv_totalOutput_value);
+                mTvCycle = (TextView) findViewById(R.id.tv_cycle);
+                mTvCycleValue = (TextView) findViewById(R.id.tv_cycle_value);
             }
         }
     }

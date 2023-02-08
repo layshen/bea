@@ -13,7 +13,7 @@ import com.epiboly.bea.app.AppActivity;
 import com.epiboly.bea.cache.UserHelper;
 import com.epiboly.bea.http.api.AzRecordListApi;
 import com.epiboly.bea.http.model.HttpData;
-import com.epiboly.bea.http.model.NodeServer;
+import com.epiboly.bea.http.model.IntegralServer;
 import com.epiboly.bea.ui.adapter.AzRecordListAdapter;
 import com.epiboly.bea.widget.StatusLayout;
 import com.hjq.http.EasyHttp;
@@ -78,7 +78,7 @@ public class AzRecordListActivity extends AppActivity implements StatusAction {
 
     private void refresh() {
         EasyHttp.post(this)
-                .server(new NodeServer())
+                .server(new IntegralServer())
                 .api(new AzRecordListApi()
                         .setUserExchangeId(0)
                         .setToken(UserHelper.getInstance().getUser().getToken())
@@ -115,7 +115,7 @@ public class AzRecordListActivity extends AppActivity implements StatusAction {
 
     private void getMoreData(long id) {
         EasyHttp.post(this)
-                .server(new NodeServer())
+                .server(new IntegralServer())
                 .api(new AzRecordListApi()
                         .setUserExchangeId(id)
                         .setToken(UserHelper.getInstance().getUser().getToken())

@@ -11,6 +11,7 @@ import com.epiboly.bea.rich.R;
 import com.epiboly.bea.app.AppAdapter;
 import com.epiboly.bea.http.glide.GlideApp;
 import com.epiboly.bea.http.model.NodeBean;
+import com.epiboly.bea.util.NodeHelper;
 import com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton;
 import com.qmuiteam.qmui.widget.roundwidget.QMUIRoundLinearLayout;
 
@@ -76,22 +77,7 @@ public class NodeListAdapter extends AppAdapter<NodeBean> {
         @Override
         public void onBindView(int position) {
             NodeBean info = getItem(position);
-            int placeholder;
-            if (info.getType() == 0){
-                placeholder = R.drawable.node_png_01;
-            } else if (info.getType() == 1){
-                placeholder = R.drawable.node_png_02;
-            }else if (info.getType() == 2){
-                placeholder = R.drawable.node_png_03;
-            }else if (info.getType() == 3){
-                placeholder = R.drawable.node_png_04;
-            }else if (info.getType() == 4){
-                placeholder = R.drawable.node_png_05;
-            }else if (info.getType() == 5){
-                placeholder = R.drawable.node_png_06;
-            }else{
-                placeholder = R.drawable.node_png_06;
-            }
+            int placeholder = NodeHelper.getDrawableByNodeType(info.getType());
             GlideApp.with(getContext())
                     .asBitmap()
                     .load(info.getImgUrl())

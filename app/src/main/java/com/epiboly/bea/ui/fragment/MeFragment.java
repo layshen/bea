@@ -21,6 +21,7 @@ import com.epiboly.bea.http.glide.GlideApp;
 import com.epiboly.bea.http.model.HttpData;
 import com.epiboly.bea.login.LoginActivity;
 import com.epiboly.bea.ui.activity.AllianceActiveActivity;
+import com.epiboly.bea.ui.activity.AzDetailActivity;
 import com.epiboly.bea.ui.activity.AzRecordListActivity;
 import com.epiboly.bea.ui.activity.HeadPicturePreviewActivity;
 import com.epiboly.bea.ui.activity.MineNodeActivity;
@@ -176,7 +177,7 @@ public class MeFragment extends TitleBarFragment<HomeMainActivity> {
                 }
                 break;
             case R.id.ll_az_value:
-                AzRecordListActivity.start(getActivity());
+                AzDetailActivity.start(getActivity(),tv_az_value.getText().toString());
                 break;
             case R.id.rl_system_notice:
                 SystemNoticeActivity.start(getActivity());

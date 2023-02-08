@@ -6,28 +6,67 @@ package com.epiboly.bea.http.model;
  * @describe
  */
 public class MyNodeBean {
-    private int drawable;
-    private String name;
-    private int num;
+    private int nid;
+    private String createTime;
+    private String dayOut;
+    private String produced;
+    private String totalOutput;
+    private String daysRemaining;
+    private String cycle;
 
-    public MyNodeBean() {
+    public int getNid() {
+        return nid;
     }
 
-    public MyNodeBean(int drawable, String name, int num) {
-        this.drawable = drawable;
-        this.name = name;
-        this.num = num;
+    public void setNid(int nid) {
+        this.nid = nid;
     }
 
-    public int getDrawable() {
-        return drawable;
+    public String getCreateTime() {
+        return createTime;
     }
 
-    public String getName() {
-        return name;
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
     }
 
-    public int getNum() {
-        return num;
+    public String getDayOut() {
+        return dayOut;
+    }
+
+    public void setDayOut(String dayOut) {
+        this.dayOut = dayOut;
+    }
+
+    public String getProduced() {
+        return produced;
+    }
+
+    public void setProduced(String produced) {
+        this.produced = produced;
+    }
+
+    public String getTotalOutput() {
+        return totalOutput;
+    }
+
+    public void setTotalOutput(String totalOutput) {
+        this.totalOutput = totalOutput;
+    }
+
+    public String getDaysRemaining() {
+        return daysRemaining;
+    }
+
+    public void setDaysRemaining(String daysRemaining) {
+        this.daysRemaining = daysRemaining;
+    }
+
+    public String getCycle() {
+        return cycle;
+    }
+
+    public void setCycle(String cycle) {
+        this.cycle = cycle;
     }
 }

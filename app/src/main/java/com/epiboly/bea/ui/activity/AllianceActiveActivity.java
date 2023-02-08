@@ -18,7 +18,7 @@ import com.epiboly.bea.cache.UserHelper;
 import com.epiboly.bea.http.api.AllianceActiveListApi;
 import com.epiboly.bea.http.api.AllianceActiveTopApi;
 import com.epiboly.bea.http.model.HttpData;
-import com.epiboly.bea.http.model.NodeServer;
+import com.epiboly.bea.http.model.IntegralServer;
 import com.epiboly.bea.ui.adapter.AllianceListAdapter;
 import com.epiboly.bea.widget.StatusLayout;
 import com.hjq.base.BaseAdapter;
@@ -144,7 +144,7 @@ public class AllianceActiveActivity extends AppActivity implements StatusAction 
 
     private void getTopInfo() {
         EasyHttp.post(this)
-                .server(new NodeServer())
+                .server(new IntegralServer())
                 .api(new AllianceActiveTopApi()
                         .setToken(UserHelper.getInstance().getUser().getToken())
                         .setUid(mUid))

@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import com.epiboly.bea.http.api.NodeListPurchaseNodeInfo;
 import com.epiboly.bea.rich.R;
 import com.epiboly.bea.action.StatusAction;
 import com.epiboly.bea.app.TitleBarFragment;
@@ -19,7 +20,7 @@ import com.epiboly.bea.http.api.NodeExchangeApi;
 import com.epiboly.bea.http.api.NodeListApi;
 import com.epiboly.bea.http.model.HttpData;
 import com.epiboly.bea.http.model.NodeBean;
-import com.epiboly.bea.http.model.NodeServer;
+import com.epiboly.bea.http.model.IntegralServer;
 import com.epiboly.bea.node.adapter.NodeListAdapter;
 import com.epiboly.bea.ui.dialog.TipsDialog;
 import com.epiboly.bea.widget.StatusLayout;
@@ -118,7 +119,7 @@ public class NodeListFragment extends TitleBarFragment<HomeMainActivity> impleme
 
     private void exchangeNode(int id) {
         EasyHttp.post(this)
-                .server(new NodeServer())
+                .server(new IntegralServer())
                 .api(new NodeExchangeApi()
                         .setNid(id + "")
                         .setUid(UserHelper.getInstance().getUser().getUid()))
@@ -166,7 +167,7 @@ public class NodeListFragment extends TitleBarFragment<HomeMainActivity> impleme
 
     private void requestData() {
         EasyHttp.post(this)
-                .server(new NodeServer())
+                .server(new IntegralServer())
                 .api(new NodeListApi()
                         .setToken(UserHelper.getInstance().getToken()))
                 .request(new HttpCallback<HttpData<List<NodeBean>>>(this) {

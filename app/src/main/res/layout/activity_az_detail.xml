@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_color"
+    tools:context="com.epiboly.bea.ui.activity.SettingActivity">
+
+    <com.hjq.bar.TitleBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftBackground="@color/bg_color"
+        app:rightBackground="@color/bg_color"
+        app:titleColor="@color/white"
+        app:leftIconTint="@color/white"
+        app:lineVisible="false"
+        android:background="@color/bg_color"
+        app:title="算力" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_az_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/main_text_color"
+                android:textSize="@dimen/public_main_text"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"/>
+
+            <com.hjq.widget.layout.SettingBar
+                android:id="@+id/sb_exchange"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:bar_leftDrawable="@drawable/ic_fans"
+                app:bar_leftText="兑换"
+                android:layout_marginTop="10dp"
+                app:bar_leftTextColor="@color/main_text_color"
+                app:bar_rightDrawable="@drawable/ic_arrow_right"
+                android:background="@color/card_color"
+                app:bar_rightTextColor="@color/main_sub_text_color"
+                app:bar_lineDrawable="@drawable/line_drawable"/>
+
+            <com.hjq.widget.layout.SettingBar
+                android:id="@+id/sb_record"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:bar_leftDrawable="@drawable/ic_fans"
+                app:bar_leftText="流水"
+                android:layout_marginTop="10dp"
+                app:bar_leftTextColor="@color/main_text_color"
+                app:bar_rightDrawable="@drawable/ic_arrow_right"
+                android:background="@color/card_color"
+                app:bar_rightTextColor="@color/main_sub_text_color"
+                app:bar_lineDrawable="@drawable/line_drawable"/>
+
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

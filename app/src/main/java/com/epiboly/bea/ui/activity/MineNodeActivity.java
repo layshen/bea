@@ -24,10 +24,6 @@ import java.util.ArrayList;
  * @describe
  */
 public class MineNodeActivity extends AppActivity {
-    private CommonTabLayout mTabLayout;
-    private ViewPager mViewPager;
-
-    private FragmentPagerAdapter<Fragment> mPagerAdapter;
 
 
     @Log
@@ -46,72 +42,12 @@ public class MineNodeActivity extends AppActivity {
 
     @Override
     protected void initView() {
-        mTabLayout = (CommonTabLayout) findViewById(R.id.tab_layout);
-        mViewPager = (ViewPager) findViewById(R.id.view_pager);
-        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                mTabLayout.setCurrentTab(position);
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
-        mTabLayout.setOnTabSelectListener(new OnTabSelectListener() {
-            @Override
-            public void onTabSelect(int position) {
-                mViewPager.setCurrentItem(position);
-            }
-
-            @Override
-            public void onTabReselect(int position) {
-
-            }
-        });
-        mViewPager.setCurrentItem(0);
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_content,new MyNodeFragment()).commitAllowingStateLoss();
     }
 
 
     @Override
     protected void initData() {
-        ArrayList<CustomTabEntity> tabs = new ArrayList<>();
-        tabs.add(new Tab("有效节点"));
-        tabs.add(new Tab("过期节点"));
-        mTabLayout.setTabData(tabs);
-        mPagerAdapter = new FragmentPagerAdapter<>(this);
-        mPagerAdapter.addFragment(MyNodeFragment.newInstance(MyNodeFragment.VALID_NODE_TYPE));
-        mPagerAdapter.addFragment(MyNodeFragment.newInstance(MyNodeFragment.INVALID_NODE_TYPE));
-        mViewPager.setAdapter(mPagerAdapter);
-    }
 
-    static class Tab implements CustomTabEntity{
-
-        private String tab;
-
-        public Tab(String tab) {
-            this.tab = tab;
-        }
-
-        @Override
-        public String getTabTitle() {
-            return tab;
-        }
-
-        @Override
-        public int getTabSelectedIcon() {
-            return 0;
-        }
-
-        @Override
-        public int getTabUnselectedIcon() {
-            return 0;
-        }
     }
 }

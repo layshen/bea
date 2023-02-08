@@ -36,6 +36,8 @@ public class RegexEditText extends AppCompatEditText implements InputFilter {
     /** 非空格的字符（不能输入空格） */
     public static final String REGEX_NONNULL = "\\S+";
 
+    public static final String REGEX_POSITIVE_DECIMAL = "^[0-9]+\\.{0,1}[0-9]{0,2}";
+
     /** 正则表达式规则 */
     private Pattern mPattern;
 
@@ -77,6 +79,9 @@ public class RegexEditText extends AppCompatEditText implements InputFilter {
                     break;
                 case 0x07:
                     setInputRegex(REGEX_NONNULL);
+                    break;
+                case 0x08:
+                    setInputRegex(REGEX_POSITIVE_DECIMAL);
                     break;
                 default:
                     break;

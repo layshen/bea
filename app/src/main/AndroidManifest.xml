@@ -183,6 +183,18 @@
             android:windowSoftInputMode="stateHidden" />
 
         <activity
+            android:name="com.epiboly.bea.ui.activity.AzDetailActivity"
+            android:label="算力详情"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity
+            android:name="com.epiboly.bea.ui.activity.AzExchangeActivity"
+            android:label="兑换"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity
             android:name="com.epiboly.bea.ui.activity.PrivacyAgreementActivity"
             android:label="@string/privacy_agreement"
             android:screenOrientation="portrait"
