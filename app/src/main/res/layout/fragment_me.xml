@@ -222,6 +222,7 @@
                                     android:background="@android:color/darker_gray" />
 
                                 <LinearLayout
+                                    android:id="@+id/ll_bzi_value"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"

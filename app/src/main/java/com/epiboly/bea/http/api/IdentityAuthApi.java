@@ -10,7 +10,19 @@ import com.hjq.http.config.IRequestApi;
 public class IdentityAuthApi implements IRequestApi {
     private String token;
     private String uid;
+    private String name;
+    private String phone;
     private String idCard;
+
+    public IdentityAuthApi setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public IdentityAuthApi setPhone(String phone) {
+        this.phone = phone;
+        return this;
+    }
 
     public IdentityAuthApi setToken(String token) {
         this.token = token;
@@ -29,6 +41,6 @@ public class IdentityAuthApi implements IRequestApi {
 
     @Override
     public String getApi() {
-        return "UserServer/user/editUserInfo";
+        return "UserServer/user/authentication";
     }
 }

@@ -35,16 +35,16 @@ public class AzRecordListApi implements IRequestApi {
 
     public static class Bean {
         private long id;
-        private float az;//算力数量
+        private String az;//算力数量
         private int source;
         private String createTime;
         private long timestamp;
 
-        public float getAz() {
+        public String getAz() {
             return az;
         }
 
-        public void setAz(float az) {
+        public void setAz(String az) {
             this.az = az;
         }
 
@@ -55,19 +55,45 @@ public class AzRecordListApi implements IRequestApi {
         public String getSourceDesc() {
             switch (source){
                 case 0:
-                    return "交易所到app";
+                    return "转入";
                 case 1:
-                    return "app到交易所";
+                    return "转出";
                 case 2:
-                    return "分红获得";
+                    return "分红收益";
                 case 3:
                     return "承兑商买入";
                 case 4:
                     return "承兑商卖出";
                 case 5:
-                    return "每日任务完成获得";
+                    return "节点收益";
                 case 6:
-                    return "下级上节点获得";
+                case 7:
+                    return "加成收益";
+                case 8:
+                    return "兑换节点";
+            }
+            return "";
+        }
+
+        public String getSignDesc() {
+            switch (source){
+                case 0:
+                    return "+";
+                case 1:
+                    return "-";
+                case 2:
+                    return "+";
+                case 3:
+                    return "";
+                case 4:
+                    return "";
+                case 5:
+                    return "+";
+                case 6:
+                case 7:
+                    return "+";
+                case 8:
+                    return "-";
             }
             return "";
         }

@@ -55,7 +55,7 @@ public class AzExchangeActivity extends AppActivity {
         if (view == mBtnCommit){
             String s = mInputAz.getText().toString();
             if (TextUtils.isEmpty(s)){
-                toast("请输入要兑换的算力");
+                toast("请输入要转出的数值");
                 return;
             }
             float num = Float.parseFloat(s);

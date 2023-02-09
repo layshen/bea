@@ -1,6 +1,7 @@
 package com.epiboly.bea.node;
 
 import android.graphics.Color;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -48,6 +49,7 @@ public class NodeListFragment extends TitleBarFragment<HomeMainActivity> impleme
     private NodeListAdapter mAdapter;
     private StatusLayout mStatusLayout;
     private SmartRefreshLayout mSmartRefresh;
+    private int mSupportNodeType;
 
     public static NodeListFragment newInstance() {
         return new NodeListFragment();
@@ -161,11 +163,62 @@ public class NodeListFragment extends TitleBarFragment<HomeMainActivity> impleme
 
     @Override
     protected void initData() {
-        showLoading();
+    }
+
+    @Override
+    protected void onFragmentResume(boolean first) {
+        super.onFragmentResume(first);
+        if (first){
+            showLoading();
+        }
         requestData();
     }
 
     private void requestData() {
+        EasyHttp.post(this)
+                .server(new IntegralServer())
+                .api(new NodeListPurchaseNodeInfo()
+                        .setUid(UserHelper.getInstance().getUser().getUid())
+                        .setToken(UserHelper.getInstance().getToken()))
+                .request(new HttpCallback<HttpData<NodeListPurchaseNodeInfo.Bean>>(this) {
+
+
+                    @Override
+                    public void onSucceed(HttpData<NodeListPurchaseNodeInfo.Bean> data) {
+                        if (data == null || data.getData() == null){
+                            showError(listener -> {
+                                showLoading();
+                                requestData();
+                            });
+                            mSmartRefresh.finishRefresh(false);
+                            return;
+                        }
+                        if (data.isRequestSucceed()) {
+                            mSupportNodeType = data.getData().nodeType;
+                            mSmartRefresh.finishRefresh(true);
+                            requestNodeList();
+                        } else {
+                            showError(listener -> {
+                                showLoading();
+                                requestData();
+                            });
+                            mSmartRefresh.finishRefresh(false);
+                        }
+                    }
+
+                    @Override
+                    public void onFail(Exception e) {
+                        super.onFail(e);
+                        mSmartRefresh.finishRefresh(false);
+                        showError(listener -> {
+                            showLoading();
+                            requestData();
+                        });
+                    }
+                });
+    }
+
+    private void requestNodeList() {
         EasyHttp.post(this)
                 .server(new IntegralServer())
                 .api(new NodeListApi()
@@ -189,6 +242,7 @@ public class NodeListFragment extends TitleBarFragment<HomeMainActivity> impleme
                             NodeBean nodeBean = new NodeBean();
                             nodeBean.setType(NodeBean.COMING_TYPE);
                             list.add(nodeBean);
+                            mAdapter.setSupportType(mSupportNodeType);
                             mAdapter.setData(list);
                             showComplete();
                             mSmartRefresh.finishRefresh(true);

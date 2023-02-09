@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import com.epiboly.bea.login.IdentityAuthActivity;
 import com.epiboly.bea.rich.R;
 import com.epiboly.bea.app.AppFragment;
 import com.epiboly.bea.app.TitleBarFragment;
@@ -23,6 +24,7 @@ import com.epiboly.bea.login.LoginActivity;
 import com.epiboly.bea.ui.activity.AllianceActiveActivity;
 import com.epiboly.bea.ui.activity.AzDetailActivity;
 import com.epiboly.bea.ui.activity.AzRecordListActivity;
+import com.epiboly.bea.ui.activity.BZRRecordListActivity;
 import com.epiboly.bea.ui.activity.HeadPicturePreviewActivity;
 import com.epiboly.bea.ui.activity.MineNodeActivity;
 import com.epiboly.bea.ui.activity.SettingActivity;
@@ -85,7 +87,7 @@ public class MeFragment extends TitleBarFragment<HomeMainActivity> {
         mInviteFriendView = findViewById(R.id.rl_invite_friend);
         mIdentityAuthView = findViewById(R.id.rl_identity_auth);
         setOnClickListener(mIvSettings, mInviteFriendView, mIdentityAuthView, ivHead);
-        setOnClickListener(R.id.rl_my_alliance, R.id.rl_system_notice, R.id.rl_my_node,R.id.iv_kefu,R.id.ll_az_value);
+        setOnClickListener(R.id.rl_my_alliance, R.id.rl_system_notice, R.id.rl_my_node,R.id.iv_kefu,R.id.ll_az_value,R.id.ll_bzi_value);
 
         mSmartRefresh.setEnableRefresh(true);
         mSmartRefresh.setOnRefreshListener(new OnRefreshListener() {
@@ -138,15 +140,7 @@ public class MeFragment extends TitleBarFragment<HomeMainActivity> {
         switch (view.getId()) {
             case R.id.rl_identity_auth:
                 if (UserHelper.getInstance().getUser().getAuthentication() == 0){
-                    new SafeDialog.Builder(getContext())
-                            .setType(GetCodeApi.TYPE_UPDATE_USER)
-                            .setListener(new SafeDialog.OnListener() {
-                                @Override
-                                public void onConfirm(BaseDialog dialog, String phone, String code) {
-                                    mUserDialogManager.showIdCardAuth();
-                                }
-                            })
-                            .show();
+                    IdentityAuthActivity.start(getActivity());
                 }else {
                     toast("已完成认证");
                 }
@@ -178,6 +172,9 @@ public class MeFragment extends TitleBarFragment<HomeMainActivity> {
                 break;
             case R.id.ll_az_value:
                 AzDetailActivity.start(getActivity(),tv_az_value.getText().toString());
+                break;
+            case R.id.ll_bzi_value:
+                BZRRecordListActivity.start(getActivity());
                 break;
             case R.id.rl_system_notice:
                 SystemNoticeActivity.start(getActivity());

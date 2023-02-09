@@ -41,7 +41,7 @@ public class AzDetailActivity extends AppActivity {
 
     @Override
     protected void initData() {
-        mTvAzValue.setText("算力："+getString("az"));
+        mTvAzValue.setText("AZ："+getString("az"));
     }
 
     @Override

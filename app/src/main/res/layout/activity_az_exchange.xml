@@ -17,7 +17,7 @@
         app:leftIconTint="@color/white"
         app:lineVisible="false"
         android:background="@color/bg_color"
-        app:title="兑换" />
+        app:title="转出" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -34,7 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/EditTextStyle"
-                android:hint="输入要兑换的算力"
+                android:hint="输入要转出的数值"
                 android:background="@color/card_color"
                 android:layout_marginTop="20dp"
                 android:layout_marginHorizontal="@dimen/dp_16"
@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/dp_40"
                 android:layout_marginTop="@dimen/dp_30"
-                android:text="兑换" />
+                android:text="转出" />
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>

@@ -3,17 +3,22 @@ package com.epiboly.bea.login;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 
-import com.epiboly.bea.rich.R;
+import androidx.appcompat.widget.AppCompatTextView;
+
 import com.epiboly.bea.aop.Log;
 import com.epiboly.bea.app.AppActivity;
 import com.epiboly.bea.cache.UserHelper;
 import com.epiboly.bea.http.api.IdentityAuthApi;
 import com.epiboly.bea.http.model.HttpData;
+import com.epiboly.bea.rich.R;
 import com.hjq.http.EasyHttp;
 import com.hjq.http.listener.HttpCallback;
+import com.hjq.widget.view.RegexEditText;
 import com.hjq.widget.view.SubmitButton;
 
 import okhttp3.Call;
@@ -24,8 +29,11 @@ import okhttp3.Call;
  * @describe
  */
 public class IdentityAuthActivity extends AppActivity {
-    private EditText mAuthIdCard;
     private SubmitButton mCommitView;
+    private AppCompatTextView mTvRegisterTitle;
+    private RegexEditText mEtName;
+    private RegexEditText mEtPhone;
+    private RegexEditText mEtIdCard;
 
     @Log
     public static void start(Context context) {
@@ -43,14 +51,18 @@ public class IdentityAuthActivity extends AppActivity {
 
     @Override
     protected void initView() {
-       mAuthIdCard =  findViewById(R.id.et_auth_id_card);
         mCommitView = findViewById(R.id.btn_auth_commit);
-       setOnClickListener(mCommitView);
+        setOnClickListener(mCommitView);
+        mTvRegisterTitle = (AppCompatTextView) findViewById(R.id.tv_register_title);
+        mEtName = (RegexEditText) findViewById(R.id.et_name);
+        mEtPhone = (RegexEditText) findViewById(R.id.et_phone);
+        mEtIdCard = (RegexEditText) findViewById(R.id.et_id_card);
     }
 
     @Override
     protected void initData() {
-
+        mEtPhone.setText(UserHelper.getInstance().getUser().getPhone());
+        mEtPhone.setEnabled(false);
     }
 
     @Override
@@ -61,9 +73,26 @@ public class IdentityAuthActivity extends AppActivity {
     }
 
     private void submit() {
+        String name = mEtName.getText().toString();
+        if (TextUtils.isEmpty(name)){
+            mEtName.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.shake_anim));
+            toast("请输入姓名");
+            mCommitView.showError(2000);
+            return;
+        }
+        String idCard = mEtIdCard.getText().toString();
+        if (TextUtils.isEmpty(idCard)){
+            mEtIdCard.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.shake_anim));
+            toast("请输入身份证号");
+            mCommitView.showError(2000);
+            return;
+        }
+        String phone = mEtPhone.getText().toString();
         EasyHttp.post(this)
                 .api(new IdentityAuthApi()
-                        .setIdCard(mAuthIdCard.getText().toString())
+                        .setIdCard(idCard)
+                        .setName(name)
+                        .setPhone(phone)
                         .setToken(UserHelper.getInstance().getUser().getToken())
                         .setUid(UserHelper.getInstance().getUser().getUid()))
                 .request(new HttpCallback<HttpData<Void>>(this) {
@@ -84,19 +113,11 @@ public class IdentityAuthActivity extends AppActivity {
                             }, 1000);
                             return;
                         }
-                        if (data.isRequestSucceed()){
-                            postDelayed(() -> {
-                                mCommitView.showSucceed();
-                                postDelayed(() -> {
-                                    toast("认证成功");
-                                    finish();
-                                }, 1000);
-                            }, 1000);
+                        toast(data.getDesc());
+                        if (data.getStatus() == 1034){
+                            finish();
                         }else {
-                            postDelayed(() -> {
-                                toast(data.getDesc());
-                                mCommitView.showError(3000);
-                            }, 1000);
+                            mCommitView.showError(3000);
                         }
                     }
 

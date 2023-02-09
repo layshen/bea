@@ -6,9 +6,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
-import com.epiboly.bea.rich.R;
 import com.epiboly.bea.app.AppAdapter;
+import com.epiboly.bea.http.BZRRecordListApi;
 import com.epiboly.bea.http.api.AzRecordListApi;
+import com.epiboly.bea.rich.R;
 import com.epiboly.bea.util.TimeUtil;
 
 /**
@@ -16,9 +17,9 @@ import com.epiboly.bea.util.TimeUtil;
  * @time 2023/2/6
  * @describe
  */
-public class AzRecordListAdapter extends AppAdapter<AzRecordListApi.Bean> {
+public class BZRRecordListAdapter extends AppAdapter<BZRRecordListApi.Bean> {
 
-    public AzRecordListAdapter(@NonNull Context context) {
+    public BZRRecordListAdapter(@NonNull Context context) {
         super(context);
     }
 
@@ -30,25 +31,25 @@ public class AzRecordListAdapter extends AppAdapter<AzRecordListApi.Bean> {
 
     private final class ViewHolder extends AppAdapter<?>.ViewHolder {
         private TextView mTvNum;
-        private TextView mTvSource;
         private TextView mTvCreateTime;
 
         private ViewHolder() {
-            super(R.layout.item_az_record);
+            super(R.layout.item_bzr_record);
             initView();
         }
 
         @Override
         public void onBindView(int position) {
-            AzRecordListApi.Bean item = getItem(position);
-            mTvNum.setText(item.getSignDesc() + item.getAz());
-            mTvSource.setText(item.getSourceDesc()+"");
+            BZRRecordListApi.Bean item = getItem(position);
+            if (item == null){
+                return;
+            }
+            mTvNum.setText(item.getBzr());
             mTvCreateTime.setText(TimeUtil.longToYMDHMS(item.getTimestamp()));
         }
 
         private void initView() {
             mTvNum = (TextView) findViewById(R.id.tv_num);
-            mTvSource = (TextView) findViewById(R.id.tv_source);
             mTvCreateTime = (TextView) findViewById(R.id.tv_create_time);
         }
     }

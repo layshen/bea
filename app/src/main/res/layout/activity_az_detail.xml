@@ -17,7 +17,7 @@
         app:leftIconTint="@color/white"
         app:lineVisible="false"
         android:background="@color/bg_color"
-        app:title="算力" />
+        app:title="AZ" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -42,7 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:bar_leftDrawable="@drawable/ic_fans"
-                app:bar_leftText="兑换"
+                app:bar_leftText="转出"
                 android:layout_marginTop="10dp"
                 app:bar_leftTextColor="@color/main_text_color"
                 app:bar_rightDrawable="@drawable/ic_arrow_right"

@@ -1,6 +1,7 @@
 package com.epiboly.bea.node.adapter;
 
 import android.content.Context;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,6 +23,8 @@ import com.qmuiteam.qmui.widget.roundwidget.QMUIRoundLinearLayout;
  */
 public class NodeListAdapter extends AppAdapter<NodeBean> {
 
+    private int supportNodeType = -1;
+
     public NodeListAdapter(@NonNull Context context) {
         super(context);
     }
@@ -39,6 +42,10 @@ public class NodeListAdapter extends AppAdapter<NodeBean> {
         }else {
             return new ViewHolder();
         }
+    }
+
+    public void setSupportType(int supportNodeType) {
+        this.supportNodeType = supportNodeType;
     }
 
     private final class ViewHolder2 extends AppAdapter<?>.ViewHolder {
@@ -91,6 +98,14 @@ public class NodeListAdapter extends AppAdapter<NodeBean> {
             mTvCycle.setText(info.getCycle()+"天");
             mTvDiurnalCarbon.setText(info.getHashVal()+"");
             mTvTotalOutput.setText(info.getTotalOutput()+"");
+
+            if (info.getType() == supportNodeType){
+                mBtnPlantTree.setEnabled(true);
+                mBtnPlantTree.setAlpha(1);
+            }else {
+                mBtnPlantTree.setEnabled(false);
+                mBtnPlantTree.setAlpha(0.4f);
+            }
         }
 
         private void initView() {

@@ -14,6 +14,7 @@
         android:gravity="center_horizontal"
         android:layoutAnimation="@anim/layout_fall_down"
         android:orientation="vertical"
+        android:layout_marginTop="30dp"
         android:paddingHorizontal="@dimen/dp_40"
         tools:layoutAnimation="@null">
 
@@ -26,14 +27,39 @@
             android:textColor="@color/main_text_color"
             android:textSize="@dimen/sp_23" />
 
-
-        <EditText
-            android:id="@+id/et_auth_id_card"
+        <com.hjq.widget.view.RegexEditText
+            android:id="@+id/et_name"
             style="@style/EditTextStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/register_recommend"
-            android:singleLine="true" />
+            android:hint="请输入姓名"
+            android:singleLine="true"
+            android:layout_marginTop="6dp"
+            app:regexType="name" />
+
+        <View style="@style/HorizontalLineStyle" />
+
+        <com.hjq.widget.view.RegexEditText
+            android:id="@+id/et_phone"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/common_phone_input_hint"
+            android:singleLine="true"
+            android:layout_marginTop="6dp"
+            app:regexType="mobile" />
+
+        <View style="@style/HorizontalLineStyle" />
+
+        <com.hjq.widget.view.RegexEditText
+            android:id="@+id/et_id_card"
+            style="@style/EditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入身份证号"
+            android:singleLine="true"
+            android:layout_marginTop="6dp"
+            app:regexType="nonnull" />
 
         <View style="@style/HorizontalLineStyle" />
 

@@ -219,6 +219,12 @@
             android:windowSoftInputMode="stateHidden" />
 
         <activity
+            android:name="com.epiboly.bea.ui.activity.BZRRecordListActivity"
+            android:label="记录"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity
             android:name="com.epiboly.bea.ui.activity.SystemNoticeActivity"
             android:label="系统公告"
             android:screenOrientation="portrait"
