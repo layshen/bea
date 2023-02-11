@@ -2,6 +2,7 @@ apply plugin : 'com.android.application'
 apply plugin : 'android-aspectjx'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'walle'
 apply from : '../common.gradle'
 
 // Android 代码规范文档：https://github.com/getActivity/AndroidCodeStandard
@@ -123,11 +124,22 @@ android {
         variant.outputs.all { output ->
             outputFileName =  'BEA_v' + variant.versionName + '_' + variant.buildType.name
             if (variant.buildType.name == buildTypes.release.getName()) {
-                outputFileName += '_' + new Date().format('YYYYMMddHHmm')
+                outputFileName += '_' + new Date().format('YYYYMMdd')
             }
             outputFileName += '.apk'
         }
     }
+}
+
+walle {
+    // 指定渠道包的输出路径
+    apkOutputFolder = new File("${project.buildDir}/outputs/channels");
+    // 定制渠道包的APK的文件名称
+    def date = new Date().format("yyyyMMddHHmm")
+    // 定制渠道包的APK的文件名称
+    apkFileNameFormat = "BEA" + '_v${versionName}_${channel}_${buildType}_' + date + ".apk"
+    // 渠道配置文件
+    channelFile = new File("${project.getProjectDir()}/channel")
 }
 
 // 添加构建依赖项：https://developer.android.google.cn/studio/build/dependencies
@@ -223,11 +235,12 @@ dependencies {
     // 跑马灯：https://github.com/sunfusheng/MarqueeView
     // 对象注解：https://www.jianshu.com/p/f1f888e4a35f
     // 对象存储：https://github.com/leavesC/DoKV
-    // 多渠道打包：https://github.com/Meituan-Dianping/walle
     // 设备唯一标识：http://msa-alliance.cn/col.jsp?id=120
     // 嵌套滚动容器：https://github.com/donkingliang/ConsecutiveScroller
     // 隐私调用监控：https://github.com/huage2580/PermissionMonitor
 
+    // 多渠道打包：https://github.com/Meituan-Dianping/walle
+    compile 'com.meituan.android.walle:library:1.1.7'
 
     //核心库（ 必要 ）
     implementation 'com.github.ifmvo.TogetherAd:core:5.2.4'
