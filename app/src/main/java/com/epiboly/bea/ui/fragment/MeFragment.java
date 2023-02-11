@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import com.epiboly.bea.http.model.User;
 import com.epiboly.bea.login.IdentityAuthActivity;
 import com.epiboly.bea.rich.R;
 import com.epiboly.bea.app.AppFragment;
@@ -238,10 +239,10 @@ public class MeFragment extends TitleBarFragment<HomeMainActivity> {
                 .api(new UserInfoApi()
                         .setToken(UserHelper.getInstance().getUser().getToken())
                         .setUid(UserHelper.getInstance().getUser().getUid()))
-                .request(new HttpCallback<HttpData<UserHelper.User>>(this) {
+                .request(new HttpCallback<HttpData<User>>(this) {
 
                     @Override
-                    public void onSucceed(HttpData<UserHelper.User> data) {
+                    public void onSucceed(HttpData<User> data) {
                         if (data!=null && data.isRequestSucceed()){
                             if (TextUtils.isEmpty(data.getData().getToken())){
                                 data.getData().setToken(UserHelper.getInstance().getUser().getToken());

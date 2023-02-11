@@ -1,5 +1,7 @@
 package com.epiboly.bea.http.api;
 
+import androidx.annotation.Keep;
+
 import com.hjq.http.config.IRequestApi;
 
 /**
@@ -15,6 +17,7 @@ public final class CopyApi implements IRequestApi {
         return "";
     }
 
+    @Keep
     public final static class Bean {
 
     }

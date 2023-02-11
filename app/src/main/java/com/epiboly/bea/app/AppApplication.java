@@ -6,6 +6,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.Network;
 import android.os.Build;
+import android.text.TextUtils;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
@@ -107,14 +108,19 @@ public class AppApplication extends Application {
         // 友盟统计、登录、分享 SDK
         UmengClient.init(application, AppConfig.isLogEnable());
 
-        // Bugly 异常捕捉
-        CrashReport.initCrashReport(application, AppConfig.getBuglyId(), AppConfig.isDebug());
-
         // Activity 栈管理初始化
         ActivityManager.getInstance().init(application);
 
         // MMKV 初始化
         MMKV.initialize(application);
+
+        // Bugly 异常捕捉
+        String uid = UserHelper.getInstance().getUser().getUid();
+        if (!TextUtils.isEmpty(uid)){
+            CrashReport.setUserId(uid);
+        }
+        CrashReport.initCrashReport(application, AppConfig.getBuglyId(), AppConfig.isDebug());
+
 
         // 网络请求框架初始化
         OkHttpClient okHttpClient = new OkHttpClient.Builder()

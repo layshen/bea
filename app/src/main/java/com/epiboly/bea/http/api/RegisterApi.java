@@ -1,5 +1,7 @@
 package com.epiboly.bea.http.api;
 
+import androidx.annotation.Keep;
+
 import com.hjq.http.config.IRequestApi;
 
 public final class RegisterApi implements IRequestApi {
@@ -46,6 +48,7 @@ public final class RegisterApi implements IRequestApi {
         return this;
     }
 
+    @Keep
     public final static class Bean {
 
     }

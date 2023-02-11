@@ -1,5 +1,7 @@
 package com.epiboly.bea.http.api;
 
+import androidx.annotation.Keep;
+
 import com.epiboly.bea.http.model.MyNodeBean;
 import com.hjq.http.config.IRequestApi;
 
@@ -29,6 +31,7 @@ public class UserBuyNodeInfoApi implements IRequestApi {
         return this;
     }
 
+    @Keep
     public class Wrapper{
         private ArrayList<MyNodeBean> userNodeRefDTOList;
 

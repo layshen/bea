@@ -1,8 +1,10 @@
 package com.epiboly.bea.http.model;
 
+import androidx.annotation.Keep;
+
 import java.util.List;
 
-
+@Keep
 public class HttpList2Data<T> extends HttpData<HttpList2Data.ListBean<T>> {
 
     public static class ListBean<T> {

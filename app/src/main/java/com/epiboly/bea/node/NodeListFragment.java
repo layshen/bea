@@ -142,6 +142,7 @@ public class NodeListFragment extends TitleBarFragment<HomeMainActivity> impleme
                                         .setMessage(data.getDesc())
                                         .show();
                             }
+                            requestData();
                         } else {
                             new TipsDialog.Builder(getContext())
                                     .setIcon(TipsDialog.ICON_FINISH)

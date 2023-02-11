@@ -1,5 +1,7 @@
 package com.epiboly.bea.http.api;
 
+import androidx.annotation.Keep;
+
 import com.hjq.http.config.IRequestApi;
 
 /**
@@ -19,7 +21,7 @@ public class QueryUserFinishStatusApi implements IRequestApi {
         this.token = token;
         return this;
     }
-
+    @Keep
     public static class Bean{
         private int finishedCount;//已经完成的任务数量
         private int totalCount;//总共需要完成的任务数量

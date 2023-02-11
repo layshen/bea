@@ -1,5 +1,7 @@
 package com.epiboly.bea.http.api;
 
+import androidx.annotation.Keep;
+
 import com.hjq.http.config.IRequestApi;
 
 /**
@@ -32,7 +34,7 @@ public class SystemNoticeListApi implements IRequestApi {
         this.page = page;
         return this;
     }
-
+    @Keep
     public static class Bean {
         private long id;
         private String adminUid;

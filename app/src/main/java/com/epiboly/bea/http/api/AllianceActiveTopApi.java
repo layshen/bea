@@ -1,5 +1,7 @@
 package com.epiboly.bea.http.api;
 
+import androidx.annotation.Keep;
+
 import com.hjq.http.config.IRequestApi;
 
 /**
@@ -27,6 +29,7 @@ public class AllianceActiveTopApi implements IRequestApi {
         return this;
     }
 
+    @Keep
     public static class Bean {
         private String totalHashVal;//总算力
         private String totalValid;//总有效人数

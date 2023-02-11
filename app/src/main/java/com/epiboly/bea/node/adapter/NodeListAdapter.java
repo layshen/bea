@@ -84,7 +84,7 @@ public class NodeListAdapter extends AppAdapter<NodeBean> {
         @Override
         public void onBindView(int position) {
             NodeBean info = getItem(position);
-            int placeholder = NodeHelper.getDrawableByNodeType(info.getType());
+            int placeholder = NodeHelper.getDrawableByNodeType(info.getId());
             GlideApp.with(getContext())
                     .asBitmap()
                     .load(info.getImgUrl())

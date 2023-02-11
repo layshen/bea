@@ -15,6 +15,7 @@
     <fields>;
 }
 
+
 # 不混淆被 Log 注解的方法信息
 -keepclassmembernames class ** {
     @com.epiboly.bea.aop.Log <methods>;

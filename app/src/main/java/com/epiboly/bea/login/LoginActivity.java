@@ -20,6 +20,7 @@ import androidx.annotation.Nullable;
 
 import com.epiboly.bea.cache.UserHelper;
 import com.epiboly.bea.home.HomeMainActivity;
+import com.epiboly.bea.http.model.User;
 import com.gyf.immersionbar.ImmersionBar;
 import com.epiboly.bea.rich.R;
 import com.epiboly.bea.aop.Log;
@@ -199,7 +200,7 @@ public final class LoginActivity extends AppActivity
                     .api(new LoginApi()
                             .setPhone(mPhoneView.getText().toString())
                             .setPassword(mPasswordView.getText().toString()))
-                    .request(new HttpCallback<HttpData<UserHelper.User>>(this) {
+                    .request(new HttpCallback<HttpData<User>>(this) {
 
                         @Override
                         public void onStart(Call call) {
@@ -210,7 +211,7 @@ public final class LoginActivity extends AppActivity
                         public void onEnd(Call call) {}
 
                         @Override
-                        public void onSucceed(HttpData<UserHelper.User> data) {
+                        public void onSucceed(HttpData<User> data) {
                             if (data.isRequestSucceed()){
                                 // 更新 Token
                                 EasyConfig.getInstance().addParam("token", data.getData().getToken());

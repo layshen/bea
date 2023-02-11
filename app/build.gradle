@@ -81,11 +81,11 @@ android {
             debuggable false
             jniDebuggable false
             // 压缩对齐开关
-            zipAlignEnabled false
+            zipAlignEnabled true
             // 移除无用的资源
-            shrinkResources false
+            shrinkResources true
             // 代码混淆开关
-            minifyEnabled false
+            minifyEnabled true
             // 签名信息配置
             signingConfig signingConfigs.config
             // 添加清单占位符
@@ -123,7 +123,7 @@ android {
         variant.outputs.all { output ->
             outputFileName =  'BEA_v' + variant.versionName + '_' + variant.buildType.name
             if (variant.buildType.name == buildTypes.release.getName()) {
-                outputFileName += '_' + new Date().format('YYYYMMdd')
+                outputFileName += '_' + new Date().format('YYYYMMddHHmm')
             }
             outputFileName += '.apk'
         }
@@ -139,6 +139,8 @@ dependencies {
     implementation project(':library:widget')
     // 友盟封装
     implementation project(':library:umeng')
+
+    implementation 'androidx.annotation:annotation:1.1.0'
 
     // 权限请求框架：https://github.com/getActivity/XXPermissions
     implementation 'com.github.getActivity:XXPermissions:12.3'

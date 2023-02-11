@@ -1,5 +1,7 @@
 package com.epiboly.bea.http.api;
 
+import androidx.annotation.Keep;
+
 import com.hjq.http.config.IRequestApi;
 
 /**
@@ -45,6 +47,7 @@ public class AllianceActiveListApi implements IRequestApi {
         return this;
     }
 
+    @Keep
     public static class Bean{
         private String uid;
         private String nickName;

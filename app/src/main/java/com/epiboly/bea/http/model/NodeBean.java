@@ -1,10 +1,13 @@
 package com.epiboly.bea.http.model;
 
+import androidx.annotation.Keep;
+
 /**
  * @author 节点
  * @time 2023/1/23
  * @describe
  */
+@Keep
 public class NodeBean {
 
     public static final int COMING_TYPE = -1000;

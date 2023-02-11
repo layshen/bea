@@ -1,5 +1,7 @@
 package com.epiboly.bea.http.api;
 
+import androidx.annotation.Keep;
+
 import com.hjq.http.config.IRequestApi;
 
 /**
@@ -26,6 +28,7 @@ public class NodeListPurchaseNodeInfo implements IRequestApi {
         return this;
     }
 
+    @Keep
     public static class Bean{
         public int nodeType;//可上节点类型
         public int nodeNumber;//可上节点数量

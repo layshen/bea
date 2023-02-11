@@ -90,7 +90,15 @@ public final class PasswordResetActivity extends AppActivity
 
                         @Override
                         public void onSucceed(HttpData<Void> data) {
-                            if (data!= null &&data.isRequestSucceed()){
+                            if (data == null){
+                                new TipsDialog.Builder(getActivity())
+                                        .setIcon(TipsDialog.ICON_ERROR)
+                                        .setMessage(R.string.password_reset_fail)
+                                        .setDuration(2000)
+                                        .show();
+                                return;
+                            }
+                            if (data.isRequestSucceed()){
                                 new TipsDialog.Builder(getActivity())
                                         .setIcon(TipsDialog.ICON_FINISH)
                                         .setMessage(R.string.password_reset_success)
@@ -100,7 +108,7 @@ public final class PasswordResetActivity extends AppActivity
                             }else {
                                 new TipsDialog.Builder(getActivity())
                                         .setIcon(TipsDialog.ICON_ERROR)
-                                        .setMessage(R.string.password_reset_fail)
+                                        .setMessage(data.getDesc())
                                         .setDuration(2000)
                                         .show();
                             }

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 
+import com.epiboly.bea.http.model.User;
 import com.epiboly.bea.rich.R;
 import com.epiboly.bea.aop.Log;
 import com.epiboly.bea.app.AppActivity;
@@ -161,7 +162,7 @@ public class VerificationCodeLoginActivity extends AppActivity{
                 .api(new LoginByCodeApi()
                         .setPhone(phone)
                         .setValidCode(code))
-                .request(new HttpCallback<HttpData<UserHelper.User>>(this) {
+                .request(new HttpCallback<HttpData<User>>(this) {
 
                     @Override
                     public void onStart(Call call) {
@@ -171,7 +172,7 @@ public class VerificationCodeLoginActivity extends AppActivity{
                     public void onEnd(Call call) {}
 
                     @Override
-                    public void onSucceed(HttpData<UserHelper.User> data) {
+                    public void onSucceed(HttpData<User> data) {
                         if (data.isRequestSucceed()){
                             // 更新 Token
                             EasyConfig.getInstance().addParam("token", data.getData().getToken());

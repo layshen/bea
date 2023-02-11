@@ -1,5 +1,7 @@
 package com.epiboly.bea.http.api;
 
+import androidx.annotation.Keep;
+
 import com.hjq.http.config.IRequestApi;
 
 /**
@@ -33,6 +35,7 @@ public class AzRecordListApi implements IRequestApi {
         return this;
     }
 
+    @Keep
     public static class Bean {
         private long id;
         private String az;//算力数量

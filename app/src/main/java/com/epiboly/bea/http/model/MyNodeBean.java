@@ -1,10 +1,13 @@
 package com.epiboly.bea.http.model;
 
+import androidx.annotation.Keep;
+
 /**
  * @author vemao
  * @time 2023/2/4
  * @describe
  */
+@Keep
 public class MyNodeBean {
     private int nid;
     private String createTime;

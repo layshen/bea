@@ -1,10 +1,13 @@
 package com.epiboly.bea.http.model;
 
+import androidx.annotation.Keep;
+
 /**
  * @author vemao
  * @time 2023/1/30
  * @describe
  */
+@Keep
 public class TaskBean {
     private int progress;
     private int total;
