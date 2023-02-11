@@ -18,6 +18,7 @@ import com.epiboly.bea.cache.UserHelper;
 import com.epiboly.bea.http.model.RequestHandler;
 import com.epiboly.bea.http.model.RequestServer;
 import com.epiboly.bea.manager.ActivityManager;
+import com.epiboly.bea.util.NetLogStrategy;
 import com.hjq.bar.TitleBar;
 import com.epiboly.bea.rich.R;
 import com.epiboly.bea.aop.Log;
@@ -34,6 +35,7 @@ import com.hjq.gson.factory.GsonFactory;
 import com.hjq.http.EasyConfig;
 import com.hjq.toast.ToastUtils;
 import com.hjq.umeng.UmengClient;
+import com.meituan.android.walle.WalleChannelReader;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.tencent.mmkv.MMKV;
@@ -119,6 +121,10 @@ public class AppApplication extends Application {
         if (!TextUtils.isEmpty(uid)){
             CrashReport.setUserId(uid);
         }
+        String channel = WalleChannelReader.getChannel(application);
+        if (!TextUtils.isEmpty(channel)){
+            CrashReport.setAppChannel(application, WalleChannelReader.getChannel(application));
+        }
         CrashReport.initCrashReport(application, AppConfig.getBuglyId(), AppConfig.isDebug());
 
 
@@ -129,6 +135,7 @@ public class AppApplication extends Application {
         EasyConfig.with(okHttpClient)
                 // 是否打印日志
                 .setLogEnabled(AppConfig.isLogEnable())
+                .setLogStrategy(new NetLogStrategy())
                 // 设置服务器配置
                 .setServer(new RequestServer())
                 // 设置请求处理策略
@@ -141,6 +148,7 @@ public class AppApplication extends Application {
 //                    headers.put("versionName", AppConfig.getVersionName());
 //                    headers.put("versionCode", String.valueOf(AppConfig.getVersionCode()));
                     headers.put("un_encript","layShen@123");
+                    headers.put("channel","67d0d695-2da4-45d8-9182-f000dba692a4");
                     headers.put("token", UserHelper.getInstance().getToken());
                     // 添加全局请求参数
                     // params.put("6666666", "6666666");

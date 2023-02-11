@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/bg_color"
+
     tools:context="com.epiboly.bea.ui.activity.SettingActivity">
 
     <com.hjq.bar.TitleBar
@@ -28,14 +29,78 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tv_az_value"
-                android:layout_width="wrap_content"
+            <com.qmuiteam.qmui.layout.QMUIConstraintLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/main_text_color"
-                android:textSize="@dimen/public_main_text"
+                android:background="#5A6D9A"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="8dp"/>
+                android:layout_marginRight="16dp"
+                app:qmui_radius="8dp">
+
+                <TextView
+                    android:id="@+id/tv_total_az"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/main_text_color"
+                    android:textSize="@dimen/public_main_text"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:text="az总量"
+                    android:layout_marginTop="8dp"/>
+
+                <TextView
+                    android:id="@+id/tv_total_az_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/main_text_color"
+                    android:textSize="@dimen/public_main_text"
+                    app:layout_constraintTop_toBottomOf="@id/tv_total_az"
+                    app:layout_constraintLeft_toLeftOf="@id/tv_total_az"
+                    android:layout_marginTop="8dp"/>
+
+                <TextView
+                    android:id="@+id/tv_integra_az"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/main_text_color"
+                    android:textSize="@dimen/public_sub_text"
+                    app:layout_constraintTop_toBottomOf="@id/tv_total_az_value"
+                    app:layout_constraintLeft_toLeftOf="@id/tv_total_az"
+                    android:text="可使用az："
+                    android:layout_marginTop="10dp"/>
+
+                <TextView
+                    android:id="@+id/tv_integra_az_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/main_text_color"
+                    android:textSize="@dimen/public_sub_text"
+                    app:layout_constraintTop_toTopOf="@id/tv_integra_az"
+                    app:layout_constraintLeft_toRightOf="@id/tv_integra_az" />
+
+                <TextView
+                    android:id="@+id/tv_reward_az_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/main_text_color"
+                    android:textSize="@dimen/public_sub_text"
+                    app:layout_constraintTop_toTopOf="@id/tv_integra_az"
+                    app:layout_constraintRight_toRightOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_reward_az"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/main_text_color"
+                    android:textSize="@dimen/public_sub_text"
+                    android:text="待使用az："
+                    app:layout_constraintTop_toTopOf="@id/tv_integra_az"
+                    app:layout_constraintRight_toLeftOf="@id/tv_reward_az_value" />
+            </com.qmuiteam.qmui.layout.QMUIConstraintLayout>
 
             <com.hjq.widget.layout.SettingBar
                 android:id="@+id/sb_exchange"

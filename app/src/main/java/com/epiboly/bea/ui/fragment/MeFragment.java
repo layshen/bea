@@ -41,7 +41,6 @@ import com.hjq.http.listener.HttpCallback;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
-import com.tencent.bugly.crashreport.CrashReport;
 
 /**
  * @author mao
@@ -120,7 +119,7 @@ public class MeFragment extends TitleBarFragment<HomeMainActivity> {
     private void setupView() {
         tvUserName.setText(UserHelper.getInstance().getUser().getNickName());
         tv_active_value.setText(UserHelper.getInstance().getUser().getHashVal() + "");
-        tv_az_value.setText(UserHelper.getInstance().getUser().getIntegralAz() + "");
+        tv_az_value.setText(UserHelper.getInstance().getUser().getIntegralAz() + UserHelper.getInstance().getUser().getRewardAz() + "");
         tv_bzi_value.setText(UserHelper.getInstance().getUser().getBzi() + "");
         if (UserHelper.getInstance().getUser().getAuthentication() == 0) {
             tvVip.setText("未认证");

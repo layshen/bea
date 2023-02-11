@@ -81,9 +81,13 @@ public final class PasswordForgetActivity extends AppActivity
 
                         @Override
                         public void onSucceed(HttpData<Void> data) {
-                            if (data != null && GetCodeApi.isSendSuccess(data.getStatus())){
+                            if (data == null){
+                                mCountdownView.fail();
+                                return;
+                            }
+                            toast(data.getDesc());
+                            if ( GetCodeApi.isSendSuccess(data.getStatus())){
                                 mCountdownView.success();
-                                toast(data.getDesc());
                             }
                         }
                     });

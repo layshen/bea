@@ -240,7 +240,7 @@ dependencies {
     // 隐私调用监控：https://github.com/huage2580/PermissionMonitor
 
     // 多渠道打包：https://github.com/Meituan-Dianping/walle
-    compile 'com.meituan.android.walle:library:1.1.7'
+    implementation 'com.meituan.android.walle:library:1.1.7'
 
     //核心库（ 必要 ）
     implementation 'com.github.ifmvo.TogetherAd:core:5.2.4'
@@ -257,5 +257,7 @@ dependencies {
     implementation 'io.github.h07000223:flycoTabLayout:3.0.0'
 
     implementation 'com.zzhoujay.richtext:richtext:3.0.7'  //RichText资源库
+
+    debugImplementation 'com.github.getActivity:Logcat:11.2'
 
 }

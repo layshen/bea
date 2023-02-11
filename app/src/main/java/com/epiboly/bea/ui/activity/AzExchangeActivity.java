@@ -79,7 +79,7 @@ public class AzExchangeActivity extends AppActivity {
                                 return;
                             }
                             if (data.isRequestSucceed()) {
-                                toast("兑换成功");
+                                toast("转出成功");
                                 mBtnCommit.showSucceed();
                             }else {
                                 toast(data.getDesc());

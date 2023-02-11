@@ -108,6 +108,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:bar_leftText="@string/setting_about"
+                android:visibility="gone"
                 app:bar_leftTextColor="@color/main_text_color"
                 app:bar_rightDrawable="@drawable/ic_arrow_right"
                 android:background="@color/card_color"
