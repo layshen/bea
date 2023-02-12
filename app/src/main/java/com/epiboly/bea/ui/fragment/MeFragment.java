@@ -34,6 +34,7 @@ import com.epiboly.bea.ui.dialog.SafeDialog;
 import com.epiboly.bea.ui.dialog.UserDialogManager;
 import com.epiboly.bea.util.BitmapHelper;
 import com.epiboly.bea.util.ImageUtil;
+import com.epiboly.bea.util.MathUtil;
 import com.epiboly.bea.widget.wave.WaveView;
 import com.hjq.base.BaseDialog;
 import com.hjq.http.EasyHttp;
@@ -118,9 +119,10 @@ public class MeFragment extends TitleBarFragment<HomeMainActivity> {
 
     private void setupView() {
         tvUserName.setText(UserHelper.getInstance().getUser().getNickName());
-        tv_active_value.setText(UserHelper.getInstance().getUser().getHashVal() + "");
-        tv_az_value.setText(UserHelper.getInstance().getUser().getIntegralAz() + UserHelper.getInstance().getUser().getRewardAz() + "");
-        tv_bzi_value.setText(UserHelper.getInstance().getUser().getBzi() + "");
+        User user = UserHelper.getInstance().getUser();
+        tv_active_value.setText(user.getHashVal() + "");
+        tv_az_value.setText(MathUtil.format4(user.getIntegralAz()));
+        tv_bzi_value.setText(MathUtil.format4(user.getBzi()));
         if (UserHelper.getInstance().getUser().getAuthentication() == 0) {
             tvVip.setText("未认证");
         } else {
@@ -166,12 +168,10 @@ public class MeFragment extends TitleBarFragment<HomeMainActivity> {
                 try {
                     Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:18956915241"));
                     getActivity().startActivity(intent);
-                } catch (Exception e) {
-
-                }
+                } catch (Exception e) {}
                 break;
             case R.id.ll_az_value:
-                AzDetailActivity.start(getActivity(),tv_az_value.getText().toString());
+                AzDetailActivity.start(getActivity());
                 break;
             case R.id.ll_bzi_value:
                 BZRRecordListActivity.start(getActivity());

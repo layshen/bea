@@ -12,6 +12,7 @@ import com.epiboly.bea.http.api.UserInfoApi;
 import com.epiboly.bea.http.model.HttpData;
 import com.epiboly.bea.http.model.User;
 import com.epiboly.bea.rich.R;
+import com.epiboly.bea.util.MathUtil;
 import com.hjq.http.EasyHttp;
 import com.hjq.http.listener.HttpCallback;
 import com.hjq.widget.layout.SettingBar;
@@ -26,12 +27,9 @@ public class AzDetailActivity extends AppActivity {
     private SettingBar mSbExchange;
     private SettingBar mSbRecord;
     private TextView mTvTotalAzValue;
-    private TextView mTvIntegraAzValue;
-    private TextView mTvRewardAzValue;
 
-    public static void start(Context context, String value) {
+    public static void start(Context context) {
         Intent intent = new Intent(context, AzDetailActivity.class);
-        intent.putExtra("az", value);
         context.startActivity(intent);
     }
 
@@ -46,8 +44,6 @@ public class AzDetailActivity extends AppActivity {
         mSbRecord = (SettingBar) findViewById(R.id.sb_record);
         setOnClickListener(mSbExchange, mSbRecord);
         mTvTotalAzValue = (TextView) findViewById(R.id.tv_total_az_value);
-        mTvIntegraAzValue = (TextView) findViewById(R.id.tv_integra_az_value);
-        mTvRewardAzValue = (TextView) findViewById(R.id.tv_reward_az_value);
     }
 
     @Override
@@ -57,9 +53,7 @@ public class AzDetailActivity extends AppActivity {
 
     private void setupView() {
         User user = UserHelper.getInstance().getUser();
-        mTvTotalAzValue.setText(user.getRewardAz() + user.getIntegralAz() + "");
-        mTvIntegraAzValue.setText(user.getIntegralAz()+"");
-        mTvRewardAzValue.setText(user.getRewardAz() + "");
+        mTvTotalAzValue.setText(MathUtil.format4(user.getIntegralAz()));
     }
 
     @Override

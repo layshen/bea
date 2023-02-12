@@ -1,4 +1,4 @@
-package com.epiboly.bea.http;
+package com.epiboly.bea.http.api;
 
 import com.hjq.http.config.IRequestApi;
 
