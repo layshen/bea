@@ -118,12 +118,20 @@ public final class SafeDialog {
 
                             @Override
                             public void onSucceed(HttpData<Void> data) {
-                                autoDismiss();
-                                ToastUtils.show("验证成功");
-                                if (mListener == null) {
+                                if (data == null){
+                                    ToastUtils.show("验证失败");
                                     return;
                                 }
-                                mListener.onConfirm(getDialog(), mPhoneNumber, mCodeView.getText().toString());
+                                if (data.isRequestSucceed()){
+                                    autoDismiss();
+                                    ToastUtils.show("验证成功");
+                                    if (mListener == null) {
+                                        return;
+                                    }
+                                    mListener.onConfirm(getDialog(), mPhoneNumber, mCodeView.getText().toString());
+                                }else {
+                                    ToastUtils.show(data.getDesc());
+                                }
                             }
 
                             @Override

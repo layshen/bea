@@ -14,6 +14,7 @@ import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleOwner;
 
 import com.epiboly.bea.advertisement.AdvertisementInit;
+import com.epiboly.bea.cache.DeviceIdentifierHelper;
 import com.epiboly.bea.cache.UserHelper;
 import com.epiboly.bea.http.model.RequestHandler;
 import com.epiboly.bea.http.model.RequestServer;
@@ -115,7 +116,7 @@ public class AppApplication extends Application {
 
         // MMKV 初始化
         MMKV.initialize(application);
-
+        DeviceIdentifierHelper.getInstance().init(application);
         // Bugly 异常捕捉
         String uid = UserHelper.getInstance().getUser().getUid();
         if (!TextUtils.isEmpty(uid)){
@@ -150,6 +151,7 @@ public class AppApplication extends Application {
                     headers.put("un_encript","layShen@123");
                     headers.put("channel","67d0d695-2da4-45d8-9182-f000dba692a4");
                     headers.put("token", UserHelper.getInstance().getToken());
+                    headers.put("device_unique_id",DeviceIdentifierHelper.getInstance().getDeviceUniqueId(application));
                     // 添加全局请求参数
                     // params.put("6666666", "6666666");
 

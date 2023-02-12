@@ -258,6 +258,8 @@ dependencies {
 
     implementation 'com.zzhoujay.richtext:richtext:3.0.7'  //RichText资源库
 
+    implementation 'com.github.gzu-liyujiang:Android_CN_OAID:4.2.4'
+
     debugImplementation 'com.github.getActivity:Logcat:11.2'
 
 }

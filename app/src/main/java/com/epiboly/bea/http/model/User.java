@@ -68,6 +68,8 @@ public class User{
     private String updateTime;
     private String token;
     private String recommendPic;
+    //是否需要校验验证码 0 不需要  1 需要
+    private int needVerificationCode = 0;
 
     public User() { }
 
@@ -312,5 +314,17 @@ public class User{
 
     public void setRecommendPic(String recommendPic) {
         this.recommendPic = recommendPic;
+    }
+
+    public void setNeedVerificationCode(int needVerificationCode) {
+        this.needVerificationCode = needVerificationCode;
+    }
+
+    public int getNeedVerificationCode() {
+        return needVerificationCode;
+    }
+
+    public boolean isNeedVerificationCode(){
+        return needVerificationCode == 1;
     }
 }

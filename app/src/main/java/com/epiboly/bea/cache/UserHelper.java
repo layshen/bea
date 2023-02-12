@@ -2,8 +2,6 @@ package com.epiboly.bea.cache;
 
 import android.text.TextUtils;
 
-import androidx.annotation.Keep;
-
 import com.epiboly.bea.http.model.User;
 import com.hjq.gson.factory.GsonFactory;
 import com.tencent.mmkv.MMKV;
@@ -18,6 +16,8 @@ public class UserHelper {
     private static final UserHelper mInstance = Holder.helper;
     private final MMKV mMmkv;
     private User user;
+    private boolean focusIsLogin;
+
     private UserHelper(){
         mMmkv = MMKV.mmkvWithID("user_data");
         String userJson = mMmkv.getString("user", "");
@@ -34,7 +34,7 @@ public class UserHelper {
     }
 
     public boolean isLogin() {
-        return !TextUtils.isEmpty(getUser().getToken());
+        return mMmkv.getBoolean("focusIsLogin",true) && !TextUtils.isEmpty(getUser().getToken());
     }
 
     public void saveUserInfo(User user) {
@@ -76,6 +76,10 @@ public class UserHelper {
             return "未认证";
         }
         return "已认证";
+    }
+
+    public void setFocusIsLogin(boolean isLogin) {
+        mMmkv.putBoolean("focusIsLogin",isLogin);
     }
 
 

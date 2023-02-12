@@ -20,7 +20,11 @@ import androidx.annotation.Nullable;
 
 import com.epiboly.bea.cache.UserHelper;
 import com.epiboly.bea.home.HomeMainActivity;
+import com.epiboly.bea.http.api.GetCodeApi;
+import com.epiboly.bea.http.api.ValidCodeApi;
 import com.epiboly.bea.http.model.User;
+import com.epiboly.bea.ui.activity.PasswordResetActivity;
+import com.epiboly.bea.ui.dialog.SafeDialog;
 import com.gyf.immersionbar.ImmersionBar;
 import com.epiboly.bea.rich.R;
 import com.epiboly.bea.aop.Log;
@@ -34,9 +38,12 @@ import com.epiboly.bea.other.KeyboardWatcher;
 import com.epiboly.bea.ui.activity.PasswordForgetActivity;
 import com.epiboly.bea.ui.fragment.MineFragment;
 import com.epiboly.bea.wxapi.WXEntryActivity;
+import com.hjq.base.BaseDialog;
 import com.hjq.http.EasyConfig;
 import com.hjq.http.EasyHttp;
 import com.hjq.http.listener.HttpCallback;
+import com.hjq.http.listener.OnHttpListener;
+import com.hjq.toast.ToastUtils;
 import com.hjq.umeng.Platform;
 import com.hjq.umeng.UmengClient;
 import com.hjq.umeng.UmengLogin;
@@ -214,16 +221,23 @@ public final class LoginActivity extends AppActivity
                         public void onSucceed(HttpData<User> data) {
                             if (data.isRequestSucceed()){
                                 // 更新 Token
+                                UserHelper.getInstance().setFocusIsLogin(true);
                                 EasyConfig.getInstance().addParam("token", data.getData().getToken());
                                 UserHelper.getInstance().saveUserInfo(data.getData());
-                                postDelayed(() -> {
-                                    mCommitView.showSucceed();
+                                if (UserHelper.getInstance().getUser().isNeedVerificationCode()){
+                                    UserHelper.getInstance().setFocusIsLogin(false);
+                                    //需要校验验证码
+                                    checkVerificationCode();
+                                }else {
                                     postDelayed(() -> {
-                                        // 跳转到首页
-                                        HomeMainActivity.start(getContext(), MineFragment.class);
-                                        finish();
+                                        mCommitView.showSucceed();
+                                        postDelayed(() -> {
+                                            // 跳转到首页
+                                            HomeMainActivity.start(getContext(), MineFragment.class);
+                                            finish();
+                                        }, 1000);
                                     }, 1000);
-                                }, 1000);
+                                }
                             }else {
                                 postDelayed(() -> {
                                     toast(data.getDesc());
@@ -256,6 +270,29 @@ public final class LoginActivity extends AppActivity
             }
             UmengClient.login(this, platform, this);
         }
+    }
+
+    private void checkVerificationCode() {
+        // 验证码校验
+        new SafeDialog.Builder(this)
+                .setType(GetCodeApi.TYPE_LOGON)
+                .setListener(new SafeDialog.OnListener() {
+                    @Override
+                    public void onConfirm(BaseDialog dialog, String phone, String code) {
+                        mCommitView.showSucceed();
+                        // 跳转到首页
+                        UserHelper.getInstance().setFocusIsLogin(true);
+                        HomeMainActivity.start(getContext(), MineFragment.class);
+                        finish();
+                    }
+
+                    @Override
+                    public void onCancel(BaseDialog dialog) {
+                        mCommitView.showError(2000);
+                        UserHelper.getInstance().clear();
+                    }
+                })
+                .show();
     }
 
     @Override
