@@ -10,7 +10,7 @@
     <View
         android:id="@+id/view_line"
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:background="@color/common_line_color"/>
@@ -37,6 +37,7 @@
             android:textSize="@dimen/public_main_text"
             android:layout_marginLeft="8dp"
             android:text="--"
+            app:layout_constraintTop_toTopOf="@id/iv_portrait"
             app:layout_constraintLeft_toRightOf="@+id/iv_portrait"/>
 
         <TextView
@@ -46,7 +47,9 @@
             android:textColor="@color/main_text_color"
             android:textSize="@dimen/public_main_text"
             android:text="1885***5243"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_nick"
+            android:layout_marginTop="10dp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_portrait"
             app:layout_constraintLeft_toLeftOf="@+id/tv_nick"/>
 
         <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundFrameLayout
@@ -104,8 +107,9 @@
             android:layout_height="wrap_content"
             android:textColor="@color/alliance_red"
             android:textSize="@dimen/public_sub_text"
-            android:text="活跃:--"
+            android:text="算力:--"
             app:layout_constraintTop_toTopOf="@id/tv_nick"
+            app:layout_constraintBottom_toBottomOf="@id/tv_nick"
             app:layout_constraintRight_toRightOf="parent"/>
 
         <TextView
@@ -114,10 +118,9 @@
             android:layout_height="wrap_content"
             android:textColor="@color/alliance_red"
             android:textSize="@dimen/public_sub_text"
-            android:visibility="gone"
-            android:text="联盟活跃度:--"
+            android:text="联盟算力:--"
             app:layout_constraintTop_toBottomOf="@id/tv_active"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             app:layout_constraintRight_toRightOf="parent"/>
 
         <TextView

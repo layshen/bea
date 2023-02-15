@@ -54,7 +54,8 @@ public class AllianceActiveListApi implements IRequestApi {
         private String avatar;
         private String phone;
         private int authentication;//用户认证状态 0-未认证 1-已认证
-        private int hashVal;
+        private String hashVal;
+        private String leagueHashVal;
         private int level;//用户等级： 1-实习着 2-引路者 3-开拓者 4-缔造者
         private String createTime;
 
@@ -98,12 +99,20 @@ public class AllianceActiveListApi implements IRequestApi {
             this.authentication = authentication;
         }
 
-        public int getHashVal() {
+        public String getHashVal() {
             return hashVal;
         }
 
-        public void setHashVal(int hashVal) {
+        public void setHashVal(String hashVal) {
             this.hashVal = hashVal;
+        }
+
+        public String getLeagueHashVal() {
+            return leagueHashVal;
+        }
+
+        public void setLeagueHashVal(String leagueHashVal) {
+            this.leagueHashVal = leagueHashVal;
         }
 
         public String getCreateTime() {

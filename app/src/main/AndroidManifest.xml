@@ -178,6 +178,12 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
 
+        <activity
+            android:name="com.epiboly.bea.ui.activity.TradePasswordResetActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+
         <!-- 更换手机 -->
         <activity
             android:name="com.epiboly.bea.login.PhoneResetActivity"

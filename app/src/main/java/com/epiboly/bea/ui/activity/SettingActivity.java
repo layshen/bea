@@ -63,7 +63,7 @@ public final class SettingActivity extends AppActivity
 
         setOnClickListener(R.id.sb_setting_update, R.id.sb_setting_phone,
                 R.id.sb_setting_password, R.id.sb_setting_agreement, R.id.sb_setting_about,
-                R.id.sb_setting_cache, R.id.sb_setting_auto, R.id.sb_setting_exit,R.id.sb_setting_nick);
+                R.id.sb_setting_cache, R.id.sb_setting_auto, R.id.sb_setting_exit,R.id.sb_setting_nick,R.id.sb_setting_trade_password);
     }
 
     @Override
@@ -105,13 +105,12 @@ public final class SettingActivity extends AppActivity
 
 
         } else if (viewId == R.id.sb_setting_password) {
-
              new SafeDialog.Builder(this)
                      .setType(GetCodeApi.TYPE_FORGET_PSW)
                      .setListener(new SafeDialog.OnListener() {
                          @Override
                          public void onConfirm(BaseDialog dialog, String phone, String code) {
-                             PasswordResetActivity.start(getActivity(), UserHelper.getInstance().getUser().getPhone());
+                             PasswordResetActivity.start(getActivity(),UserHelper.getInstance().getUser().getPhone());
                          }
                      })
                      .show();
@@ -175,6 +174,16 @@ public final class SettingActivity extends AppActivity
 
         }else if (viewId == R.id.sb_setting_nick){
              mUserDialogManager.showNickUpdateDialog();
+         }else if (viewId == R.id.sb_setting_trade_password){
+             new SafeDialog.Builder(this)
+                     .setType(GetCodeApi.TYPE_FORGET_PSW)
+                     .setListener(new SafeDialog.OnListener() {
+                         @Override
+                         public void onConfirm(BaseDialog dialog, String phone, String code) {
+                             TradePasswordResetActivity.start(getActivity(),UserHelper.getInstance().getUser().getPhone());
+                         }
+                     })
+                     .show();
          }
     }
 

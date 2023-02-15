@@ -8,6 +8,9 @@ import com.hjq.http.config.IRequestApi;
  * @describe
  */
 public class AzExchangeApi implements IRequestApi {
+
+    private String password;
+
     @Override
     public String getApi() {
         return "IntegralServer/exchange/rollIntoOrOut";
@@ -30,6 +33,11 @@ public class AzExchangeApi implements IRequestApi {
 
     public AzExchangeApi setAz(float az) {
         this.az = az;
+        return this;
+    }
+
+    public AzExchangeApi setPassword(String password) {
+        this.password = password;
         return this;
     }
 }

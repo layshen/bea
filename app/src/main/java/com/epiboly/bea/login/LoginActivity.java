@@ -23,8 +23,11 @@ import com.epiboly.bea.home.HomeMainActivity;
 import com.epiboly.bea.http.api.GetCodeApi;
 import com.epiboly.bea.http.api.ValidCodeApi;
 import com.epiboly.bea.http.model.User;
+import com.epiboly.bea.other.AppConfig;
 import com.epiboly.bea.ui.activity.PasswordResetActivity;
 import com.epiboly.bea.ui.dialog.SafeDialog;
+import com.epiboly.bea.ui.dialog.UpdateDialog;
+import com.epiboly.bea.util.CheckUpdateHelper;
 import com.gyf.immersionbar.ImmersionBar;
 import com.epiboly.bea.rich.R;
 import com.epiboly.bea.aop.Log;
@@ -150,6 +153,15 @@ public final class LoginActivity extends AppActivity
         // 自动填充手机号和密码
         mPhoneView.setText(getString(INTENT_KEY_IN_PHONE));
         mPasswordView.setText(getString(INTENT_KEY_IN_PASSWORD));
+
+        if (CheckUpdateHelper.getInstance().isNeedUpdate(AppConfig.getVersionCode(),AppConfig.getVersionName())) {
+            new UpdateDialog.Builder(this)
+                    .setVersionName(CheckUpdateHelper.getInstance().getVersionInfo().getVersionName())
+                    .setForceUpdate(CheckUpdateHelper.getInstance().getVersionInfo().isFocusUpdate())
+                    .setDownloadUrl(CheckUpdateHelper.getInstance().getVersionInfo().getUrl())
+                    .setUpdateLog(CheckUpdateHelper.getInstance().getVersionInfo().getUpdateLog())
+                    .show();
+        }
     }
 
     @Override

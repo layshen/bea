@@ -12,6 +12,8 @@ import com.epiboly.bea.http.api.AzRecordListApi;
 import com.epiboly.bea.http.model.HttpData;
 import com.epiboly.bea.http.model.IntegralServer;
 import com.epiboly.bea.rich.R;
+import com.epiboly.bea.ui.dialog.PayPasswordDialog;
+import com.hjq.base.BaseDialog;
 import com.hjq.http.EasyHttp;
 import com.hjq.http.listener.HttpCallback;
 import com.hjq.widget.view.RegexEditText;
@@ -56,43 +58,66 @@ public class AzExchangeActivity extends AppActivity {
             String s = mInputAz.getText().toString();
             if (TextUtils.isEmpty(s)){
                 toast("请输入要转出的数值");
+                mBtnCommit.showError(2000);
                 return;
             }
             float num = Float.parseFloat(s);
             if (num <= 0){
                 toast("数值必须大于0");
+                mBtnCommit.showError(2000);
                 return;
             }
-            EasyHttp.post(this)
-                    .server(new IntegralServer())
-                    .api(new AzExchangeApi()
-                            .setAz(num)
-                            .setToken(UserHelper.getInstance().getUser().getToken())
-                            .setUid(UserHelper.getInstance().getUser().getUid())
-                            .setToken(UserHelper.getInstance().getUser().getToken())
-                            .setUid(UserHelper.getInstance().getUser().getUid()))
-                    .request(new HttpCallback<HttpData<ArrayList<AzRecordListApi.Bean>>>(this) {
+
+            new PayPasswordDialog.Builder(this)
+                    .setTitle("请输入交易密码")
+                    .setMoney("AZ："+num)
+                    //.setAutoDismiss(false) // 设置点击按钮后不关闭对话框
+                    .setListener(new PayPasswordDialog.OnListener() {
 
                         @Override
-                        public void onSucceed(HttpData<ArrayList<AzRecordListApi.Bean>> data) {
-                            if (data == null){
-                                return;
-                            }
-                            if (data.isRequestSucceed()) {
-                                toast("转出成功");
-                                mBtnCommit.showSucceed();
-                            }else {
-                                toast(data.getDesc());
-                                mBtnCommit.showError();
-                            }
+                        public void onCompleted(BaseDialog dialog, String password) {
+                            doExchangeNet(num,password);
                         }
 
                         @Override
-                        public void onFail(Exception e) {
-                            toast("请求出错");
+                        public void onCancel(BaseDialog dialog) {
+                            toast("请输入交易密码");
+                            mBtnCommit.showError(2000);
+                        }
+                    })
+                    .show();
+        }
+    }
+
+    private void doExchangeNet(float num, String password) {
+        EasyHttp.post(this)
+                .server(new IntegralServer())
+                .api(new AzExchangeApi()
+                        .setPassword(password)
+                        .setAz(num)
+                        .setToken(UserHelper.getInstance().getUser().getToken())
+                        .setUid(UserHelper.getInstance().getUser().getUid()))
+                .request(new HttpCallback<HttpData<ArrayList<AzRecordListApi.Bean>>>(this) {
+
+                    @Override
+                    public void onSucceed(HttpData<ArrayList<AzRecordListApi.Bean>> data) {
+                        if (data == null){
+                            return;
+                        }
+                        if (data.isRequestSucceed()) {
+                            toast("转出成功");
+                            mBtnCommit.showSucceed();
+                        }else {
+                            toast(data.getDesc());
                             mBtnCommit.showError();
                         }
-                    });
-        }
+                    }
+
+                    @Override
+                    public void onFail(Exception e) {
+                        toast("请求出错");
+                        mBtnCommit.showError();
+                    }
+                });
     }
 }

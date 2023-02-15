@@ -2,6 +2,7 @@ package com.epiboly.bea.widget;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.util.AttributeSet;
@@ -35,7 +36,7 @@ public final class PasswordView extends View {
     private static final int POINT_COLOR = 0xFF666666;
 
     /** 密码框边界线的颜色值 */
-    private static final int STROKE_COLOR = 0xFFECECEC;
+    private static final int STROKE_COLOR = Color.parseColor("#202329");
 
     /** 密码总个数 */
     public static final int PASSWORD_COUNT = 6;

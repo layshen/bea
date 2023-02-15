@@ -37,6 +37,7 @@
     <string name="common_code_error_hint">验证码错误，请检查输入</string>
 
     <string name="common_step_next">下一步</string>
+    <string name="common_step_edit">修改</string>
     <string name="common_step_complete">完成</string>
     <string name="common_step_commit">提交</string>
 
@@ -188,6 +189,7 @@
     <string name="setting_password">修改密码</string>
     <string name="setting_phone">修改手机</string>
     <string name="setting_nick">修改昵称</string>
+    <string name="setting_trade_password">修改交易密码</string>
 
     <string name="setting_auto">自动登录</string>
     <string name="setting_cache">清空缓存</string>
@@ -213,6 +215,9 @@
     <string name="password_reset_input_error">两次密码输入不一致，请重新输入</string>
     <string name="password_reset_success">修改成功</string>
     <string name="password_reset_fail">修改失败</string>
+
+    <string name="password_reset_trade_phone_hint1">设置6位交易密码</string>
+    <string name="password_reset_trade_phone_hint2">重新输入一次密码</string>
 
     <!-- 修改手机号 -->
     <string name="phone_reset_title">设置手机号</string>

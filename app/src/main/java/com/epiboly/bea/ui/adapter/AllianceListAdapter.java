@@ -74,7 +74,8 @@ public class AllianceListAdapter extends AppAdapter<AllianceActiveListApi.Bean> 
             mTvPhone.setText(info.getPhone());
             mTvLevel.setText(UserHelper.getLevelDesc(info.getLevel()));
             mTvAuthentication.setText(UserHelper.getAuthenticationText(info.getAuthentication()));
-            mTvActive.setText("算力："+info.getHashVal() + "");
+            mTvActive.setText("算力："+info.getHashVal());
+            mTvAllianceActive.setText("联盟算力："+info.getLeagueHashVal());
             mTvTime.setText(info.getCreateTime());
         }
 

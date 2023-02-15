@@ -81,9 +81,17 @@ public final class SafeDialog {
 
                             @Override
                             public void onSucceed(HttpData<Void> data) {
+                                if(data == null){
+                                    mCountdownView.fail();
+                                    return;
+                                }
                                 if (data != null && GetCodeApi.isSendSuccess(data.getStatus())){
                                     ToastUtils.show(R.string.common_code_send_hint);
                                     mCountdownView.success();
+                                    setCancelable(false);
+                                }else {
+                                    ToastUtils.show(data.getDesc());
+                                    mCountdownView.fail();
                                     setCancelable(false);
                                 }
                             }

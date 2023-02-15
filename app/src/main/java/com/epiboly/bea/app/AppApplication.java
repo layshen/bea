@@ -19,6 +19,7 @@ import com.epiboly.bea.cache.UserHelper;
 import com.epiboly.bea.http.model.RequestHandler;
 import com.epiboly.bea.http.model.RequestServer;
 import com.epiboly.bea.manager.ActivityManager;
+import com.epiboly.bea.util.CheckUpdateHelper;
 import com.epiboly.bea.util.NetLogStrategy;
 import com.hjq.bar.TitleBar;
 import com.epiboly.bea.rich.R;
@@ -197,5 +198,6 @@ public class AppApplication extends Application {
             });
         }
         AdvertisementInit.initAd(application);
+//        CheckUpdateHelper.getInstance().check();
     }
 }

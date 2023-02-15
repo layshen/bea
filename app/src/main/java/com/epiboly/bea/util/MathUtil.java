@@ -14,4 +14,12 @@ public class MathUtil {
          */
         return new Formatter().format("%.2f", value).toString();
     }
+
+    public static int parseInt(String s) {
+        try {
+            return Integer.parseInt(s);
+        }catch (Exception e){
+            return 0;
+        }
+    }
 }
