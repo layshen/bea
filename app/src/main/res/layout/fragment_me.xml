@@ -276,24 +276,44 @@
 
             </androidx.core.widget.NestedScrollView>
 
-            <ImageView
-                android:id="@+id/iv_settings"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_gravity="right"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="right|center_vertical"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:src="@drawable/ic_settings" />
+                android:layout_marginRight="10dp">
 
-            <ImageView
-                android:id="@+id/iv_kefu"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="right"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="48dp"
-                android:visibility="gone"
-                android:src="@drawable/ic_kefu" />
+                <ImageView
+                    android:id="@+id/iv_settings_scan"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_marginRight="8dp"
+                    android:src="@drawable/ic_settings_scan" />
+
+                <ImageView
+                    android:id="@+id/iv_settings_qr_code"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="8dp"
+                    android:src="@drawable/ic_settings_qr_code" />
+
+                <ImageView
+                    android:id="@+id/iv_settings"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_settings" />
+
+                <ImageView
+                    android:id="@+id/iv_kefu"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="48dp"
+                    android:visibility="gone"
+                    android:src="@drawable/ic_kefu" />
+            </LinearLayout>
         </FrameLayout>
     </com.scwang.smart.refresh.layout.SmartRefreshLayout>
 </LinearLayout>

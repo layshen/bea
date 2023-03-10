@@ -198,6 +198,6 @@ public class AppApplication extends Application {
             });
         }
         AdvertisementInit.initAd(application);
-//        CheckUpdateHelper.getInstance().check();
+        CheckUpdateHelper.getInstance().check();
     }
 }

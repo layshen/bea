@@ -70,6 +70,7 @@ public class User{
     private String recommendPic;
     //是否需要校验验证码 0 不需要  1 需要
     private int needVerificationCode = 0;
+    private Double lockupAz;
 
     public User() { }
 
@@ -326,5 +327,13 @@ public class User{
 
     public boolean isNeedVerificationCode(){
         return needVerificationCode == 1;
+    }
+
+    public Double getLockupAz() {
+        return lockupAz;
+    }
+
+    public void setLockupAz(Double lockupAz) {
+        this.lockupAz = lockupAz;
     }
 }

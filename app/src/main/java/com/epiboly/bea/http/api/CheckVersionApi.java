@@ -2,6 +2,8 @@ package com.epiboly.bea.http.api;
 
 import android.text.TextUtils;
 
+import androidx.annotation.Keep;
+
 import com.hjq.http.config.IRequestApi;
 
 /**
@@ -12,9 +14,10 @@ import com.hjq.http.config.IRequestApi;
 public class CheckVersionApi implements IRequestApi {
     @Override
     public String getApi() {
-        return "UserServer/user/queryRecommendImage";
+        return "IntegralServer/admin/queryNewestVersion";
     }
 
+    @Keep
     public static class Bean{
         //版本信息 eg "10.1"
         private String versionName;
@@ -34,9 +37,6 @@ public class CheckVersionApi implements IRequestApi {
         }
 
         public String getUrl() {
-            if (TextUtils.isEmpty(url)){
-                return "http://static.bea.net.cn/application/BEA_release.apk";
-            }
             return url;
         }
 

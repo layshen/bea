@@ -12,6 +12,9 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.epiboly.bea.app.AppFragment;
 import com.epiboly.bea.node.NodeListFragment;
+import com.epiboly.bea.other.AppConfig;
+import com.epiboly.bea.ui.dialog.UpdateDialog;
+import com.epiboly.bea.util.CheckUpdateHelper;
 import com.gyf.immersionbar.ImmersionBar;
 import com.hjq.base.FragmentPagerAdapter;
 import com.epiboly.bea.rich.R;
@@ -86,6 +89,15 @@ public final class HomeMainActivity extends AppActivity
         mViewPager.setAdapter(mPagerAdapter);
 
         onNewIntent(getIntent());
+
+        if (CheckUpdateHelper.getInstance().isNeedUpdate(AppConfig.getVersionCode(),AppConfig.getVersionName())) {
+            new UpdateDialog.Builder(this)
+                    .setVersionName(CheckUpdateHelper.getInstance().getVersionInfo().getVersionName())
+                    .setForceUpdate(CheckUpdateHelper.getInstance().getVersionInfo().isFocusUpdate())
+                    .setDownloadUrl(CheckUpdateHelper.getInstance().getVersionInfo().getUrl())
+                    .setUpdateLog(CheckUpdateHelper.getInstance().getVersionInfo().getUpdateLog())
+                    .show();
+        }
     }
 
     @Override

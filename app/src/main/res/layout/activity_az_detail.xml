@@ -64,6 +64,16 @@
                     app:layout_constraintLeft_toLeftOf="@id/tv_total_az"
                     android:layout_marginTop="8dp"/>
 
+                <TextView
+                    android:id="@+id/tv_lookup_az"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:textColor="@color/main_text_color"
+                    android:textSize="@dimen/public_main_text"/>
+
             </com.qmuiteam.qmui.layout.QMUIConstraintLayout>
 
             <com.hjq.widget.layout.SettingBar

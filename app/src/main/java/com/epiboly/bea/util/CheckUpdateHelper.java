@@ -3,6 +3,7 @@ import android.text.TextUtils;
 
 import com.epiboly.bea.http.api.CheckVersionApi;
 import com.epiboly.bea.http.model.HttpData;
+import com.epiboly.bea.http.model.IntegralServer;
 import com.hjq.gson.factory.GsonFactory;
 import com.hjq.http.EasyHttp;
 import com.hjq.http.lifecycle.ApplicationLifecycle;
@@ -37,6 +38,7 @@ public class CheckUpdateHelper {
 
     public void check(){
         EasyHttp.post(new ApplicationLifecycle())
+                .server(new IntegralServer())
                 .api(new CheckVersionApi())
                 .request(new HttpCallback<HttpData<CheckVersionApi.Bean>>(null) {
 
@@ -75,8 +77,8 @@ public class CheckUpdateHelper {
         if (TextUtils.equals(latest_version_from_server,versionName)){
             return true;
         }
-        String[] split_server = latest_version_from_server.split(".");
-        String[] split_local_version = versionName.split(".");
+        String[] split_server = latest_version_from_server.split("\\.");
+        String[] split_local_version = versionName.split("\\.");
         if (split_server.length <= 0 || split_local_version.length <= 0){
             return false;
         }

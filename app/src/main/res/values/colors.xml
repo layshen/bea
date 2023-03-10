@@ -27,6 +27,7 @@
     <!--全局背景色-->
     <color name="bg_color">#0C0E12</color>
     <color name="card_color">#181A1E</color>
+    <color name="card_color2">#292D32</color>
     <!-- 主文字颜色 -->
     <color name="main_text_color">#E2E8F2</color>
     <!-- 辅助文字颜色 -->
@@ -44,5 +45,6 @@
 
     <color name="node_color1">#2196F3</color>
     <color name="alliance_red">#FF5722</color>
+    <color name="color_pay_number">#FF2C2C2C</color>
 
 </resources>

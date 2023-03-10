@@ -27,6 +27,7 @@ public class AzDetailActivity extends AppActivity {
     private SettingBar mSbExchange;
     private SettingBar mSbRecord;
     private TextView mTvTotalAzValue;
+    private TextView mTvLookupAz;
 
     public static void start(Context context) {
         Intent intent = new Intent(context, AzDetailActivity.class);
@@ -44,6 +45,7 @@ public class AzDetailActivity extends AppActivity {
         mSbRecord = (SettingBar) findViewById(R.id.sb_record);
         setOnClickListener(mSbExchange, mSbRecord);
         mTvTotalAzValue = (TextView) findViewById(R.id.tv_total_az_value);
+        mTvLookupAz = (TextView) findViewById(R.id.tv_lookup_az);
     }
 
     @Override
@@ -53,6 +55,14 @@ public class AzDetailActivity extends AppActivity {
 
     private void setupView() {
         User user = UserHelper.getInstance().getUser();
+        Double lockupAz = user.getLockupAz();
+        String lookUpAzStr;
+        if (lockupAz == null){
+            lookUpAzStr = "0.00";
+        }else {
+            lookUpAzStr = MathUtil.format4(user.getIntegralAz());
+        }
+        mTvLookupAz.setText("锁仓："+lookUpAzStr);
         mTvTotalAzValue.setText(MathUtil.format4(user.getIntegralAz()));
     }
 

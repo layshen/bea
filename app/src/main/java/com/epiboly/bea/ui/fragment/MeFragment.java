@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import com.epiboly.bea.aop.Permissions;
+import com.epiboly.bea.aop.PermissionsAspect;
 import com.epiboly.bea.http.model.User;
 import com.epiboly.bea.login.IdentityAuthActivity;
 import com.epiboly.bea.rich.R;
@@ -24,6 +26,7 @@ import com.epiboly.bea.login.LoginActivity;
 import com.epiboly.bea.ui.activity.AllianceActiveActivity;
 import com.epiboly.bea.ui.activity.AzDetailActivity;
 import com.epiboly.bea.ui.activity.BZRRecordListActivity;
+import com.epiboly.bea.ui.activity.EmptyActivity;
 import com.epiboly.bea.ui.activity.HeadPicturePreviewActivity;
 import com.epiboly.bea.ui.activity.MineNodeActivity;
 import com.epiboly.bea.ui.activity.SettingActivity;
@@ -36,6 +39,7 @@ import com.epiboly.bea.widget.wave.WaveView;
 import com.hjq.base.BaseDialog;
 import com.hjq.http.EasyHttp;
 import com.hjq.http.listener.HttpCallback;
+import com.hjq.permissions.Permission;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
@@ -85,7 +89,7 @@ public class MeFragment extends TitleBarFragment<HomeMainActivity> {
         mInviteFriendView = findViewById(R.id.rl_invite_friend);
         mIdentityAuthView = findViewById(R.id.rl_identity_auth);
         setOnClickListener(mIvSettings, mInviteFriendView, mIdentityAuthView, ivHead);
-        setOnClickListener(R.id.rl_my_alliance, R.id.rl_system_notice, R.id.rl_my_node,R.id.iv_kefu,R.id.ll_az_value,R.id.ll_bzi_value);
+        setOnClickListener(R.id.rl_my_alliance, R.id.rl_system_notice, R.id.rl_my_node,R.id.iv_kefu,R.id.ll_az_value,R.id.ll_bzi_value,R.id.iv_settings_qr_code,R.id.iv_settings_scan);
 
         mSmartRefresh.setEnableRefresh(true);
         mSmartRefresh.setOnRefreshListener(new OnRefreshListener() {
@@ -147,6 +151,12 @@ public class MeFragment extends TitleBarFragment<HomeMainActivity> {
             case R.id.iv_settings:
                 SettingActivity.start(getActivity());
                 break;
+            case R.id.iv_settings_qr_code:
+                EmptyActivity.start(getActivity(),MyCollectionQRCodeFragment.class);
+                break;
+            case R.id.iv_settings_scan:
+                startScan();
+                break;
             case R.id.rl_invite_friend:
                 //自定义对话框
                 showShareDialog();
@@ -177,6 +187,11 @@ public class MeFragment extends TitleBarFragment<HomeMainActivity> {
                 SystemNoticeActivity.start(getActivity());
                 break;
         }
+    }
+
+    @Permissions({Permission.CAMERA, Permission.READ_EXTERNAL_STORAGE})
+    private void startScan() {
+        EmptyActivity.start(getActivity(),QrCodeScanFragment.class);
     }
 
     @Override

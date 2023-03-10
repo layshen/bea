@@ -74,6 +74,12 @@ public class AzRecordListApi implements IRequestApi {
                     return "加成收益";
                 case 8:
                     return "兑换节点";
+                case 11:
+                    return "扫码收入";
+                case 12:
+                    return "扫码支出";
+                case 13:
+                    return "释放";
             }
             return "";
         }
@@ -97,6 +103,12 @@ public class AzRecordListApi implements IRequestApi {
                     return "+";
                 case 8:
                     return "-";
+                case 11:
+                    return "+";
+                case 12:
+                    return "-";
+                case 13:
+                    return "+";
             }
             return "";
         }
