@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
+import com.epiboly.bea.advertisement.ui.SplashAdActivity;
 import com.epiboly.bea.app.AppActivity;
+import com.epiboly.bea.home.HomeMainActivity;
 import com.epiboly.bea.splash.SplashActivity;
 import com.epiboly.bea.rich.R;
 
@@ -40,15 +42,7 @@ public final class RestartActivity extends AppActivity {
     }
 
     public static void restart(Context context) {
-        Intent intent;
-        if (true) {
-            // 如果是未登录的情况下跳转到闪屏页
-            intent = new Intent(context, SplashActivity.class);
-        } else {
-            // 如果是已登录的情况下跳转到首页
-            intent = new Intent(context, HomeActivity.class);
-        }
-
+        Intent intent = new Intent(context, SplashAdActivity.class);
         if (!(context instanceof Activity)) {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         }

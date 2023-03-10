@@ -75,7 +75,7 @@ public class CheckUpdateHelper {
             return false;
         }
         if (TextUtils.equals(latest_version_from_server,versionName)){
-            return true;
+            return false;
         }
         String[] split_server = latest_version_from_server.split("\\.");
         String[] split_local_version = versionName.split("\\.");
@@ -89,6 +89,11 @@ public class CheckUpdateHelper {
         }
         int serverSmallVersion = MathUtil.parseInt(split_server[1]);
         int localSmallVersion = MathUtil.parseInt(split_local_version[1]);
-        return serverSmallVersion > localSmallVersion;
+        if (serverSmallVersion > localSmallVersion){
+            return true;
+        }
+        int serverSmallSmallVersion = MathUtil.parseInt(split_server[2]);
+        int localSmallSmallVersion = MathUtil.parseInt(split_local_version[2]);
+        return serverSmallSmallVersion > localSmallSmallVersion;
     }
 }

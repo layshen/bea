@@ -245,7 +245,7 @@ public final class LoginActivity extends AppActivity
                                         mCommitView.showSucceed();
                                         postDelayed(() -> {
                                             // 跳转到首页
-                                            HomeMainActivity.start(getContext(), MineFragment.class);
+                                            HomeMainActivity.start(getContext());
                                             finish();
                                         }, 1000);
                                     }, 1000);
@@ -294,7 +294,7 @@ public final class LoginActivity extends AppActivity
                         mCommitView.showSucceed();
                         // 跳转到首页
                         UserHelper.getInstance().setFocusIsLogin(true);
-                        HomeMainActivity.start(getContext(), MineFragment.class);
+                        HomeMainActivity.start(getContext());
                         finish();
                     }
 

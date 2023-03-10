@@ -44,12 +44,12 @@ public final class HomeMainActivity extends AppActivity
     private FragmentPagerAdapter<AppFragment<?>> mPagerAdapter;
 
     public static void start(Context context) {
-        start(context, HomeFragment.class);
+        start(context, DailyTaskFragment.class);
     }
 
     public static void start(Context context, Class<? extends AppFragment<?>> fragmentClass) {
         Intent intent = new Intent(context, HomeMainActivity.class);
-        intent.putExtra(INTENT_KEY_IN_FRAGMENT_CLASS, fragmentClass);
+        intent.putExtra(INTENT_KEY_IN_FRAGMENT_CLASS, DailyTaskFragment.class);
         if (!(context instanceof Activity)) {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         }

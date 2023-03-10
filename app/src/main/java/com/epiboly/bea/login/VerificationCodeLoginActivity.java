@@ -181,7 +181,7 @@ public class VerificationCodeLoginActivity extends AppActivity{
                                 mCommitView.showSucceed();
                                 postDelayed(() -> {
                                     // 跳转到首页
-                                    HomeMainActivity.start(getContext(), MineFragment.class);
+                                    HomeMainActivity.start(getContext());
                                     finish();
                                 }, 1000);
                             }, 1000);

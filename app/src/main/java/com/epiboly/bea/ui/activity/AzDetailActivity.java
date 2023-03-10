@@ -60,7 +60,7 @@ public class AzDetailActivity extends AppActivity {
         if (lockupAz == null){
             lookUpAzStr = "0.00";
         }else {
-            lookUpAzStr = MathUtil.format4(user.getIntegralAz());
+            lookUpAzStr = MathUtil.format4(user.getLockupAz());
         }
         mTvLookupAz.setText("锁仓："+lookUpAzStr);
         mTvTotalAzValue.setText(MathUtil.format4(user.getIntegralAz()));
