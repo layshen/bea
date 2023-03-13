@@ -34,7 +34,7 @@ public final class SafeDialog {
         private OnListener mListener;
 
         /** 当前手机号 */
-        private final String mPhoneNumber;
+        private String mPhoneNumber;
         private int mType;
 
         public Builder(Context context) {
@@ -46,13 +46,21 @@ public final class SafeDialog {
             mCountdownView = findViewById(R.id.cv_safe_countdown);
             setOnClickListener(mCountdownView);
 
-            mPhoneNumber = UserHelper.getInstance().getUser().getPhone();
-            // 为了保护用户的隐私，不明文显示中间四个数字
-            mPhoneView.setText(String.format("%s****%s", mPhoneNumber.substring(0, 3), mPhoneNumber.substring(mPhoneNumber.length() - 4)));
+            setPhoneNumber(UserHelper.getInstance().getUser().getPhone());
         }
 
         public Builder setCode(String code) {
             mCodeView.setText(code);
+            return this;
+        }
+
+        public Builder setPhoneNumber(String phoneNumber) {
+            this.mPhoneNumber = phoneNumber;
+            if (TextUtils.isEmpty(mPhoneNumber)){
+                return this;
+            }
+            // 为了保护用户的隐私，不明文显示中间四个数字
+            mPhoneView.setText(String.format("%s****%s", mPhoneNumber.substring(0, 3), mPhoneNumber.substring(mPhoneNumber.length() - 4)));
             return this;
         }
 

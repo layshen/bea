@@ -215,57 +215,7 @@ public final class LoginActivity extends AppActivity
 //                return;
 //            }
 
-            EasyHttp.post(this)
-                    .api(new LoginApi()
-                            .setPhone(mPhoneView.getText().toString())
-                            .setPassword(mPasswordView.getText().toString()))
-                    .request(new HttpCallback<HttpData<User>>(this) {
-
-                        @Override
-                        public void onStart(Call call) {
-                            mCommitView.showProgress();
-                        }
-
-                        @Override
-                        public void onEnd(Call call) {}
-
-                        @Override
-                        public void onSucceed(HttpData<User> data) {
-                            if (data.isRequestSucceed()){
-                                // 更新 Token
-                                UserHelper.getInstance().setFocusIsLogin(true);
-                                EasyConfig.getInstance().addParam("token", data.getData().getToken());
-                                UserHelper.getInstance().saveUserInfo(data.getData());
-                                if (UserHelper.getInstance().getUser().isNeedVerificationCode()){
-                                    UserHelper.getInstance().setFocusIsLogin(false);
-                                    //需要校验验证码
-                                    checkVerificationCode();
-                                }else {
-                                    postDelayed(() -> {
-                                        mCommitView.showSucceed();
-                                        postDelayed(() -> {
-                                            // 跳转到首页
-                                            HomeMainActivity.start(getContext());
-                                            finish();
-                                        }, 1000);
-                                    }, 1000);
-                                }
-                            }else {
-                                postDelayed(() -> {
-                                    toast(data.getDesc());
-                                    mCommitView.showError(3000);
-                                }, 1000);
-                            }
-                        }
-
-                        @Override
-                        public void onFail(Exception e) {
-                            super.onFail(e);
-                            postDelayed(() -> {
-                                mCommitView.showError(3000);
-                            }, 1000);
-                        }
-                    });
+            login();
             return;
         }
 
@@ -284,18 +234,83 @@ public final class LoginActivity extends AppActivity
         }
     }
 
+    private void login() {
+        if (mPhoneView == null || mPasswordView == null){
+            return;
+        }
+        EasyHttp.post(this)
+                .api(new LoginApi()
+                        .setPhone(mPhoneView.getText().toString().trim())
+                        .setPassword(mPasswordView.getText().toString()))
+                .request(new HttpCallback<HttpData<User>>(this) {
+
+                    @Override
+                    public void onStart(Call call) {
+                        mCommitView.showProgress();
+                    }
+
+                    @Override
+                    public void onEnd(Call call) {}
+
+                    @Override
+                    public void onSucceed(HttpData<User> data) {
+                        if (data == null){
+                            toast("请求失败");
+                            mCommitView.showError(3000);
+                            return;
+                        }
+                        if (data.isRequestSucceed()){
+                            // 更新 Token
+                            UserHelper.getInstance().setFocusIsLogin(true);
+                            EasyConfig.getInstance().addParam("token", data.getData().getToken());
+                            UserHelper.getInstance().saveUserInfo(data.getData());
+                            if (UserHelper.getInstance().getUser().isNeedVerificationCode()){
+                                UserHelper.getInstance().setFocusIsLogin(false);
+                                //需要校验验证码
+                                checkVerificationCode();
+                            }else {
+                                postDelayed(() -> {
+                                    mCommitView.showSucceed();
+                                    postDelayed(() -> {
+                                        // 跳转到首页
+                                        HomeMainActivity.start(getContext());
+                                        finish();
+                                    }, 1000);
+                                }, 1000);
+                            }
+                        }else {
+                            if (data.getData() != null && data.getData().isNeedVerificationCode()){
+                                UserHelper.getInstance().setFocusIsLogin(false);
+                                //需要校验验证码
+                                checkVerificationCode();
+                                return;
+                            }
+                            postDelayed(() -> {
+                                toast(data.getDesc());
+                                mCommitView.showError(3000);
+                            }, 1000);
+                        }
+                    }
+
+                    @Override
+                    public void onFail(Exception e) {
+                        super.onFail(e);
+                        postDelayed(() -> {
+                            mCommitView.showError(3000);
+                        }, 1000);
+                    }
+                });
+    }
+
     private void checkVerificationCode() {
         // 验证码校验
         new SafeDialog.Builder(this)
                 .setType(GetCodeApi.TYPE_LOGON)
+                .setPhoneNumber(mPhoneView.getText().toString().trim())
                 .setListener(new SafeDialog.OnListener() {
                     @Override
                     public void onConfirm(BaseDialog dialog, String phone, String code) {
-                        mCommitView.showSucceed();
-                        // 跳转到首页
-                        UserHelper.getInstance().setFocusIsLogin(true);
-                        HomeMainActivity.start(getContext());
-                        finish();
+                       login();
                     }
 
                     @Override

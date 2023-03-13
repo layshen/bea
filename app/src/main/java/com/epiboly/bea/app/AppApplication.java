@@ -42,6 +42,8 @@ import com.scwang.smart.refresh.layout.SmartRefreshLayout;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.tencent.mmkv.MMKV;
 
+import java.net.Proxy;
+
 import okhttp3.OkHttpClient;
 import timber.log.Timber;
 
@@ -132,6 +134,7 @@ public class AppApplication extends Application {
 
         // 网络请求框架初始化
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .proxy(Proxy.NO_PROXY)
                 .build();
 
         EasyConfig.with(okHttpClient)
