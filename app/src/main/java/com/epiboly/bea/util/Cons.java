@@ -6,5 +6,5 @@ package com.epiboly.bea.util;
  * @describe
  */
 public class Cons {
-    public static boolean isDEBUG = true;
+    public static boolean isDEBUG = false;
 }
