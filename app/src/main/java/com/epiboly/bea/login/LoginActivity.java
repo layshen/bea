@@ -29,7 +29,7 @@ import com.epiboly.bea.ui.dialog.SafeDialog;
 import com.epiboly.bea.ui.dialog.UpdateDialog;
 import com.epiboly.bea.util.CheckUpdateHelper;
 import com.gyf.immersionbar.ImmersionBar;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.aop.Log;
 import com.epiboly.bea.aop.SingleClick;
 import com.epiboly.bea.app.AppActivity;

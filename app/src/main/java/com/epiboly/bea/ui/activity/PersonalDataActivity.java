@@ -11,7 +11,7 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.epiboly.bea.ui.dialog.AddressDialog;
 import com.epiboly.bea.ui.dialog.InputDialog;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.aop.SingleClick;
 import com.epiboly.bea.app.AppActivity;
 import com.epiboly.bea.http.api.UploadImageApi;

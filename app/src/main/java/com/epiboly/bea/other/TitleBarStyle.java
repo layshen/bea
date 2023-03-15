@@ -9,7 +9,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.content.ContextCompat;
 
 import com.hjq.bar.style.LightBarStyle;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.hjq.widget.view.PressAlphaTextView;
 
 /**

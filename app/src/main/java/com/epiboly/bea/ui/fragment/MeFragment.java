@@ -14,7 +14,7 @@ import com.epiboly.bea.aop.Permissions;
 import com.epiboly.bea.aop.PermissionsAspect;
 import com.epiboly.bea.http.model.User;
 import com.epiboly.bea.login.IdentityAuthActivity;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.app.AppFragment;
 import com.epiboly.bea.app.TitleBarFragment;
 import com.epiboly.bea.cache.UserHelper;

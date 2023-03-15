@@ -13,7 +13,7 @@ import androidx.annotation.ColorRes;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.scwang.smart.refresh.header.material.CircleImageView;
 import com.scwang.smart.refresh.header.material.MaterialProgressDrawable;
 import com.scwang.smart.refresh.layout.api.RefreshHeader;

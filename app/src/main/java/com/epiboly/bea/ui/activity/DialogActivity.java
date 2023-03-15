@@ -19,7 +19,7 @@ import com.epiboly.bea.ui.dialog.TimeDialog;
 import com.epiboly.bea.ui.dialog.UpdateDialog;
 import com.epiboly.bea.ui.dialog.WaitDialog;
 import com.hjq.base.BaseDialog;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.aop.SingleClick;
 import com.epiboly.bea.app.AppActivity;
 import com.epiboly.bea.manager.DialogManager;

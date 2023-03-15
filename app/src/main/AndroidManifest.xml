@@ -2,7 +2,7 @@
 <!-- 清单文件合并指引：https://developer.android.google.cn/studio/build/manifest-merge?hl=zh-cn -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.epiboly.bea.rich">
+    package="com.epiboly.bea">
 
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE" tools:node="remove" />

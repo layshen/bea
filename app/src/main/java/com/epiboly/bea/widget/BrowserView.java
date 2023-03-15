@@ -38,7 +38,7 @@ import com.epiboly.bea.ui.dialog.MessageDialog;
 import com.hjq.base.BaseActivity;
 import com.hjq.base.BaseDialog;
 import com.hjq.base.action.ActivityAction;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.ui.dialog.TipsDialog;
 import com.hjq.permissions.Permission;
 import com.hjq.permissions.XXPermissions;

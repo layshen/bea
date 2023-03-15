@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.TextView;
 
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.app.AppActivity;
 import com.zzhoujay.richtext.RichText;
 

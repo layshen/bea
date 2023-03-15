@@ -2,7 +2,7 @@ package com.epiboly.bea.ui.fragment;
 
 import com.epiboly.bea.app.AppFragment;
 import com.epiboly.bea.ui.activity.CopyActivity;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 
 /**
  *    author : Android 轮子哥

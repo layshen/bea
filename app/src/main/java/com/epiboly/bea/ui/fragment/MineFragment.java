@@ -25,7 +25,7 @@ import com.epiboly.bea.ui.activity.VideoPlayActivity;
 import com.epiboly.bea.ui.activity.VideoSelectActivity;
 import com.epiboly.bea.ui.dialog.InputDialog;
 import com.epiboly.bea.ui.dialog.MessageDialog;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.aop.SingleClick;
 import com.epiboly.bea.app.TitleBarFragment;
 import com.tencent.bugly.crashreport.CrashReport;

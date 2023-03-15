@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 
 import com.hjq.base.BaseDialog;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.aop.SingleClick;
 import com.hjq.widget.view.RegexEditText;
 

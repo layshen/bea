@@ -19,7 +19,7 @@ import com.epiboly.bea.http.glide.GlideApp;
 import com.epiboly.bea.http.model.HttpData;
 import com.epiboly.bea.http.model.IntegralServer;
 import com.epiboly.bea.http.model.MyNodeBean;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.ui.activity.MineNodeActivity;
 import com.epiboly.bea.util.NodeHelper;
 import com.epiboly.bea.util.TimeUtil;

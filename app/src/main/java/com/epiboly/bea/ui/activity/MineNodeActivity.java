@@ -7,7 +7,7 @@ import android.content.Intent;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.aop.Log;
 import com.epiboly.bea.app.AppActivity;
 import com.epiboly.bea.ui.fragment.MyNodeFragment;

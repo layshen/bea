@@ -11,7 +11,7 @@ import com.epiboly.bea.cache.UserHelper;
 import com.epiboly.bea.http.api.UserInfoApi;
 import com.epiboly.bea.http.model.HttpData;
 import com.epiboly.bea.http.model.User;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.util.MathUtil;
 import com.hjq.http.EasyHttp;
 import com.hjq.http.listener.HttpCallback;

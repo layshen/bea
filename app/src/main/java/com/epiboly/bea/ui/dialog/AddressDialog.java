@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.hjq.base.BaseDialog;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.aop.SingleClick;
 import com.epiboly.bea.app.AppAdapter;
 import com.epiboly.bea.ui.adapter.TabAdapter;

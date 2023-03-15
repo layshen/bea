@@ -15,7 +15,7 @@ import com.epiboly.bea.app.AppActivity;
 import com.epiboly.bea.cache.UserHelper;
 import com.epiboly.bea.http.api.IdentityAuthApi;
 import com.epiboly.bea.http.model.HttpData;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.hjq.http.EasyHttp;
 import com.hjq.http.listener.HttpCallback;
 import com.hjq.widget.view.RegexEditText;

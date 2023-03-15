@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import com.epiboly.bea.cache.UserHelper;
 import com.epiboly.bea.http.api.ValidCodeApi;
 import com.hjq.base.BaseDialog;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.aop.SingleClick;
 import com.epiboly.bea.http.api.GetCodeApi;
 import com.epiboly.bea.http.model.HttpData;

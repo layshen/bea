@@ -4,7 +4,7 @@ import androidx.core.content.ContextCompat;
 
 import com.epiboly.bea.action.StatusAction;
 import com.epiboly.bea.ui.dialog.MenuDialog;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.app.AppActivity;
 import com.epiboly.bea.widget.StatusLayout;
 

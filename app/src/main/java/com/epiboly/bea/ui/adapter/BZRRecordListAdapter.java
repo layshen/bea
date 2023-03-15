@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 
 import com.epiboly.bea.app.AppAdapter;
 import com.epiboly.bea.http.api.BZRRecordListApi;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.util.TimeUtil;
 
 /**

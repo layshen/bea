@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.app.AppAdapter;
 import com.epiboly.bea.http.glide.GlideApp;
 import com.epiboly.bea.manager.CacheDataManager;

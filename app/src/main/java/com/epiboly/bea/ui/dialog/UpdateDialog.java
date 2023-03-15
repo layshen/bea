@@ -18,7 +18,7 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.content.FileProvider;
 
 import com.hjq.base.BaseDialog;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.aop.CheckNet;
 import com.epiboly.bea.aop.Permissions;
 import com.epiboly.bea.aop.SingleClick;

@@ -34,7 +34,7 @@ import androidx.lifecycle.LifecycleOwner;
 import com.airbnb.lottie.LottieAnimationView;
 import com.epiboly.bea.ui.dialog.MessageDialog;
 import com.hjq.base.action.ActivityAction;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.hjq.widget.layout.SimpleLayout;
 import com.hjq.widget.view.PlayButton;
 

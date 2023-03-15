@@ -17,7 +17,7 @@ import com.epiboly.bea.http.glide.GlideApp;
 import com.epiboly.bea.http.model.HttpData;
 import com.epiboly.bea.http.model.IntegralServer;
 import com.epiboly.bea.http.model.ScanQrModel;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.ui.activity.AzScanResultExchangeActivity;
 import com.epiboly.bea.ui.activity.EmptyActivity;
 import com.epiboly.bea.ui.activity.ImageSelectActivity;

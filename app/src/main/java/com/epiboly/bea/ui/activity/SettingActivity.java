@@ -10,7 +10,7 @@ import com.epiboly.bea.http.api.GetCodeApi;
 import com.epiboly.bea.ui.dialog.SafeDialog;
 import com.epiboly.bea.ui.dialog.UpdateDialog;
 import com.epiboly.bea.ui.dialog.UserDialogManager;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.aop.SingleClick;
 import com.epiboly.bea.app.AppActivity;
 import com.epiboly.bea.http.api.LogoutApi;

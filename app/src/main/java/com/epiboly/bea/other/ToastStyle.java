@@ -5,7 +5,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.util.TypedValue;
 
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.hjq.toast.style.BlackToastStyle;
 
 /**

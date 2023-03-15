@@ -8,7 +8,7 @@ import com.epiboly.bea.advertisement.ui.SplashAdActivity;
 import com.epiboly.bea.app.AppActivity;
 import com.epiboly.bea.home.HomeMainActivity;
 import com.epiboly.bea.splash.SplashActivity;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 
 /**
  *    author : Android 轮子哥

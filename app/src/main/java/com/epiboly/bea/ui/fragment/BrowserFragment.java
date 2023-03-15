@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import com.epiboly.bea.action.StatusAction;
 import com.epiboly.bea.app.AppFragment;
 import com.epiboly.bea.ui.activity.BrowserActivity;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.aop.CheckNet;
 import com.epiboly.bea.aop.Log;
 import com.epiboly.bea.app.AppActivity;

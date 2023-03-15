@@ -15,7 +15,7 @@ import com.gyf.immersionbar.BarHide;
 import com.gyf.immersionbar.ImmersionBar;
 import com.hjq.base.BaseAdapter;
 import com.hjq.base.RecyclerPagerAdapter;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.aop.Log;
 import com.epiboly.bea.app.AppActivity;
 import com.epiboly.bea.ui.adapter.ImagePreviewAdapter;

@@ -10,7 +10,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.epiboly.bea.home.HomeMainActivity;
 import com.epiboly.bea.ui.adapter.GuideAdapter;
 import com.gyf.immersionbar.ImmersionBar;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.aop.SingleClick;
 import com.epiboly.bea.app.AppActivity;
 

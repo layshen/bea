@@ -7,7 +7,7 @@ import android.net.NetworkInfo;
 import androidx.core.content.ContextCompat;
 
 import com.epiboly.bea.manager.ActivityManager;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.hjq.toast.ToastUtils;
 
 import org.aspectj.lang.ProceedingJoinPoint;

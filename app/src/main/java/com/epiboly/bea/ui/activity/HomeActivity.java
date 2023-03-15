@@ -13,7 +13,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.epiboly.bea.app.AppFragment;
 import com.gyf.immersionbar.ImmersionBar;
 import com.hjq.base.FragmentPagerAdapter;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.app.AppActivity;
 import com.epiboly.bea.manager.ActivityManager;
 import com.epiboly.bea.other.DoubleClickHelper;

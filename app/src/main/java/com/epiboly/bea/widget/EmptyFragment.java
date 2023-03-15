@@ -1,6 +1,6 @@
 package com.epiboly.bea.widget;
 
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.app.AppFragment;
 import com.epiboly.bea.app.TitleBarFragment;
 

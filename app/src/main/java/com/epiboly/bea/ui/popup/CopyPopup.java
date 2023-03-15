@@ -3,7 +3,7 @@ package com.epiboly.bea.ui.popup;
 import android.content.Context;
 
 import com.hjq.base.BasePopupWindow;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 
 /**
  *    author : Android 轮子哥

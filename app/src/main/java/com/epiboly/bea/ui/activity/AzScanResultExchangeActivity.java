@@ -20,7 +20,7 @@ import com.epiboly.bea.http.glide.GlideApp;
 import com.epiboly.bea.http.model.HttpData;
 import com.epiboly.bea.http.model.IntegralServer;
 import com.epiboly.bea.http.model.ScanQrModel;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.ui.dialog.PayPasswordDialog;
 import com.hjq.bar.TitleBar;
 import com.hjq.base.BaseDialog;

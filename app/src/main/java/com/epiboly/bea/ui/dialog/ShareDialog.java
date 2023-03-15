@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.epiboly.bea.app.AppAdapter;
 import com.hjq.base.BaseAdapter;
 import com.hjq.base.BaseDialog;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.hjq.toast.ToastUtils;
 import com.hjq.umeng.Platform;
 import com.hjq.umeng.UmengClient;

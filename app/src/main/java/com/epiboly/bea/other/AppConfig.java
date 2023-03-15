@@ -1,6 +1,6 @@
 package com.epiboly.bea.other;
 
-import com.epiboly.bea.rich.BuildConfig;
+import com.epiboly.bea.BuildConfig;
 
 /**
  *    author : Android 轮子哥

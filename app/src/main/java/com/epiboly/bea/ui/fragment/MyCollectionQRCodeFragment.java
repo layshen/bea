@@ -20,7 +20,7 @@ import com.epiboly.bea.http.model.HttpData;
 import com.epiboly.bea.http.model.MyNodeServer;
 import com.epiboly.bea.http.model.RequestServer;
 import com.epiboly.bea.http.model.User;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.ui.activity.EmptyActivity;
 import com.epiboly.bea.ui.dialog.TipsDialog;
 import com.epiboly.bea.util.BitmapHelper;

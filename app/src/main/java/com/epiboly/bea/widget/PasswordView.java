@@ -10,7 +10,7 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 
 /**
  *    author : Android 轮子哥

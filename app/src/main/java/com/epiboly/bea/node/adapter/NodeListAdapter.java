@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.app.AppAdapter;
 import com.epiboly.bea.http.glide.GlideApp;
 import com.epiboly.bea.http.model.NodeBean;

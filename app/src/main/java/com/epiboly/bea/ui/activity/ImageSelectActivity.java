@@ -16,7 +16,7 @@ import com.epiboly.bea.action.StatusAction;
 import com.epiboly.bea.ui.dialog.AlbumDialog;
 import com.hjq.base.BaseActivity;
 import com.hjq.base.BaseAdapter;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.aop.Log;
 import com.epiboly.bea.aop.Permissions;
 import com.epiboly.bea.aop.SingleClick;

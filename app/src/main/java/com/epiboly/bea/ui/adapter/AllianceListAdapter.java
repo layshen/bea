@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.app.AppAdapter;
 import com.epiboly.bea.cache.UserHelper;
 import com.epiboly.bea.http.api.AllianceActiveListApi;

@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.epiboly.bea.app.AppActivity;
 import com.epiboly.bea.ui.adapter.StatusAdapter;
 import com.hjq.base.BaseAdapter;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.app.TitleBarFragment;
 import com.hjq.widget.layout.WrapRecyclerView;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;

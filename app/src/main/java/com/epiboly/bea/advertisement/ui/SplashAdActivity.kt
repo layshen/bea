@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.Intent
 import com.epiboly.bea.advertisement.AdProviderType
 import com.epiboly.bea.advertisement.TogetherAdAlias
-import com.epiboly.bea.rich.R
+import com.epiboly.bea.R
 import com.epiboly.bea.app.AppActivity
 import com.epiboly.bea.cache.SettingsCache
 import com.epiboly.bea.cache.UserHelper

@@ -6,7 +6,7 @@ import android.os.Build;
 
 import com.epiboly.bea.manager.ActivityManager;
 import com.epiboly.bea.ui.dialog.MessageDialog;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.hjq.permissions.OnPermissionCallback;
 import com.hjq.permissions.Permission;
 import com.hjq.permissions.XXPermissions;

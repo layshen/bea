@@ -15,7 +15,7 @@ import com.epiboly.bea.ui.activity.HomeActivity;
 import com.epiboly.bea.ui.adapter.TabAdapter;
 import com.gyf.immersionbar.ImmersionBar;
 import com.hjq.base.FragmentPagerAdapter;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.app.TitleBarFragment;
 import com.epiboly.bea.widget.XCollapsingToolbarLayout;
 

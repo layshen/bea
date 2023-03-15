@@ -16,7 +16,7 @@ import com.epiboly.bea.other.ArrowDrawable;
 import com.hjq.base.BaseAdapter;
 import com.hjq.base.BasePopupWindow;
 import com.hjq.base.action.AnimAction;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;

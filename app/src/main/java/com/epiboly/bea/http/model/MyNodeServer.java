@@ -1,6 +1,5 @@
 package com.epiboly.bea.http.model;
 
-import com.epiboly.bea.rich.BuildConfig;
 import com.epiboly.bea.util.Cons;
 import com.hjq.http.model.BodyType;
 

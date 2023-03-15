@@ -13,7 +13,7 @@ import com.epiboly.bea.cache.UserHelper;
 import com.epiboly.bea.http.api.BZRRecordListApi;
 import com.epiboly.bea.http.model.HttpData;
 import com.epiboly.bea.http.model.IntegralServer;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.ui.adapter.BZRRecordListAdapter;
 import com.epiboly.bea.widget.StatusLayout;
 import com.hjq.http.EasyHttp;

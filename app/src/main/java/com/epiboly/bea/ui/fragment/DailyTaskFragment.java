@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import androidx.constraintlayout.widget.Group;
 
 import com.epiboly.bea.advertisement.ui.RewardProActivity;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.action.StatusAction;
 import com.epiboly.bea.app.AppFragment;
 import com.epiboly.bea.app.TitleBarFragment;

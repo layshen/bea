@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.epiboly.bea.app.AppActivity;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.gyf.immersionbar.ImmersionBar;
 
 /**

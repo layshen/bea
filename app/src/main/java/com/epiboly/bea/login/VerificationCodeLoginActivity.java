@@ -8,7 +8,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 
 import com.epiboly.bea.http.model.User;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.aop.Log;
 import com.epiboly.bea.app.AppActivity;
 import com.epiboly.bea.cache.UserHelper;

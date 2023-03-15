@@ -11,7 +11,7 @@ import androidx.lifecycle.LifecycleOwner;
 import com.epiboly.bea.login.LoginActivity;
 import com.epiboly.bea.manager.ActivityManager;
 import com.google.gson.JsonSyntaxException;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.hjq.gson.factory.GsonFactory;
 import com.hjq.http.EasyLog;
 import com.hjq.http.config.IRequestApi;

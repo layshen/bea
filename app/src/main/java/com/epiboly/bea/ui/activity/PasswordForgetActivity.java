@@ -12,7 +12,7 @@ import com.epiboly.bea.app.AppActivity;
 import com.epiboly.bea.http.api.ValidCodeApi;
 import com.epiboly.bea.http.model.HttpData;
 import com.epiboly.bea.manager.InputTextManager;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.aop.SingleClick;
 import com.epiboly.bea.http.api.GetCodeApi;
 import com.hjq.http.EasyHttp;

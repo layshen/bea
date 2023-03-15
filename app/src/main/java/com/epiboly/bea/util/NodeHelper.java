@@ -1,6 +1,6 @@
 package com.epiboly.bea.util;
 
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 
 /**
  * @author vemao

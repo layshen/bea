@@ -10,7 +10,7 @@ import androidx.annotation.Nullable;
 import com.epiboly.bea.action.TitleBarAction;
 import com.gyf.immersionbar.ImmersionBar;
 import com.hjq.bar.TitleBar;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 
 /**
  *    desc   : 带标题栏的 Fragment 业务基类

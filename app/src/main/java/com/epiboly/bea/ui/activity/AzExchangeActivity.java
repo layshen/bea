@@ -11,7 +11,7 @@ import com.epiboly.bea.http.api.AzExchangeApi;
 import com.epiboly.bea.http.api.AzRecordListApi;
 import com.epiboly.bea.http.model.HttpData;
 import com.epiboly.bea.http.model.IntegralServer;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.ui.dialog.PayPasswordDialog;
 import com.hjq.base.BaseDialog;
 import com.hjq.http.EasyHttp;

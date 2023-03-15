@@ -18,7 +18,7 @@ import com.epiboly.bea.http.api.EditPasswordApi;
 import com.epiboly.bea.http.api.EditTradePasswordApi;
 import com.epiboly.bea.http.model.HttpData;
 import com.epiboly.bea.manager.InputTextManager;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.ui.dialog.TipsDialog;
 import com.hjq.http.EasyHttp;
 import com.hjq.http.listener.HttpCallback;

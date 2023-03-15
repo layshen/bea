@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 
 import com.github.chrisbanes.photoview.PhotoView;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.app.AppAdapter;
 import com.epiboly.bea.http.glide.GlideApp;
 

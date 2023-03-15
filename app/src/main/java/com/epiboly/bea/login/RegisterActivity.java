@@ -15,7 +15,7 @@ import com.epiboly.bea.http.model.HttpData;
 import com.epiboly.bea.manager.InputTextManager;
 import com.gyf.immersionbar.ImmersionBar;
 import com.hjq.base.BaseActivity;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.aop.Log;
 import com.epiboly.bea.aop.SingleClick;
 import com.epiboly.bea.http.api.GetCodeApi;

@@ -17,7 +17,7 @@ import com.epiboly.bea.ui.dialog.UpdateDialog;
 import com.epiboly.bea.util.CheckUpdateHelper;
 import com.gyf.immersionbar.ImmersionBar;
 import com.hjq.base.FragmentPagerAdapter;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.app.AppActivity;
 import com.epiboly.bea.manager.ActivityManager;
 import com.epiboly.bea.other.DoubleClickHelper;

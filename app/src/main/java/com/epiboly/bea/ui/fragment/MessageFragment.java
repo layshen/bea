@@ -5,7 +5,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.epiboly.bea.ui.activity.HomeActivity;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.aop.Permissions;
 import com.epiboly.bea.aop.SingleClick;
 import com.epiboly.bea.app.TitleBarFragment;

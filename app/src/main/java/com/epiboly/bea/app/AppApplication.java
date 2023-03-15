@@ -22,7 +22,7 @@ import com.epiboly.bea.manager.ActivityManager;
 import com.epiboly.bea.util.CheckUpdateHelper;
 import com.epiboly.bea.util.NetLogStrategy;
 import com.hjq.bar.TitleBar;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.aop.Log;
 import com.epiboly.bea.http.glide.GlideApp;
 import com.epiboly.bea.other.AppConfig;

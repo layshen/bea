@@ -13,7 +13,7 @@ import androidx.core.content.FileProvider;
 
 import com.epiboly.bea.app.AppActivity;
 import com.hjq.base.BaseActivity;
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.aop.Log;
 import com.epiboly.bea.aop.Permissions;
 import com.epiboly.bea.other.AppConfig;

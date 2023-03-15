@@ -1,7 +1,7 @@
 package com.epiboly.bea.advertisement
 
 import android.app.Application
-import com.epiboly.bea.rich.R
+import com.epiboly.bea.R
 import com.ifmvo.togetherad.csj.TogetherAdCsj
 import kotlin.random.Random
 

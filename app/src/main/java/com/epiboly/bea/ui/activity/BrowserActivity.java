@@ -13,7 +13,7 @@ import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.action.StatusAction;
 import com.epiboly.bea.aop.CheckNet;
 import com.epiboly.bea.aop.Log;

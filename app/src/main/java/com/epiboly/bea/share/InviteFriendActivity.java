@@ -1,6 +1,6 @@
 package com.epiboly.bea.share;
 
-import com.epiboly.bea.rich.R;
+import com.epiboly.bea.R;
 import com.epiboly.bea.app.AppActivity;
 import com.epiboly.bea.cache.UserHelper;
 import com.epiboly.bea.http.api.InviteFriendApi;
