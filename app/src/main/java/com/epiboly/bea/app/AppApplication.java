@@ -13,7 +13,7 @@ import androidx.core.content.ContextCompat;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleOwner;
 
-import com.epiboly.bea.advertisement.AdvertisementInit;
+import com.epiboly.bea.advertisement.AdSdkInit;
 import com.epiboly.bea.cache.DeviceIdentifierHelper;
 import com.epiboly.bea.cache.UserHelper;
 import com.epiboly.bea.http.model.RequestHandler;
@@ -78,7 +78,7 @@ public class AppApplication extends Application {
     /**
      * 初始化一些第三方框架
      */
-    public static void initSdk(Application application) {
+    public void initSdk(Application application) {
         // 设置标题栏初始化器
         TitleBar.setDefaultStyle(new TitleBarStyle());
 
@@ -200,7 +200,8 @@ public class AppApplication extends Application {
                 }
             });
         }
-        AdvertisementInit.initAd(application);
+//        AdvertisementInit.initAd(application);
+        AdSdkInit.init(getProcessName(),this);
         CheckUpdateHelper.getInstance().check();
     }
 }

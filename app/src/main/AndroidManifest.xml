@@ -5,6 +5,7 @@
     package="com.epiboly.bea">
 
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" tools:node="remove" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" tools:node="remove" />
@@ -27,6 +28,13 @@
     <!-- 定位权限（用于 WebView 定位）-->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
 
     <!-- Application 节点详解：https://developer.android.google.cn/guide/topics/manifest/application-element -->
     <!-- Activity 节点详解：https://developer.android.google.cn/guide/topics/manifest/activity-element -->
@@ -64,7 +72,7 @@
         </provider>
 
         <activity
-            android:name="com.epiboly.bea.advertisement.ui.SplashAdActivity"
+            android:name="com.epiboly.bea.advertisement.ui.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -100,7 +108,7 @@
         <!--
            激励广告(请求并展示)
        -->
-        <activity android:name="com.epiboly.bea.advertisement.ui.RewardProActivity" />
+        <activity android:name="com.epiboly.bea.advertisement.ui.AdRewardActivity" />
 
         <!-- 组建首页 -->
         <activity
@@ -133,7 +141,8 @@
             android:name="com.epiboly.bea.login.LoginActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden" >
+        </activity>
 
         <!-- 登录页 -->
         <activity
@@ -361,6 +370,67 @@
             android:exported="true"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
+
+        <!--openset-->
+        <provider
+            android:name="com.kc.openset.util.OSETFileProvider"
+            android:authorities="${applicationId}.osetfileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/oset_filepath" />
+        </provider>
+
+        <!--opendsp-->
+        <provider
+            android:name="com.kc.openset.sdk.dsp.util.ODFileProvider"
+            android:authorities="${applicationId}.odfileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths" />
+        </provider>
+        <activity android:name="com.kc.openset.sdk.dsp.reward.ODRewardVideoActivity" />
+        <!--穿山甲-->
+        <provider
+            android:name="com.bytedance.sdk.openadsdk.multipro.TTMultiProvider"
+            android:authorities="${applicationId}.TTMultiProvider"
+            android:exported="false" />
+        <provider
+            android:name="com.bytedance.sdk.openadsdk.TTFileProvider"
+            android:authorities="${applicationId}.TTFileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths" />
+        </provider>
+
+        <!--广点通-->
+        <!-- 声明SDK所需要的组件 -->
+        <!--配置provider-->
+        <provider
+            android:name="com.qq.e.comm.GDTFileProvider"
+            android:authorities="${applicationId}.gdt.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths" />
+        </provider>
+
+        <!--sigmob-->
+        <provider
+            android:name="com.sigmob.sdk.SigmobFileProvider"
+            android:authorities="${applicationId}.sigprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/sigmob_provider_paths" />
+        </provider>
     </application>
 
     <!-- Android 11 软件包可见性适配：https://www.jianshu.com/p/d1ccd425c4ce -->

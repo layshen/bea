@@ -8,9 +8,9 @@ import android.widget.ImageView;
 
 import androidx.constraintlayout.widget.Group;
 
-import com.epiboly.bea.advertisement.ui.RewardProActivity;
 import com.epiboly.bea.R;
 import com.epiboly.bea.action.StatusAction;
+import com.epiboly.bea.advertisement.ui.AdRewardActivity;
 import com.epiboly.bea.app.AppFragment;
 import com.epiboly.bea.app.TitleBarFragment;
 import com.epiboly.bea.cache.UserHelper;
@@ -200,7 +200,7 @@ public class DailyTaskFragment extends TitleBarFragment<HomeMainActivity> implem
 
             @Override
             public void onAnimationEnd(Animator animation) {
-                RewardProActivity.Companion.action(getActivity(),i);
+                AdRewardActivity.start(getActivity(),i+"");
                 isAnimatorExecuting = false;
             }
 

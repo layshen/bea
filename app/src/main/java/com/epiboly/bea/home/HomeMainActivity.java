@@ -10,7 +10,9 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import com.epiboly.bea.advertisement.AdCons;
 import com.epiboly.bea.app.AppFragment;
+import com.epiboly.bea.cache.UserHelper;
 import com.epiboly.bea.node.NodeListFragment;
 import com.epiboly.bea.other.AppConfig;
 import com.epiboly.bea.ui.dialog.UpdateDialog;
@@ -25,6 +27,7 @@ import com.epiboly.bea.ui.adapter.NavigationAdapter;
 import com.epiboly.bea.ui.fragment.DailyTaskFragment;
 import com.epiboly.bea.ui.fragment.HomeFragment;
 import com.epiboly.bea.ui.fragment.MeFragment;
+import com.kc.openset.ad.OSETRewardVideoCache;
 
 /**
  * @author mao
@@ -55,6 +58,20 @@ public final class HomeMainActivity extends AppActivity
         }
         context.startActivity(intent);
     }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //这一步建议在首页进行初始化并开启缓存,减少第一次展示广告的时间。并且在首页onDestroy里面调用destroy()方法释放资源
+        OSETRewardVideoCache.getInstance()
+                .setContext(this)
+                .setVerify(true)
+                .setServiceReward(true)
+                .setPosId(AdCons.POS_ID_RewardVideo)
+                .setUserId(UserHelper.getInstance().getUser().getUid())
+                .startLoad();
+    }
+
 
     @Override
     protected int getLayoutId() {
@@ -187,5 +204,7 @@ public final class HomeMainActivity extends AppActivity
         mViewPager.setAdapter(null);
         mNavigationView.setAdapter(null);
         mNavigationAdapter.setOnNavigationListener(null);
+        //在OnDestroy中调用destroy
+        OSETRewardVideoCache.getInstance().destroy();
     }
 }
