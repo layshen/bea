@@ -6,6 +6,7 @@ import android.widget.FrameLayout;
 
 import com.epiboly.bea.R;
 import com.epiboly.bea.advertisement.AdCons;
+import com.epiboly.bea.advertisement.AdSdkInit;
 import com.epiboly.bea.app.AppActivity;
 import com.epiboly.bea.cache.SettingsCache;
 import com.epiboly.bea.cache.UserHelper;
@@ -36,6 +37,29 @@ public class SplashActivity extends AppActivity {
 
     @Override
     protected void initData() {
+        if (AdSdkInit.isInitSuccess){
+            showAd();
+        }else {
+            postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    AdSdkInit.exeMaybeInit(new AdSdkInit.Callback() {
+                        @Override
+                        public void onSuccess() {
+                            showAd();
+                        }
+
+                        @Override
+                        public void onError() {
+                            actionHome();
+                        }
+                    });
+                }
+            },300);
+        }
+    }
+
+    private void showAd() {
         OSETSplash.getInstance().show(this, fl, AdCons.POS_ID_Splash, new OSETListener() {
             @Override
             public void onShow() {

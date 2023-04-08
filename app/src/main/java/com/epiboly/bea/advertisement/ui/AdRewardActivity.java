@@ -4,8 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
+import com.blankj.utilcode.util.ActivityUtils;
 import com.epiboly.bea.R;
 import com.epiboly.bea.action.StatusAction;
+import com.epiboly.bea.advertisement.AdSdkInit;
 import com.epiboly.bea.app.AppActivity;
 import com.epiboly.bea.cache.UserHelper;
 import com.epiboly.bea.http.api.FinishAdvertiseWatchApi;
@@ -16,6 +18,8 @@ import com.hjq.http.EasyHttp;
 import com.hjq.http.listener.HttpCallback;
 import com.kc.openset.OSETVideoListener;
 import com.kc.openset.ad.OSETRewardVideoCache;
+
+import java.lang.ref.WeakReference;
 
 public class AdRewardActivity extends AppActivity implements StatusAction {
 
@@ -42,41 +46,72 @@ public class AdRewardActivity extends AppActivity implements StatusAction {
     @Override
     protected void initData() {
         showLoading();
-        OSETRewardVideoCache.getInstance().setOSETVideoListener(osetVideoListener).showAd(this);
+        AdSdkInit.exeMaybeInit(new AdSdkInit.Callback() {
+            @Override
+            public void onSuccess() {
+                Log.d(TAG,"showAd");
+                showAd();
+            }
+
+            @Override
+            public void onError() {
+                if (ActivityUtils.isActivityAlive(AdRewardActivity.this)){
+                    AdRewardActivity.this.showError(null);
+                }
+            }
+        });
     }
 
-    private final OSETVideoListener osetVideoListener = new OSETVideoListener() {
+    private void showAd() {
+        if (!ActivityUtils.isActivityAlive(AdRewardActivity.this)){
+            return;
+        }
+        OSETRewardVideoCache.getInstance()
+                .setOSETVideoListener(new AdListener(this))
+                .showAd(this);
+    }
+
+    private static class AdListener implements OSETVideoListener {
+        WeakReference<AdRewardActivity> activityWeakRef;
+
+        public AdListener(AdRewardActivity activity){
+            activityWeakRef = new WeakReference<>(activity);
+        }
+
         @Override
         public void onShow(String key) {
-            Log.d(TAG, "onShow");
+            Log.d(TAG, "onShow " + Thread.currentThread().getName());
         }
 
         @Override
         public void onError(String s, String s1) {
-            Log.d(TAG, "onError");
-            showError(null);
+            if (ActivityUtils.isActivityAlive(activityWeakRef.get())){
+                activityWeakRef.get().showError(null);
+            }
         }
 
         @Override
         public void onClick() {
-            Log.d(TAG, "onClick");
         }
 
         @Override
         public void onClose(String s) {
-            Log.d(TAG, "onClose" + s);
-            finish();
+            Log.d(TAG, "onClose "+ Thread.currentThread().getName());
+            if (ActivityUtils.isActivityAlive(activityWeakRef.get())){
+                activityWeakRef.get().finish();
+            }
         }
 
         @Override
         public void onLoad() {
-            Log.d(TAG, "onLoad");
+            Log.d(TAG, "onLoad "+ Thread.currentThread().getName());
         }
 
         @Override
         public void onVideoStart() {
-            Log.d(TAG, "onVideoStart");
-            showComplete();
+            if (ActivityUtils.isActivityAlive(activityWeakRef.get())){
+                activityWeakRef.get().showComplete();
+            }
         }
 
         @Override
@@ -87,10 +122,11 @@ public class AdRewardActivity extends AppActivity implements StatusAction {
         @Override
         public void onReward(String s) {
             OSETRewardVideoCache.getInstance().verify(s, b -> {
-                Log.d(TAG, "onReward 服务器验证" + b);
                 if (b){
                     //告诉服务器任务完成了
-                    adVideoComplete();
+                    if (ActivityUtils.isActivityAlive(activityWeakRef.get())){
+                        activityWeakRef.get().adVideoComplete();
+                    }
                 }
             });
         }
