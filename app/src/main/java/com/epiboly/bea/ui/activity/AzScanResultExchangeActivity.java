@@ -171,6 +171,10 @@ public class AzScanResultExchangeActivity extends AppActivity {
     }
 
     private void toPay() {
+        if (TextUtils.isEmpty(mInputAz.getText().toString())){
+            toast("输入不能为空");
+            return;
+        }
         //check
         new PayPasswordDialog.Builder(this)
                 .setTitle("请输入交易密码")
