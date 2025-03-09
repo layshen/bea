@@ -8,8 +8,15 @@
     android:gravity="center_horizontal"
     android:layoutAnimation="@anim/layout_from_bottom"
     android:orientation="vertical"
-    tools:context="com.epiboly.bea.login.LoginActivity"
+    tools:context="com.epiboly.bea2.login.LoginActivity"
     tools:layoutAnimation="@null">
+
+    <!-- 用于显示 H5 页面的 WebView，初始不可见 -->
+    <WebView
+        android:id="@+id/webview_h5"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
 
     <com.hjq.bar.TitleBar
         android:layout_width="match_parent"
@@ -17,8 +24,6 @@
         app:barStyle="transparent"
         app:leftIcon="@null"
         app:rightBackground="@null"
-        app:rightTitle="@string/login_register"
-        app:rightTitleColor="@color/common_accent_color"
         app:rightTitleSize="@dimen/sp_14"
         app:title="" />
 
@@ -85,11 +90,11 @@
                 android:textColor="@color/common_accent_color" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_login_forget"
+                android:id="@+id/tv_register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:text="@string/login_forget"
+                android:text="没有账号？点击注册"
                 android:textColor="@color/common_accent_color" />
         </FrameLayout>
 
@@ -101,8 +106,56 @@
             android:layout_marginHorizontal="@dimen/dp_40"
             android:layout_marginTop="@dimen/dp_30"
             android:text="@string/login_text" />
+        <!-- 勾选框布局，默认不可见 -->
+        <LinearLayout
+            android:id="@+id/layout_agreement"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="visible"
+            android:layout_marginTop="10dp">
+
+            <CheckBox
+                android:id="@+id/cb_agreement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/tv_agreement_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我已阅读并同意"
+                android:layout_marginLeft="5dp"/>
+            <TextView
+                android:id="@+id/tv_agreement_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="《隐私政策》"
+                android:textColor="@color/blue"
+                android:clickable="true"
+                android:layout_marginLeft="10dp"/>
+            <TextView
+                android:id="@+id/tv_agreement_and"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="和"
+                android:clickable="true"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:id="@+id/tv_agreement_service"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="《用户协议》"
+                android:textColor="@color/blue"
+                android:clickable="true"
+                android:layout_marginLeft="10dp"/>
+        </LinearLayout>
+
+
 
     </LinearLayout>
+
 
     <View
         android:layout_width="wrap_content"

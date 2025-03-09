@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- 隐私协议标题 -->
+        <TextView
+            android:id="@+id/tv_privacy_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="BEA2隐私协议"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:paddingBottom="16dp" />
+
+        <!-- 隐私协议内容 -->
+        <TextView
+            android:id="@+id/tv_privacy_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="欢迎使用BEA2应用！BEA2应用是由五河县乞灵广告中心（个体工商户）开发的管理系统工具。本隐私协议将帮助您了解我们如何收集、使用、存储和共享您的个人信息，以保障您的隐私权益。请仔细阅读本隐私协议，在使用本应用前，若您对本协议有任何疑问，请联系我们。
+
+一、账号注销规则
+注销条件：您的账号需处于安全状态，无任何纠纷或违规行为。若存在未处理的投诉等情况，需先完成相关事项方可申请注销。
+注销方式：您可通过以下途径申请注销账号：拨打我们的客服热线：15955654474，在工作时间内（周一至周日：9:00~23:00）向客服人员提出账号注销申请，同样需准确提供上述账号相关信息；或发送邮件至我们的官方客服邮箱：904718836@qq.com，邮件主题注明 “账号注销申请 - [您的注册手机号 / 邮箱]”，并在邮件正文中提供您的账号信息、注册手机号 / 邮箱以及注销原因。
+处理时间：我们将在收到您的注销申请后的3~5个工作日内完成审核。审核通过后，我们将对您的账号进行注销处理。注销完成后，您将无法再使用该账号登录我们的服务，且您的个人信息将按照本隐私政策及相关法律法规的规定进行删除或匿名化处理。
+
+二、信息收集
+1. **设备信息**：当您使用本应用时，我们会收集您的设备信息（包括IMEI、Wi-Fi SSID、Wi-Fi BSSID、Android_ID、设备序列号、OAID、MEID、IMSI、MAC地址、SIM卡序列号）、已安装app信息或运行中的进程信息以确保应用的正常运行和安全性。
+
+2. **使用信息**：我们会记录您使用应用的相关信息，如访问时间、使用频率、浏览内容等，以优化应用功能和服务。同时为实现垃圾清理与运行加速功能，我们将请求您的存储权限获取外置存储信息(SD卡数据)，用以检查手机CPU、内存和SD卡情况。当你播放视频等内容时，为了适配你的设备状态，我们会调用设备的重力、加速度等传感器信息，以识别你的设备横竖屏状态。在你分享或接收被分享的信息时，需要在本地访问你的剪切板,读取其中包含的口令、分享码、链接，以实现跳转、分享、活动联动等功能或服务。我们会记录您使用应用的相关信息，如访问时间、使用频率、浏览内容等，以优化应用功能和服务。
+
+3. **位置信息**：在您授权的情况下，我们可能会收集您的位置信息，以便为您提供更个性化的服务。
+
+三、信息使用
+1. 我们收集的信息将用于提供、维护和改进应用服务，以及为您提供个性化的体验。
+
+2. 我们可能会使用您的信息进行数据分析，以了解用户行为和需求，从而提升应用的质量和性能。
+
+四、信息共享与披露
+1. 我们不会将您的个人信息出售给第三方。但在某些情况下，我们可能会与合作伙伴共享您的信息，以提供特定的服务。
+
+2. 只有在法律要求或为保护我们的合法权益时，我们才会披露您的个人信息。
+
+五、信息存储
+我们将按照法律法规的要求，安全存储您的个人信息。在您不再使用本应用后，我们将根据相关规定删除或匿名化处理您的信息。
+
+六、您的权利
+1. 您有权访问、更正、删除您的个人信息。
+
+2. 您可以随时撤回对某些信息收集的授权，但这可能会影响应用的部分功能。
+
+七、更新与通知
+我们可能会根据法律法规的变化或业务需求更新本隐私协议。更新后的协议将在应用内公布，您继续使用应用即视为同意最新的隐私协议。
+
+如果您对本隐私协议有任何疑问或建议，请通过以下方式联系我们：15955654474。
+
+八、第三方SDK目录
+1.推送广告服务
+ 使用目的：向用户推送广告信息、广告归因、反作弊
+ 使用场景：在向用户推送广告时使用
+ 涉及个人信息：设备标识符（包括IMEI、Wi-Fi SSID、Wi-Fi BSSID、Android_ID、设备序列号、OAID、MEID、IMSI、MAC地址、SIM卡序列号）、已安装app信息或运行中的进程信息
+ 合作方主体：上海神蓍信息科技有限公司
+ 收集方式：SDK自行采集
+ 官网链接：https://www.shenshiads.com/
+ 隐私政策：https://doc.shenshiads.com/SdkYszc.html"
+            android:textSize="12sp" />
+
+        <!-- 同意和不同意按钮 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="end"
+            android:layout_marginTop="16dp">
+
+            <Button
+                android:id="@+id/btn_disagree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="不同意" />
+
+            <Button
+                android:id="@+id/btn_agree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="同意"
+                android:layout_marginLeft="16dp" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

@@ -8,7 +8,7 @@
     android:paddingHorizontal="@dimen/dp_10"
     android:paddingVertical="@dimen/dp_8"
     android:background="@color/card_color"
-    tools:context="com.epiboly.bea.ui.dialog.SafeDialog">
+    tools:context="com.epiboly.bea2.ui.dialog.SafeDialog">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_safe_phone"

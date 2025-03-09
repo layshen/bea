@@ -1,6 +1,6 @@
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
-import com.epiboly.bea.util.RSAUtil;
+import com.epiboly.bea2.util.RSAUtil;
 
 import junit.framework.TestCase;
 

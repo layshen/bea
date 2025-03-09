@@ -1,0 +1,154 @@
+package com.epiboly.bea2.ui.activity;
+
+import android.content.Context;
+import android.content.Intent;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.epiboly.bea2.action.StatusAction;
+import com.epiboly.bea2.app.AppActivity;
+import com.epiboly.bea2.cache.UserHelper;
+import com.epiboly.bea2.http.api.BZRRecordListApi;
+import com.epiboly.bea2.http.model.HttpData;
+import com.epiboly.bea2.http.model.IntegralServer;
+import com.epiboly.bea2.R;
+import com.epiboly.bea2.ui.adapter.BZRRecordListAdapter;
+import com.epiboly.bea2.widget.StatusLayout;
+import com.hjq.http.EasyHttp;
+import com.hjq.http.listener.HttpCallback;
+import com.scwang.smart.refresh.layout.SmartRefreshLayout;
+import com.scwang.smart.refresh.layout.api.RefreshLayout;
+import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
+import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
+
+import java.util.ArrayList;
+
+/**
+ * @author vemao
+ * @time 2023/2/6
+ * @describe
+ */
+public class BZRRecordListActivity extends AppActivity implements StatusAction {
+    private RecyclerView mRecyclerView;
+    private SmartRefreshLayout mSmartRefresh;
+    private StatusLayout mStatusLayout;
+    private BZRRecordListAdapter mAdapter;
+
+    public static void start(Context context) {
+        Intent intent = new Intent(context, BZRRecordListActivity.class);
+        context.startActivity(intent);
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_bzr_record_list;
+    }
+
+    @Override
+    protected void initView() {
+        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        mSmartRefresh = (SmartRefreshLayout) findViewById(R.id.smart_refresh);
+        mStatusLayout = (StatusLayout) findViewById(R.id.status_layout);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mAdapter = new BZRRecordListAdapter(getContext());
+        mRecyclerView.setAdapter(mAdapter);
+        mSmartRefresh.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                refresh();
+            }
+        });
+        mSmartRefresh.setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+                if (mAdapter.getCount() > 0){
+                    BZRRecordListApi.Bean item = mAdapter.getItem(mAdapter.getCount() - 1);
+                    getMoreData(item.getId());
+                }
+            }
+        });
+    }
+
+    @Override
+    protected void initData() {
+        refresh();
+    }
+
+    private void refresh() {
+        EasyHttp.post(this)
+                .server(new IntegralServer())
+                .api(new BZRRecordListApi()
+                        .setUserBzrRecordId(0)
+                        .setToken(UserHelper.getInstance().getUser().getToken())
+                        .setUid(UserHelper.getInstance().getUser().getUid()))
+                .request(new HttpCallback<HttpData<ArrayList<BZRRecordListApi.Bean>>>(this) {
+
+                    @Override
+                    public void onSucceed(HttpData<ArrayList<BZRRecordListApi.Bean>> data) {
+                        if (data == null){
+                            mSmartRefresh.finishRefresh(false);
+                            return;
+                        }
+                        if (data.isRequestSucceed()) {
+                            mSmartRefresh.finishRefresh(true);
+                            mAdapter.setData(data.getData());
+                            if (mAdapter.getCount() == 0){
+                                showEmpty(R.string.status_layout_no_record);
+                            }else {
+                                showComplete();
+                            }
+                        }else {
+                            mSmartRefresh.finishRefresh(false);
+                            showError(null);
+                        }
+                    }
+
+                    @Override
+                    public void onFail(Exception e) {
+                        showError(null);
+                    }
+                });
+    }
+
+
+    private void getMoreData(long id) {
+        EasyHttp.post(this)
+                .server(new IntegralServer())
+                .api(new BZRRecordListApi()
+                        .setUserBzrRecordId(id)
+                        .setToken(UserHelper.getInstance().getUser().getToken())
+                        .setUid(UserHelper.getInstance().getUser().getUid()))
+                .request(new HttpCallback<HttpData<ArrayList<BZRRecordListApi.Bean>>>(this) {
+
+                    @Override
+                    public void onSucceed(HttpData<ArrayList<BZRRecordListApi.Bean>> data) {
+                        if (data == null){
+                            mSmartRefresh.finishLoadMore(false);
+                            mSmartRefresh.setNoMoreData(true);
+                            return;
+                        }
+                        if (data.isRequestSucceed()) {
+                            mSmartRefresh.finishLoadMore(true);
+                            if (data.getData() == null || data.getData().size() == 0){
+                                mSmartRefresh.setNoMoreData(true);
+                                return;
+                            }
+                            mAdapter.addData(data.getData());
+                        }else {
+                            mSmartRefresh.finishLoadMore(false);
+                        }
+                    }
+
+                    @Override
+                    public void onFail(Exception e) {
+                        showError(null);
+                    }
+                });
+    }
+    @Override
+    public StatusLayout getStatusLayout() {
+        return mStatusLayout;
+    }
+}

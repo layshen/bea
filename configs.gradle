@@ -48,13 +48,13 @@ ext {
             if (serverType == SERVER_TYPE_PREVIEW) {
                 HOST_URL = "https://www.pre.baidu.com/"
             } else {
-                HOST_URL = "http://117.50.163.32:8081/"
+                HOST_URL = "https://layshen.fun/wechat"
             }
             break
         case SERVER_TYPE_PRODUCT:
             LOG_ENABLE = false
             BUGLY_ID = "8a109ae9bc"
-            HOST_URL = "http://117.50.163.32:8081/"
+            HOST_URL = "https://layshen.fun/wechat/"
             break
     }
 }

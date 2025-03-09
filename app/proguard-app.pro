@@ -5,18 +5,18 @@
 #-libraryjars libs/xxxxxxxxx.jar
 
 # 不混淆这个包下的类
--keep class com.epiboly.bea.http.api.** {
+-keep class com.epiboly.bea2.http.api.** {
     <fields>;
 }
--keep class com.epiboly.bea.http.response.** {
+-keep class com.epiboly.bea2.http.response.** {
     <fields>;
 }
--keep class com.epiboly.bea.http.model.** {
+-keep class com.epiboly.bea2.http.model.** {
     <fields>;
 }
 
 
 # 不混淆被 Log 注解的方法信息
 -keepclassmembernames class ** {
-    @com.epiboly.bea.aop.Log <methods>;
+    @com.epiboly.bea2.aop.Log <methods>;
 }

@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "com.epiboly.bea2",
+  "variantName": "processReleaseResources",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "versionCode": 13,
+      "versionName": "0.0.4",
+      "outputFile": "BEA_v0.0.4_release_20250122.apk"
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:background="@color/bg_color"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/product_image"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/product_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/product_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="#FF0000" />
+
+    <TextView
+        android:id="@+id/product_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="#FF0000" />
+
+    <TextView
+        android:id="@+id/product_quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white55"
+        android:textSize="14sp" />
+
+    <com.epiboly.bea2.widget.StatusLayout
+        android:id="@+id/status_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+        android:id="@+id/btn_exchange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:paddingLeft="@dimen/node_padding_btn_left"
+        android:paddingTop="@dimen/exchange_padding_btn_top"
+        android:paddingRight="@dimen/node_padding_btn_left"
+        android:paddingBottom="@dimen/exchange_padding_btn_top"
+        android:text="兑换物品"
+        android:textColor="@color/main_text_color"
+        android:textSize="@dimen/public_sub_text"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_img_tree"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:qmui_backgroundColor="@color/node_color1"
+        app:qmui_radius="@dimen/dp_10"
+        android:layout_gravity="center"/>
+</LinearLayout>

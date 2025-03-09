@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#363636"
-    tools:context="com.epiboly.bea.ui.activity.ImagePreviewActivity">
+    tools:context="com.epiboly.bea2.ui.activity.ImagePreviewActivity">
 
-    <com.epiboly.bea.widget.PhotoViewPager
+    <com.epiboly.bea2.widget.PhotoViewPager
         android:id="@+id/vp_image_preview_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

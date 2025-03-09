@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_color"
-    tools:context="com.epiboly.bea.login.RegisterActivity">
+    android:visibility="visible"
+    tools:context="com.epiboly.bea2.login.RegisterActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -54,6 +55,7 @@
                     android:hint="@string/common_phone_input_hint"
                     android:inputType="textVisiblePassword"
                     android:singleLine="true"
+                    android:visibility="visible"
                     app:regexType="mobile" />
 
                 <View
@@ -61,9 +63,9 @@
                     android:layout_gravity="bottom" />
             </FrameLayout>
 
-            <com.hjq.widget.view.CountdownView
-                android:id="@+id/cv_register_countdown"
-                style="@style/CountdownViewStyle" />
+<!--            <com.hjq.widget.view.CountdownView-->
+<!--                android:id="@+id/cv_register_countdown"-->
+<!--                style="@style/CountdownViewStyle" />-->
         </LinearLayout>
 
         <com.hjq.widget.view.RegexEditText
@@ -71,8 +73,8 @@
             style="@style/EditTextStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/common_code_input_hint"
             android:layout_marginTop="@dimen/dp_8"
+            android:hint="@string/common_code_input_hint"
             android:inputType="textVisiblePassword"
             android:maxLength="@integer/sms_code_length"
             android:singleLine="true"
@@ -116,16 +118,17 @@
 
         <View style="@style/HorizontalLineStyle" />
 
-        <EditText
-            android:id="@+id/et_recommend_uid"
-            style="@style/EditTextStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_20"
-            android:hint="@string/register_recommend"
-            android:singleLine="true" />
+<!--        <EditText-->
+<!--            android:id="@+id/et_recommend_uid"-->
+<!--            style="@style/EditTextStyle"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="@dimen/dp_20"-->
+<!--            android:hint="@string/register_recommend"-->
+<!--            android:singleLine="true" />-->
 
         <View style="@style/HorizontalLineStyle" />
+
 
         <com.hjq.widget.view.SubmitButton
             android:id="@+id/btn_register_commit"
@@ -134,7 +137,56 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/dp_30"
             android:text="@string/register_title" />
+        <!-- 勾选框布局，默认不可见 -->
+        <LinearLayout
+            android:id="@+id/layout_agreement"
+            android:layout_width="398dp"
+            android:layout_height="61dp"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <CheckBox
+                android:id="@+id/cb_agreement"
+                android:layout_width="42dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp" />
+
+            <TextView
+                android:id="@+id/tv_agreement_text"
+                android:layout_width="wrap_content"
+                android:layout_height="37dp"
+                android:layout_marginLeft="5dp"
+                android:text="我已阅读并同意" />
+
+            <TextView
+                android:id="@+id/tv_agreement_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:clickable="true"
+                android:text="《隐私政策》"
+                android:textColor="@color/blue" />
+
+            <TextView
+                android:id="@+id/tv_agreement_and"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:clickable="true"
+                android:text="和" />
+
+            <TextView
+                android:id="@+id/tv_agreement_service"
+                android:layout_width="109dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:clickable="true"
+                android:text="《用户协议》"
+                android:textColor="@color/blue" />
+        </LinearLayout>
 
     </LinearLayout>
+
 
 </androidx.core.widget.NestedScrollView>

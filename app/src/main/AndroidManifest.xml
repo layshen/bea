@@ -2,7 +2,7 @@
 <!-- 清单文件合并指引：https://developer.android.google.cn/studio/build/manifest-merge?hl=zh-cn -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.epiboly.bea">
+    package="com.epiboly.bea2">
 
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -39,7 +39,7 @@
     <!-- Application 节点详解：https://developer.android.google.cn/guide/topics/manifest/application-element -->
     <!-- Activity 节点详解：https://developer.android.google.cn/guide/topics/manifest/activity-element -->
     <application
-        android:name="com.epiboly.bea.app.AppApplication"
+        android:name="com.epiboly.bea2.app.AppApplication"
         android:allowBackup="false"
         android:icon="@mipmap/launcher_ic"
         android:label="${app_name}"
@@ -72,7 +72,7 @@
         </provider>
 
         <activity
-            android:name="com.epiboly.bea.advertisement.ui.SplashActivity"
+            android:name="com.epiboly.bea2.advertisement.ui.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -83,7 +83,7 @@
 
         <!-- 闪屏页 -->
 <!--        <activity-->
-<!--            android:name="com.epiboly.bea.splash.SplashActivity"-->
+<!--            android:name="com.epiboly.bea2.splash.SplashActivity"-->
 <!--            android:launchMode="singleTop"-->
 <!--            android:screenOrientation="portrait"-->
 <!--            android:theme="@style/SplashTheme">-->
@@ -100,7 +100,7 @@
 
         <!-- 引导页 -->
         <activity
-            android:name="com.epiboly.bea.ui.activity.GuideActivity"
+            android:name="com.epiboly.bea2.ui.activity.GuideActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
@@ -108,18 +108,18 @@
         <!--
            激励广告(请求并展示)
        -->
-        <activity android:name="com.epiboly.bea.advertisement.ui.AdRewardActivity" />
+        <activity android:name="com.epiboly.bea2.advertisement.ui.AdRewardActivity" />
 
         <!-- 组建首页 -->
         <activity
-            android:name="com.epiboly.bea.ui.activity.HomeActivity"
+            android:name="com.epiboly.bea2.ui.activity.HomeActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
 
         <!-- 首页 -->
         <activity
-            android:name="com.epiboly.bea.home.HomeMainActivity"
+            android:name="com.epiboly.bea2.home.HomeMainActivity"
             android:theme="@style/AppTheme"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
@@ -131,14 +131,22 @@
         </activity>
 
         <activity
-            android:name="com.epiboly.bea.ui.activity.EmptyActivity"
+            android:name="com.epiboly.bea2.ui.activity.EmptyActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
 
         <!-- 登录页 -->
         <activity
-            android:name="com.epiboly.bea.login.LoginActivity"
+            android:name="com.epiboly.bea2.login.LoginActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" >
+        </activity>
+
+        <!-- 隐私政策 -->
+        <activity
+            android:name="com.epiboly.bea2.app.PrivacyPolicyActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" >
@@ -146,46 +154,46 @@
 
         <!-- 登录页 -->
         <activity
-            android:name="com.epiboly.bea.login.VerificationCodeLoginActivity"
+            android:name="com.epiboly.bea2.login.VerificationCodeLoginActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
 
         <!-- 注册页 -->
         <activity
-            android:name="com.epiboly.bea.login.RegisterActivity"
+            android:name="com.epiboly.bea2.login.RegisterActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
 
         <!-- 崩溃展示（必须在独立进程） -->
         <activity
-            android:name="com.epiboly.bea.ui.activity.CrashActivity"
+            android:name="com.epiboly.bea2.ui.activity.CrashActivity"
             android:launchMode="singleTop"
             android:process=":crash"
             android:screenOrientation="landscape" />
 
         <!-- 重启应用（必须在独立进程） -->
         <activity
-            android:name="com.epiboly.bea.ui.activity.RestartActivity"
+            android:name="com.epiboly.bea2.ui.activity.RestartActivity"
             android:launchMode="singleTop"
             android:process=":restart" />
 
         <!-- 设置页 -->
         <activity
-            android:name="com.epiboly.bea.ui.activity.SettingActivity"
+            android:name="com.epiboly.bea2.ui.activity.SettingActivity"
             android:label="@string/setting_title"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.epiboly.bea.login.IdentityAuthActivity"
+            android:name="com.epiboly.bea2.login.IdentityAuthActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"/>
 
         <!-- 忘记密码 -->
         <activity
-            android:name="com.epiboly.bea.ui.activity.PasswordForgetActivity"
+            android:name="com.epiboly.bea2.ui.activity.PasswordForgetActivity"
             android:label="@string/password_forget_title"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
@@ -193,179 +201,179 @@
 
         <!-- 重置密码 -->
         <activity
-            android:name="com.epiboly.bea.ui.activity.PasswordResetActivity"
+            android:name="com.epiboly.bea2.ui.activity.PasswordResetActivity"
             android:label="@string/password_reset_title"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
 
         <activity
-            android:name="com.epiboly.bea.ui.activity.TradePasswordResetActivity"
+            android:name="com.epiboly.bea2.ui.activity.TradePasswordResetActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
 
         <!-- 更换手机 -->
         <activity
-            android:name="com.epiboly.bea.login.PhoneResetActivity"
+            android:name="com.epiboly.bea2.login.PhoneResetActivity"
             android:label="@string/phone_reset_title"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
 
         <activity
-            android:name="com.epiboly.bea.ui.activity.AzDetailActivity"
+            android:name="com.epiboly.bea2.ui.activity.AzDetailActivity"
             android:label="算力详情"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
 
         <activity
-            android:name="com.epiboly.bea.ui.activity.AzExchangeActivity"
+            android:name="com.epiboly.bea2.ui.activity.AzExchangeActivity"
             android:label="兑换"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
 
         <activity
-            android:name="com.epiboly.bea.ui.activity.AzScanResultExchangeActivity"
+            android:name="com.epiboly.bea2.ui.activity.AzScanResultExchangeActivity"
             android:label="转账"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden"/>
 
         <activity
-            android:name="com.epiboly.bea.ui.activity.PrivacyAgreementActivity"
+            android:name="com.epiboly.bea2.ui.activity.PrivacyAgreementActivity"
+            android:label="@string/privacy_agreement"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+
+<!--        <activity-->
+<!--            android:name="com.epiboly.bea2.ui.activity.MineNodeActivity"-->
+<!--            android:label="我的节点"-->
+<!--            android:screenOrientation="portrait"-->
+<!--            android:windowSoftInputMode="stateHidden" />-->
+
+        <activity
+            android:name="com.epiboly.bea2.ui.activity.AllianceActiveActivity"
             android:label="@string/privacy_agreement"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
 
         <activity
-            android:name="com.epiboly.bea.ui.activity.MineNodeActivity"
-            android:label="我的节点"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden" />
-
-        <activity
-            android:name="com.epiboly.bea.ui.activity.AllianceActiveActivity"
-            android:label="@string/privacy_agreement"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden" />
-
-        <activity
-            android:name="com.epiboly.bea.ui.activity.AzRecordListActivity"
+            android:name="com.epiboly.bea2.ui.activity.AzRecordListActivity"
             android:label="记录"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
 
         <activity
-            android:name="com.epiboly.bea.ui.activity.BZRRecordListActivity"
+            android:name="com.epiboly.bea2.ui.activity.BZRRecordListActivity"
             android:label="记录"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
 
         <activity
-            android:name="com.epiboly.bea.ui.activity.SystemNoticeActivity"
+            android:name="com.epiboly.bea2.ui.activity.SystemNoticeActivity"
             android:label="系统公告"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
 
         <activity
-            android:name="com.epiboly.bea.ui.activity.SystemNoticeDetailActivity"
+            android:name="com.epiboly.bea2.ui.activity.SystemNoticeDetailActivity"
             android:label="系统公告"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
 
         <!-- 关于我们 -->
         <activity
-            android:name="com.epiboly.bea.ui.activity.AboutActivity"
+            android:name="com.epiboly.bea2.ui.activity.AboutActivity"
             android:label="@string/about_title"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
         <!-- 个人资料 -->
         <activity
-            android:name="com.epiboly.bea.ui.activity.PersonalDataActivity"
+            android:name="com.epiboly.bea2.ui.activity.PersonalDataActivity"
             android:label="@string/personal_data_title"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
         <!-- 网页浏览 -->
         <activity
-            android:name="com.epiboly.bea.ui.activity.BrowserActivity"
+            android:name="com.epiboly.bea2.ui.activity.BrowserActivity"
             android:label="@string/web_title"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
         <!-- 拍照选择 -->
         <activity
-            android:name="com.epiboly.bea.ui.activity.CameraActivity"
+            android:name="com.epiboly.bea2.ui.activity.CameraActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
         <!-- 图片裁剪 -->
         <activity
-            android:name="com.epiboly.bea.ui.activity.ImageCropActivity"
+            android:name="com.epiboly.bea2.ui.activity.ImageCropActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
         <!-- 图片选择 -->
         <activity
-            android:name="com.epiboly.bea.ui.activity.ImageSelectActivity"
+            android:name="com.epiboly.bea2.ui.activity.ImageSelectActivity"
             android:label="@string/image_select_title"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
         <!-- 查看大图 -->
         <activity
-            android:name="com.epiboly.bea.ui.activity.ImagePreviewActivity"
+            android:name="com.epiboly.bea2.ui.activity.ImagePreviewActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.epiboly.bea.ui.activity.HeadPicturePreviewActivity"
+            android:name="com.epiboly.bea2.ui.activity.HeadPicturePreviewActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
 
         <!-- 播放视频（自适应方向） -->
         <activity
-            android:name="com.epiboly.bea.ui.activity.VideoPlayActivity"
+            android:name="com.epiboly.bea2.ui.activity.VideoPlayActivity"
             android:launchMode="singleTop"
             android:theme="@style/FullScreenTheme" />
 
         <!-- 播放视频（竖屏方向） -->
         <activity
-            android:name="com.epiboly.bea.ui.activity.VideoPlayActivity$Portrait"
+            android:name="com.epiboly.bea2.ui.activity.VideoPlayActivity$Portrait"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/FullScreenTheme" />
 
         <!-- 播放视频（横屏方向） -->
         <activity
-            android:name="com.epiboly.bea.ui.activity.VideoPlayActivity$Landscape"
+            android:name="com.epiboly.bea2.ui.activity.VideoPlayActivity$Landscape"
             android:launchMode="singleTop"
             android:screenOrientation="landscape"
             android:theme="@style/FullScreenTheme" />
 
         <!-- 选择视频 -->
         <activity
-            android:name="com.epiboly.bea.ui.activity.VideoSelectActivity"
+            android:name="com.epiboly.bea2.ui.activity.VideoSelectActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
         <!-- 对话框案例 -->
         <activity
-            android:name="com.epiboly.bea.ui.activity.DialogActivity"
+            android:name="com.epiboly.bea2.ui.activity.DialogActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
         <!-- 状态案例 -->
         <activity
-            android:name="com.epiboly.bea.ui.activity.StatusActivity"
+            android:name="com.epiboly.bea2.ui.activity.StatusActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
         <!-- 微信回调（请注意这个 Activity 放置的包名要和当前项目的包名保持一致，否则将不能正常回调） -->
         <activity
-            android:name="com.epiboly.bea.wxapi.WXEntryActivity"
+            android:name="com.epiboly.bea2.wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />

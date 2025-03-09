@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/bg_color"
-    tools:context="com.epiboly.bea.login.PhoneResetActivity">
+    tools:context="com.epiboly.bea2.login.PhoneResetActivity">
 
     <com.hjq.bar.TitleBar
         android:layout_width="match_parent"

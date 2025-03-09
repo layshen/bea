@@ -12,7 +12,7 @@ android {
     defaultConfig {
 
         // 无痛修改包名：https://www.jianshu.com/p/17327e191d2e
-        applicationId 'com.epiboly.bea'
+        applicationId 'com.epiboly.bea2'
 
         // 仅保留中文语种的资源
         resConfigs 'zh'
@@ -29,6 +29,8 @@ android {
         buildConfigField('String', 'BUGLY_ID', '"' + BUGLY_ID + '"')
         // 测试服务器的主机地址
         buildConfigField('String', 'HOST_URL', '"' + HOST_URL + '"')
+
+        multiDexEnabled true
     }
 
     // Apk 签名的那些事：https://www.jianshu.com/p/a1f8e5896aa2
@@ -60,7 +62,7 @@ android {
             signingConfig signingConfigs.config
             // 添加清单占位符
             addManifestPlaceholders([
-                    'app_name'    :    'BEA'
+                    'app_name'    :    'BEA2'
             ])
             // 调试模式下只保留一种架构的 so 库，提升打包速度
             ndk {
@@ -73,7 +75,7 @@ android {
             applicationIdSuffix ''
             // 添加清单占位符
             addManifestPlaceholders([
-                    'app_name'    :    'BEA'
+                    'app_name'    :    'BEA2'
             ])
         }
 
@@ -270,7 +272,7 @@ dependencies {
 
     implementation 'com.github.gzu-liyujiang:Android_CN_OAID:4.2.4'
 
-    debugImplementation 'com.github.getActivity:Logcat:11.2'
+    //debugImplementation 'com.github.getActivity:Logcat:11.2'
 
     // 二维码：https://github.com/bingoogolapple/BGAQRCode-Android
     implementation 'com.github.bingoogolapple.BGAQRCode-Android:zxing:1.3.8'

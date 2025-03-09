@@ -1,6 +1,6 @@
-包名：com.epiboly.bea 
+包名：com.epiboly.bea2 
 应用签名：fd76d53c28357ba83f8897ae63926ff4
-应用名称：BEA
+应用名称：BEA2
 
 证书：
 生效时间: Sat Feb 11 15:55:00 CST 2023, 失效时间: Wed Feb 05 15:55:00 CST 2048

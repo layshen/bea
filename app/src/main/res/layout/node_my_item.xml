@@ -25,14 +25,13 @@
         android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/public_main_text"
-        android:layout_marginTop="4dp"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toRightOf="@id/iv_img_tree"
+        android:layout_marginTop="4dp"
         android:textColor="@color/main_text_color"
-        tools:text="T级节点"
-        />
+        android:textSize="@dimen/public_main_text"
+        app:layout_constraintLeft_toRightOf="@id/iv_img_tree"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="T级节点" />
 
     <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundFrameLayout
         android:layout_width="wrap_content"

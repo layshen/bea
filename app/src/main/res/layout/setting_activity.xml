@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/bg_color"
-    tools:context="com.epiboly.bea.ui.activity.SettingActivity">
+    tools:context="com.epiboly.bea2.ui.activity.SettingActivity">
 
     <com.hjq.bar.TitleBar
         android:layout_width="match_parent"
@@ -62,40 +62,6 @@
                 android:visibility="gone"
                 app:bar_leftText="@string/setting_phone"
                 tools:bar_rightText="181****1413"
-                app:bar_leftTextColor="@color/main_text_color"
-                app:bar_rightDrawable="@drawable/ic_arrow_right"
-                android:background="@color/card_color"
-                app:bar_rightTextColor="@color/main_sub_text_color"
-                app:bar_lineDrawable="@drawable/line_drawable"/>
-
-            <com.hjq.widget.layout.SettingBar
-                android:id="@+id/sb_setting_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:bar_leftText="@string/setting_password"
-                app:bar_leftTextColor="@color/main_text_color"
-                app:bar_rightDrawable="@drawable/ic_arrow_right"
-                android:background="@color/card_color"
-                app:bar_rightTextColor="@color/main_sub_text_color"
-                app:bar_lineDrawable="@drawable/line_drawable"
-                tools:bar_rightText="密码强度较低" />
-
-            <com.hjq.widget.layout.SettingBar
-                android:id="@+id/sb_setting_nick"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:bar_leftText="@string/setting_nick"
-                app:bar_leftTextColor="@color/main_text_color"
-                app:bar_rightDrawable="@drawable/ic_arrow_right"
-                android:background="@color/card_color"
-                app:bar_rightTextColor="@color/main_sub_text_color"
-                app:bar_lineDrawable="@drawable/line_drawable"/>
-
-            <com.hjq.widget.layout.SettingBar
-                android:id="@+id/sb_setting_trade_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:bar_leftText="@string/setting_trade_password"
                 app:bar_leftTextColor="@color/main_text_color"
                 app:bar_rightDrawable="@drawable/ic_arrow_right"
                 android:background="@color/card_color"
