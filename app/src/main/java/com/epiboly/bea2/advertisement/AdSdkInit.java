@@ -10,8 +10,12 @@ import android.webkit.WebView;
 import com.blankj.utilcode.util.Utils;
 import com.epiboly.bea2.cache.UserHelper;
 import com.jiagu.sdk.OSETSDKProtected;
-import com.kc.openset.OSETSDK;
+import com.kc.openset.config.OSETSDK;
+import com.kc.openset.config.controller.OSETCustomController;
 import com.kc.openset.listener.OSETInitListener;
+//import com.kc.openset.OSETSDK;
+//import com.kc.openset.config.controller.OSETCustomController;
+//import com.kc.openset.listener.OSETInitListener;
 
 /**
  * @author vemao
@@ -47,37 +51,69 @@ public class AdSdkInit {
             return;
         }
         OSETSDK.getInstance().setUserId(UserHelper.getInstance().getUser().getUid());
-        OSETSDK.getInstance().init(Utils.getApp(), AdCons.AppKey, new OSETInitListener() {
-            @Override
-            public void onError(String s) {
-                HANDLER.post(new Runnable() {
+        OSETSDK.getInstance()
+                .setCustomController(new OSETCustomController(){})
+                .init(Utils.getApp(), AdCons.AppKey, new OSETInitListener(){
                     @Override
-                    public void run() {
-                        Log.d(TAG,"初始化广告 onError "+Thread.currentThread().getName());
-                        isInitSuccess = false;
-                        if (callback != null){
-                            callback.onError();
-                        }
+                    public void onError(String s) {
+                        HANDLER.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                Log.d(TAG,"初始化广告 onError "+Thread.currentThread().getName());
+                                isInitSuccess = false;
+                                if (callback != null){
+                                    callback.onError();
+                                }
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onSuccess() {
+//初始化成功：可以开始调用广告
+                        HANDLER.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                Log.d(TAG,"初始化广告 onSuccess " +Thread.currentThread().getName());
+                                isInitSuccess = true;
+                                if (callback != null){
+                                    callback.onSuccess();
+                                }
+                            }
+                        });
                     }
                 });
-            }
-
-            @Override
-            public void onSuccess() {
-                //初始化成功：可以开始调用广告
-                HANDLER.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        Log.d(TAG,"初始化广告 onSuccess " +Thread.currentThread().getName());
-                        isInitSuccess = true;
-                        if (callback != null){
-                            callback.onSuccess();
-                        }
-                    }
-                });
-            }
-
-        });
+//        OSETSDK.getInstance().init(Utils.getApp(), AdCons.AppKey, new OSETInitListener() {
+//            @Override
+//            public void onError(String s) {
+//                HANDLER.post(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        Log.d(TAG,"初始化广告 onError "+Thread.currentThread().getName());
+//                        isInitSuccess = false;
+//                        if (callback != null){
+//                            callback.onError();
+//                        }
+//                    }
+//                });
+//            }
+//
+//            @Override
+//            public void onSuccess() {
+//                //初始化成功：可以开始调用广告
+//                HANDLER.post(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        Log.d(TAG,"初始化广告 onSuccess " +Thread.currentThread().getName());
+//                        isInitSuccess = true;
+//                        if (callback != null){
+//                            callback.onSuccess();
+//                        }
+//                    }
+//                });
+//            }
+//
+//        });
     }
 
     public interface Callback{

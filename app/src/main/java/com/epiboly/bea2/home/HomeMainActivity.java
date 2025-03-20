@@ -1,5 +1,7 @@
 package com.epiboly.bea2.home;
 
+import static com.epiboly.bea2.advertisement.AdCons.POS_ID_RewardVideo;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -13,11 +15,12 @@ import androidx.viewpager.widget.ViewPager;
 import com.epiboly.bea2.advertisement.AdCons;
 import com.epiboly.bea2.app.AppFragment;
 import com.epiboly.bea2.cache.UserHelper;
+import com.epiboly.bea2.http.model.User;
 import com.epiboly.bea2.node.NodeListFragment;
 import com.epiboly.bea2.other.AppConfig;
 import com.epiboly.bea2.ui.adapter.ProductAdapter;
 import com.epiboly.bea2.ui.dialog.UpdateDialog;
-import com.epiboly.bea2.ui.fragment.ProductListFragment;
+//import com.epiboly.bea2.ui.fragment.ProductListFragment;
 import com.epiboly.bea2.util.CheckUpdateHelper;
 import com.gyf.immersionbar.ImmersionBar;
 import com.hjq.base.FragmentPagerAdapter;
@@ -29,7 +32,8 @@ import com.epiboly.bea2.ui.adapter.NavigationAdapter;
 import com.epiboly.bea2.ui.fragment.DailyTaskFragment;
 import com.epiboly.bea2.ui.fragment.HomeFragment;
 import com.epiboly.bea2.ui.fragment.MeFragment;
-import com.kc.openset.ad.OSETRewardVideoCache;
+//import com.kc.openset.ad.OSETRewardVideoCache;
+import com.kc.openset.ad.reward.OSETRewardVideo;
 
 /**
  * @author mao
@@ -65,13 +69,20 @@ public final class HomeMainActivity extends AppActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //这一步建议在首页进行初始化并开启缓存,减少第一次展示广告的时间。并且在首页onDestroy里面调用destroy()方法释放资源
-        OSETRewardVideoCache.getInstance()
+        User user = UserHelper.getInstance().getUser();
+        OSETRewardVideo.getInstance()
                 .setContext(this)
-                .setVerify(true)
-                .setServiceReward(true)
-                .setPosId(AdCons.POS_ID_RewardVideo)
-                .setUserId(UserHelper.getInstance().getUser().getUid())
+                .setPosId(POS_ID_RewardVideo)
+                .setUserId(user.getUid())
                 .startLoad();
+        //这一步建议在首页进行初始化并开启缓存,减少第一次展示广告的时间。并且在首页onDestroy里面调用destroy()方法释放资源
+//        OSETRewardVideoCache.getInstance()
+//                .setContext(this)
+//                .setVerify(true)
+//                .setServiceReward(true)
+//                .setPosId(AdCons.POS_ID_RewardVideo)
+//                .setUserId(UserHelper.getInstance().getUser().getUid())
+//                .startLoad();
     }
 
 
@@ -207,6 +218,7 @@ public final class HomeMainActivity extends AppActivity
         mNavigationView.setAdapter(null);
         mNavigationAdapter.setOnNavigationListener(null);
         //在OnDestroy中调用destroy
-        OSETRewardVideoCache.getInstance().destroy();
+//        OSETRewardVideoCache.getInstance().destroy();
+//        OSETRewardVideo.getInstance().destroy();
     }
 }

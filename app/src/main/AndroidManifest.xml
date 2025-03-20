@@ -5,36 +5,45 @@
     package="com.epiboly.bea2">
 
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" tools:node="remove" />
-    <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" tools:node="remove" />
+<!--    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />-->
+<!--    <uses-permission android:name="android.permission.READ_PHONE_STATE" tools:node="remove" />-->
+<!--    <uses-permission android:name="android.permission.VIBRATE" />-->
+<!--    <uses-permission android:name="android.permission.WRITE_SETTINGS" tools:node="remove" />-->
 
-    <!-- 网络相关 -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
+<!--    &lt;!&ndash; 网络相关 &ndash;&gt;-->
+<!--    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />-->
+<!--    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />-->
+<!--    <uses-permission android:name="android.permission.INTERNET" />-->
 
-    <!-- 外部存储 -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" tools:ignore="ScopedStorage" />
+<!--    &lt;!&ndash; 外部存储 &ndash;&gt;-->
+<!--    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />-->
+<!--    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" tools:ignore="ScopedStorage" />-->
 
-    <!-- 拍照权限 -->
-    <uses-permission android:name="android.permission.CAMERA" />
+<!--    &lt;!&ndash; 拍照权限 &ndash;&gt;-->
+<!--    <uses-permission android:name="android.permission.CAMERA" />-->
 
-    <!-- 安装权限 -->
-    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+<!--    &lt;!&ndash; 安装权限 &ndash;&gt;-->
+<!--&lt;!&ndash;    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />&ndash;&gt;-->
 
-    <!-- 定位权限（用于 WebView 定位）-->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+<!--    &lt;!&ndash; 定位权限（用于 WebView 定位）&ndash;&gt;-->
+<!--    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />-->
+<!--&lt;!&ndash;    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />&ndash;&gt;-->
 
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+<!--    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />-->
+<!--    <uses-permission android:name="android.permission.WAKE_LOCK" />-->
+<!--    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />-->
+<!--    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />-->
+<!--    <uses-permission android:name="android.permission.RECORD_AUDIO" />-->
+<!--    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />-->
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
     <!-- Application 节点详解：https://developer.android.google.cn/guide/topics/manifest/application-element -->
     <!-- Activity 节点详解：https://developer.android.google.cn/guide/topics/manifest/activity-element -->
@@ -68,7 +77,7 @@
 
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths" />
+                android:resource="@xml/local_file_paths" />
         </provider>
 
         <activity
@@ -391,43 +400,43 @@
         </provider>
 
         <!--opendsp-->
-        <provider
-            android:name="com.kc.openset.sdk.dsp.util.ODFileProvider"
-            android:authorities="${applicationId}.odfileprovider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/filepaths" />
-        </provider>
+<!--        <provider-->
+<!--            android:name="com.kc.openset.sdk.dsp.util.ODFileProvider"-->
+<!--            android:authorities="${applicationId}.odfileprovider"-->
+<!--            android:exported="false"-->
+<!--            android:grantUriPermissions="true">-->
+<!--            <meta-data-->
+<!--                android:name="android.support.FILE_PROVIDER_PATHS"-->
+<!--                android:resource="@xml/localfilepaths" />-->
+<!--        </provider>-->
         <activity android:name="com.kc.openset.sdk.dsp.reward.ODRewardVideoActivity" />
         <!--穿山甲-->
-        <provider
-            android:name="com.bytedance.sdk.openadsdk.multipro.TTMultiProvider"
-            android:authorities="${applicationId}.TTMultiProvider"
-            android:exported="false" />
-        <provider
-            android:name="com.bytedance.sdk.openadsdk.TTFileProvider"
-            android:authorities="${applicationId}.TTFileProvider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/filepaths" />
-        </provider>
+<!--        <provider-->
+<!--            android:name="com.bytedance.sdk.openadsdk.multipro.TTMultiProvider"-->
+<!--            android:authorities="${applicationId}.TTMultiProvider"-->
+<!--            android:exported="false" />-->
+<!--        <provider-->
+<!--            android:name="com.bytedance.sdk.openadsdk.TTFileProvider"-->
+<!--            android:authorities="${applicationId}.TTFileProvider"-->
+<!--            android:exported="false"-->
+<!--            android:grantUriPermissions="true">-->
+<!--            <meta-data-->
+<!--                android:name="android.support.FILE_PROVIDER_PATHS"-->
+<!--                android:resource="@xml/localfilepaths" />-->
+<!--        </provider>-->
 
         <!--广点通-->
         <!-- 声明SDK所需要的组件 -->
         <!--配置provider-->
-        <provider
-            android:name="com.qq.e.comm.GDTFileProvider"
-            android:authorities="${applicationId}.gdt.fileprovider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/filepaths" />
-        </provider>
+<!--        <provider-->
+<!--            android:name="com.qq.e.comm.GDTFileProvider"-->
+<!--            android:authorities="${applicationId}.gdt.fileprovider"-->
+<!--            android:exported="false"-->
+<!--            android:grantUriPermissions="true">-->
+<!--            <meta-data-->
+<!--                android:name="android.support.FILE_PROVIDER_PATHS"-->
+<!--                android:resource="@xml/localfilepaths" />-->
+<!--        </provider>-->
 
         <!--sigmob-->
         <provider

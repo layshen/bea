@@ -15,8 +15,10 @@ import com.epiboly.bea2.cache.SettingsCache;
 import com.epiboly.bea2.cache.UserHelper;
 import com.epiboly.bea2.home.HomeMainActivity;
 import com.epiboly.bea2.login.LoginActivity;
-import com.kc.openset.OSETListener;
-import com.kc.openset.OSETSplash;
+import com.kc.openset.ad.listener.OSETSplashAdLoadListener;
+import com.kc.openset.ad.listener.OSETSplashListener;
+import com.kc.openset.ad.splash.OSETSplash;
+import com.kc.openset.ad.splash.OSETSplashAd;
 
 public class SplashActivity extends AppActivity {
     private static final String TAG = "SplashActivity";
@@ -41,56 +43,94 @@ public class SplashActivity extends AppActivity {
     @Override
     protected void initData() {
         actionHome();
-        if (AdSdkInit.isInitSuccess){
-            showAd();
-        }else {
-            postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    AdSdkInit.exeMaybeInit(new AdSdkInit.Callback() {
-                        @Override
-                        public void onSuccess() {
-                            showAd();
-                        }
-
-                        @Override
-                        public void onError() {
-                            actionHome();
-                        }
-                    });
-                }
-            },300);
-        }
     }
 
     private void showAd() {
-        OSETSplash.getInstance().show(this, fl, AdCons.POS_ID_Splash, new OSETListener() {
+        long startTime = System.currentTimeMillis();
+        OSETSplash.getInstance().setContext(this).setPosId(AdCons.POS_ID_Splash).loadAd(new OSETSplashAdLoadListener() {
             @Override
-            public void onShow() {
-                Log.e(TAG, "onShow");
-            }
-
-            @Override
-            public void onError(String s, String s1) {
-                Log.e(TAG, "onError——————code:" + s + "----message:" + s1);
-                actionHome();
-            }
-
-            @Override
-            public void onClick() {
-                isClick = true;
-                Log.e(TAG, "onClick");
-            }
-
-            @Override
-            public void onClose() {
-                Log.e(TAG, "onclose +isOnPause=" + isOnPause + "isClick=" + isClick);
-                isClose = true;
-                if (!isOnPause && !isClick) {//如果已经调用了onPause说明已经跳转了广告落地页
-                    actionHome();
+            public void onLoadSuccess(OSETSplashAd osetSplashAd) {
+                int ecpm = osetSplashAd.getECPM();
+                String requestId = osetSplashAd.getRequestId();
+                boolean usable = osetSplashAd.isUsable();
+                if (!usable) {
+                    showAd();
+                    return;
                 }
+                Log.e(TAG, "onLoadSuccess ecpm=" + ecpm);
+                osetSplashAd.showAd(SplashActivity.this, fl, new OSETSplashListener() {
+                    @Override
+                    public void onClick() {
+//                        Log.e(TAG, "onClick");
+                        isClick = true;
+                        Log.e(TAG, "onClick");
+                    }
+
+                    @Override
+                    public void onClose() {
+                        Log.e(TAG, "onclose +isOnPause=" + isOnPause + "isClick=" + isClick);
+                        isClose = true;
+                        if (!isOnPause && !isClick) {//如果已经调用了onPause说明已经跳转了广告落地页
+                        startActivity(new Intent(activity, HomeMainActivity.class));
+                        finish();
+                        }
+//                        Log.e(TAG, "onclose ");
+//                        startActivity(new Intent(activity, MainActivity.class));
+//                        finish();
+                    }
+
+                    @Override
+                    public void onShow() {
+                        Log.e(TAG, "onShow " + ( System.currentTimeMillis() - startTime));
+                    }
+
+                    @Override
+                    public void onError(String s, String s1) {
+//                        Log.e(TAG, "onError——————code:" + s + "----message:" + s1);
+//                        startActivity(new Intent(activity, MainActivity.class));
+//                        finish();
+                        Log.e(TAG, "onError——————code:" + s + "----message:" + s1);
+                        startActivity(new Intent(activity, HomeMainActivity.class));
+                        finish();
+                    }
+                });
+            }
+
+            @Override
+            public void onLoadFail(String s, String s1) {
+                Log.e(TAG, "onError——————code:" + s + "----message:" + s1);
+//                actionHome();
+                startActivity(new Intent(activity, HomeMainActivity.class));
+//                HomeMainActivity.start(this);
             }
         });
+//        OSETSplash.getInstance().show(this, fl, AdCons.POS_ID_Splash, new OSETListener() {
+//            @Override
+//            public void onShow() {
+//                Log.e(TAG, "onShow");
+//            }
+//
+//            @Override
+//            public void onError(String s, String s1) {
+//                Log.e(TAG, "onError——————code:" + s + "----message:" + s1);
+//                actionHome();
+//            }
+//
+//            @Override
+//            public void onClick() {
+//                isClick = true;
+//                Log.e(TAG, "onClick");
+//            }
+//
+//            @Override
+//            public void onClose() {
+//                Log.e(TAG, "onclose +isOnPause=" + isOnPause + "isClick=" + isClick);
+//                isClose = true;
+//                if (!isOnPause && !isClick) {//如果已经调用了onPause说明已经跳转了广告落地页
+//                    actionHome();
+//                }
+//            }
+//        });
     }
 
     @Override
@@ -117,13 +157,32 @@ public class SplashActivity extends AppActivity {
 
     @Override
     protected void onDestroy() {
-        OSETSplash.getInstance().destroy();
+//        OSETSplash.getInstance().;
         super.onDestroy();
     }
 
     public void actionHome() {
         if (UserHelper.getInstance().isLogin() && SettingsCache.create().isAutoLogin()) {
-            HomeMainActivity.start(this);
+            if (AdSdkInit.isInitSuccess){
+                showAd();
+            }else {
+                postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        AdSdkInit.exeMaybeInit(new AdSdkInit.Callback() {
+                            @Override
+                            public void onSuccess() {
+                                showAd();
+                            }
+
+                            @Override
+                            public void onError() {
+                                actionHome();
+                            }
+                        });
+                    }
+                },300);
+            }
         } else {
             UserHelper.getInstance().clear();
 
@@ -137,6 +196,5 @@ public class SplashActivity extends AppActivity {
                 LoginActivity.start(this, "", "");
             }
         }
-        finish();
     }
 }

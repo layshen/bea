@@ -8,6 +8,16 @@ buildscript {
     repositories {
         // 阿里云云效仓库（Gradle 插件）：https://maven.aliyun.com/mvn/guide
         maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        // GroMore
+        maven { url "https://artifact.bytedance.com/repository/Volcengine/" }
+        maven { url "https://artifact.bytedance.com/repository/pangle" }
+//        荣耀
+        maven { url 'https://developer.hihonor.com/repo' }
+//        adset
+        maven {
+            allowInsecureProtocol = true
+            url "http://maven.shenshiads.com/nexus/repository/adset/"
+        }
         addCommonMaven(repositories)
     }
 
@@ -27,6 +37,16 @@ allprojects {
     repositories {
         // 友盟远程仓库：https://info.umeng.com/detail?id=443&cateId=1
         maven { url 'https://repo1.maven.org/maven2' }
+        // GroMore
+        maven { url "https://artifact.bytedance.com/repository/Volcengine/" }
+        maven { url "https://artifact.bytedance.com/repository/pangle" }
+//        荣耀
+        maven { url 'https://developer.hihonor.com/repo' }
+//        adset
+        maven {
+            allowInsecureProtocol = true
+            url "http://maven.shenshiads.com/nexus/repository/adset/"
+        }
         addCommonMaven(repositories)
     }
 

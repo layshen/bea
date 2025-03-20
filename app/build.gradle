@@ -323,5 +323,56 @@ dependencies {
     //opendsp
 //    implementation(name: 'opendsp_sdk1.7.5', ext: 'aar')
     ////implementation 'com.github.bumptech.glide:glide:4.9.0'
+    //基础包
+    implementation 'com.shenshi:ad-openset-sdk:6.5.1.1'
+
+    //tanx
+    implementation 'com.shenshi:ad-tanx-adapter:3.6.4.1'
+
+    //bz
+    implementation 'com.shenshi:ad-beizi-adapter:4.90.4.42.1'
+
+    //gdt
+    implementation 'com.shenshi:ad-guangdiantong-adapter:4.620.1490.1'
+
+    //ks-ad 只对接广告请使用
+    implementation 'com.shenshi:ad-kuaishou-ad-adapter:3.3.69.3'
+
+    //ks-ct 广告、短视频和短剧请使用
+    //implementation 'com.shenshi:ad-kuaishou-ct-adapter:3.3.69.4'
+
+    //sigmob
+    implementation 'com.shenshi:ad-sigmob-adapter:4.19.5.4'
+
+    //gromore
+    implementation 'com.shenshi:ad-gromore-adapter:6.7.0.6.1'
+
+    //bd
+    implementation 'com.shenshi:ad-baidu-adapter:9.371.4'
+
+    //hl
+    implementation 'com.shenshi:ad-hailiang-adapter:3.468.15.434.1'
+
+    //zy
+    implementation 'com.shenshi:ad-zhangyu-adapter:1.6.2.0.1'
+
+    //京东 androidx环境请使用
+    implementation 'com.shenshi:ad-jingdong-androidx-adapter:2.6.20.2'
+
+    //京东 support环境请使用
+    //implementation 'com.shenshi:ad-jingdong-support-adapter:2.6.20.2'
+
+    //multidex 64K问题，如果已添加请忽略
+    implementation 'com.android.support:multidex:1.0.3'
+
+    //微信小程序广告预算相关，引入可提升ecpm。强烈建议引入
+    /**
+     * 1，进入微信开放平台创建移动应用;
+     * 2，应用创建完成后，获取到相应的微信ApplD;
+     * 3.在移动端嵌入最新版OpenSDK，并确认版本为5.3.1及以上;
+     * 4.在优量汇开发者平台，将微信开放平台填写的AppID与当前应用进行关联;
+     * 第四步联系我们运营帮你们配置
+     */
+//    implementation 'com.tencent.mm.opensdk:wechat-sdk-android:6.8.28'
 
 }
